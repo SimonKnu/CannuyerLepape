@@ -6,15 +6,16 @@ import { AccountComponent } from './account/account.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {RouterModule, Routes} from "@angular/router";
-import { IndexComponent } from './index/index.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ModalPasswordComponent } from './account/modal-password/modal-password.component';
+import {AccueilComponent} from "./accueil/accueil.component";
 
 //Permets de créer notre routings pour naviguer de page en page
 const routes : Routes = [
-  {path:"index",component:IndexComponent},
+  {path:"accueil",component:AccueilComponent},
   {path:"account",component:AccountComponent},
-  {path:"",redirectTo:"/index",pathMatch:"full"},
+  {path:"",redirectTo:"/accueil",pathMatch:"full"},
 ];
 
 
@@ -23,13 +24,15 @@ const routes : Routes = [
   declarations: [
     AppComponent,
     AccountComponent,
-    IndexComponent,
-    NavBarComponent
+    AccueilComponent,
+    NavBarComponent,
+    ModalPasswordComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    NgbModule.forRoot(),
     RouterModule.forRoot(routes)
   ],
   providers: [],
