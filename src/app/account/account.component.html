@@ -1,3 +1,97 @@
-<p>
-  account works!
-</p>
+<h1>Mon compte</h1>
+
+<form>
+    <div class="form-group">
+      <label for="pseudo_membre">Pseudo</label>
+      <input type="text" class="form-control" id="pseudo_membre" placeholder="Pseudo" disabled>
+    </div>
+    <div class="form-group">
+      <label for="mdp">Mot de passe</label><br>
+      <button id="mdp" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myPassword">
+        Modifier
+      </button>
+    </div>
+    <div class="form-group">
+      <label for="nom">Nom</label>
+      <input type="text" class="form-control" id="nom" placeholder="Nom">
+    </div>
+    <div class="form-group">
+      <label for="prenom">Prénom</label>
+      <input type="text" class="form-control" id="prenom" placeholder="Prénom">
+    </div>
+    <div class="form-group">
+      <label for="telephone">Téléphone</label>
+      <input type="text" class="form-control" id="telephone" placeholder="0000/00.00.00">
+    </div>
+    <div class="form-group">
+      <label for="date_naissance">Date de naissance</label>
+      <input type="date" class="form-control" id="date_naissance" placeholder="00/00/0000">
+    </div>
+    <div class="form-group">
+      <label for="pays">Pays</label>
+      <input type="text" class="form-control" id="pays" placeholder="Pays">
+    </div>
+    <div class="form-group">
+      <label for="ville">Ville</label>
+      <input type="text" class="form-control" id="ville" placeholder="Ville">
+    </div>
+    <div class="form-group">
+      <label for="rue">Rue</label>
+      <input type="text" class="form-control" id="rue" placeholder="Rue">
+    </div>
+    <div class="form-group">
+      <label for="code_postal">Code postal</label>
+      <input type="text" class="form-control" id="code_postal" placeholder="Code postal">
+    </div>
+    <div class="form-group">
+      <label for="argent">Argent</label>
+      <input type="number" class="form-control" id="argent" placeholder="0 €" disabled>
+    </div>
+    <div class="form-group">
+      <label for="date_inscription">Date d'inscription</label>
+      <input type="date" class="form-control" id="date_inscription" placeholder="01/01/2001" disabled>
+    </div>
+    <div class="form-group">
+      <label for="administrateur">Administrateur</label>
+      <input type="text" class="form-control" id="administrateur" placeholder="Administrateur" disabled>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary btn-lg" >Mettre à jour</button>
+</form>
+
+
+
+<!-- Modal password -->
+<div class="modal fade" id="myPassword" tabindex="-1" role="dialog" aria-labelledby="myModalPassword">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalPassword">Changer de mot de passe</h4>
+      </div>
+
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="mot_de_passe">Mot de passe actuel</label>
+            <input type="password" id="mot_de_passe" class="form-control" placeholder="Mot de passe actuel">
+          </div>
+          <div class="form-group">
+            <label for="nouv">Nouveau mot de passe</label>
+            <input type="password" id="nouv" class="form-control" placeholder="Nouveau mot de passe">
+          </div>
+          <div class="form-group">
+            <label for="nouvConfirm">Confirmer le nouveau mot de passe</label>
+            <input type="password" id="nouvConfirm" class="form-control" placeholder="Confirmer le nouveau mot de passe">
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+        <button type="button" class="btn btn-primary">Sauvegarder</button>
+      </div>
+    </div>
+  </div>
+</div>
