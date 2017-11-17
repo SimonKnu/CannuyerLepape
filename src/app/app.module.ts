@@ -10,12 +10,16 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ModalPasswordComponent } from './account/modal-password/modal-password.component';
 import {AccueilComponent} from "./accueil/accueil.component";
+import { LogInComponent } from './log-in/log-in.component';
+import {ServiceConnexionService} from "./service/service-connexion.service";
+import {HttpModule} from "@angular/http";
 
 //Permets de créer notre routings pour naviguer de page en page
 const routes : Routes = [
   {path:"accueil",component:AccueilComponent},
   {path:"account",component:AccountComponent},
-  {path:"",redirectTo:"/accueil",pathMatch:"full"},
+  {path:"login",component:LogInComponent},
+  {path:"",redirectTo:"accueil",pathMatch:"full"},
 ];
 
 
@@ -26,16 +30,18 @@ const routes : Routes = [
     AccountComponent,
     AccueilComponent,
     NavBarComponent,
-    ModalPasswordComponent
+    ModalPasswordComponent,
+    LogInComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    HttpModule,
     NgbModule.forRoot(),
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [ServiceConnexionService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
