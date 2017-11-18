@@ -12,17 +12,22 @@ export class LogInComponent implements OnInit {
   private tmpEmail:string="";
   private tmpMot_de_passe:string="";
 
-  constructor(private connexionService:ServiceConnexionService,private router:Router) { }
+  constructor(private connexionService:ServiceConnexionService,public router:Router) { }
 
   ngOnInit() {
   }
 
-  public connexion(){
-    const DISPLAY_CONNEXION = () =>  this.router.navigate(["/account"]);
-    const DISPLAY_ERROR = (error) => console.error(error);
-    this.connexionService.getConnexion(this.tmpEmail,this.tmpMot_de_passe).subscribe(DISPLAY_CONNEXION,DISPLAY_ERROR);
+  public connexion() {
+    this.connexionService.getConnexion(this.tmpEmail, this.tmpMot_de_passe).subscribe(token => {
+      console.log(token)
+      if(token === "error" || token === ""){
+
+      }
+      else {
+        this.router.navigate(["account"]);
+      }
+    });
     this.tmpEmail="";
     this.tmpMot_de_passe="";
   }
-
 }
