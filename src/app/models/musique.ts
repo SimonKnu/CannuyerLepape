@@ -70,4 +70,14 @@ export class Musique {
   public static fromJSONs(rawMusique: any[]): Musique[] {
     return rawMusique.map(Musique.fromJSON);
   }
+
+  public getCleanDataForSending(): any {
+    return {
+      "Auteur": this.auteur,
+      "Titre": this.titre,
+      "Style": this.style,
+      "Url": this.url,
+      "Pirx": this.prix
+    };
+  }
 }
