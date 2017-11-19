@@ -14,7 +14,7 @@ import { LogInComponent } from './log-in/log-in.component';
 import {ServiceConnexionService} from './service/service-connexion.service';
 import {MusiqueService} from './service/service-musique.service';
 import {HttpModule} from '@angular/http';
-import { UrlSafePipe } from './url-safe.pipe';
+import { UrlSafePipe } from './pipe/url-safe.pipe';
 
 //Permets de créer notre routings pour naviguer de page en page
 const routes: Routes = [
