@@ -22,7 +22,7 @@ const routes: Routes = [
   {path: 'accueil', component: AccueilComponent},
   {path: 'account', component: AccountComponent},
   {path: 'login', component: LogInComponent},
-  {path: 'addMusique', component: AddMusiqueComponent},
+  {path: 'gestionMusique', component: AddMusiqueComponent},
   {path: '', redirectTo: 'accueil', pathMatch: 'full'},
 ];
 
