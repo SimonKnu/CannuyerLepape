@@ -3,23 +3,25 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AccountComponent } from './account/account.component';
-import {FormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
-import {RouterModule, Routes} from "@angular/router";
+import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import {RouterModule, Routes} from '@angular/router';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ModalPasswordComponent } from './account/modal-password/modal-password.component';
-import {AccueilComponent} from "./accueil/accueil.component";
+import {AccueilComponent} from './accueil/accueil.component';
 import { LogInComponent } from './log-in/log-in.component';
-import {ServiceConnexionService} from "./service/service-connexion.service";
-import {HttpModule} from "@angular/http";
+import {ServiceConnexionService} from './service/service-connexion.service';
+import {MusiqueService} from './service/service-musique.service';
+import {HttpModule} from '@angular/http';
+import { UrlSafePipe } from './url-safe.pipe';
 
 //Permets de créer notre routings pour naviguer de page en page
-const routes : Routes = [
-  {path:"accueil",component:AccueilComponent},
-  {path:"account",component:AccountComponent},
-  {path:"login",component:LogInComponent},
-  {path:"",redirectTo:"accueil",pathMatch:"full"},
+const routes: Routes = [
+  {path: 'accueil', component: AccueilComponent},
+  {path: 'account', component: AccountComponent},
+  {path: 'login', component: LogInComponent},
+  {path: '', redirectTo: 'accueil', pathMatch: 'full'},
 ];
 
 
@@ -31,7 +33,8 @@ const routes : Routes = [
     AccueilComponent,
     NavBarComponent,
     ModalPasswordComponent,
-    LogInComponent
+    LogInComponent,
+    UrlSafePipe
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,7 @@ const routes : Routes = [
     NgbModule.forRoot(),
     RouterModule.forRoot(routes)
   ],
-  providers: [ServiceConnexionService],
+  providers: [ServiceConnexionService, MusiqueService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
