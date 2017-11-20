@@ -26,9 +26,13 @@ export class ModifierMusiqueComponent implements OnInit {
 
   modifierMusique() {}
 
-  modifier() {
-
-    this.prix = this.id_musique;
+  modifier(musique: Musique) {
+    this.id_musique = musique.id_musique;
+    this.auteur = musique.auteur;
+    this.titre = musique.titre;
+    this.style = musique.style;
+    this.url = musique.url;
+    this.prix = musique.prix;
   }
 
 }

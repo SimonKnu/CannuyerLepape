@@ -1,14 +1,12 @@
 <h1>Modifier une musique</h1>
 
-<form #formu="ngForm" (submit)="modifier()">
-  <div class="form-group">
-    <select id="id" class="form-control" [(ngModel)]="id_musique">
-      <option  *ngFor="let musique of listeMusique; index as i;" [value]="musique.id_musique">{{musique.auteur}} - {{musique.titre}}</option>
-    </select>
-    <button type="submit" class="btn btn-primary btn-default">OK</button>
+<div ngbDropdown class="d-inline-block">
+  <button class="btn btn-primary btn-default" id="dropdownBasic1" ngbDropdownToggle>Choisir une musique...</button>
+  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+    <button class="dropdown-item" *ngFor="let musique of listeMusique; index as i;" (click)="modifier(musique)">{{musique.auteur}} - {{musique.titre}}</button>
   </div>
-</form>
-{{id_musique}}
+</div>
+
 <form #formulaire="ngForm" (submit)="modifierMusique()">
   <div class="form-group">
     <label for="titre">Titre</label>
