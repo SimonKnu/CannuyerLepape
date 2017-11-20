@@ -1,6 +1,6 @@
-<h1>Ajouter une musique</h1>
+<h1>Modifier une musique</h1>
 
-<form #formulaire="ngForm" (submit)="createMusique()">
+<form #formulaire="ngForm" (submit)="modifierMusique()">
   <div class="form-group">
     <label for="titre">Titre</label>
     <input type="text" class="form-control" id="titre" placeholder="Titre" name="titre" [(ngModel)]="titre" required>
@@ -10,7 +10,7 @@
     <input type="text" class="form-control" id="auteur" placeholder="Auteur" name="auteur" [(ngModel)]="auteur" required>
   </div>
   <div class="form-group">
-    <label for="style">Nom</label>
+    <label for="style">Style</label>
     <input type="text" class="form-control" id="style" placeholder="Style" name="style" [(ngModel)]="style" required>
   </div>
   <div class="form-group">

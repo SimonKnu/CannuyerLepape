@@ -1,4 +1,5 @@
 export class Musique {
+
   private _id_musique: number;
   private _auteur: string;
   private _titre: string;
@@ -20,9 +21,9 @@ export class Musique {
   }
 
   set id_musique(value: number) {
-    this._id_musique = value;
+    this.id_musique = value;
   }
-  
+
   get auteur(): string {
     return this._auteur;
   }

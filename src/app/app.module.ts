@@ -6,7 +6,7 @@ import { AccountComponent } from './account/account.component';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule, Routes} from '@angular/router';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { NavBarComponent } from './accueil/nav-bar/nav-bar.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ModalPasswordComponent } from './account/modal-password/modal-password.component';
 import {AccueilComponent} from './accueil/accueil.component';
@@ -15,7 +15,9 @@ import {ServiceConnexionService} from './service/service-connexion.service';
 import {MusiqueService} from './service/service-musique.service';
 import {HttpModule} from '@angular/http';
 import { UrlSafePipe } from './pipe/url-safe.pipe';
-import { AddMusiqueComponent } from './add-musique/add-musique.component';
+import { AddMusiqueComponent } from './gestion-musique/add-musique/add-musique.component';
+import { GestionMusiqueComponent } from './gestion-musique/gestion-musique.component';
+import { ModifierMusiqueComponent } from './gestion-musique/modifier-musique/modifier-musique.component';
 
 //Permets de créer notre routings pour naviguer de page en page
 const routes: Routes = [
@@ -37,7 +39,9 @@ const routes: Routes = [
     ModalPasswordComponent,
     LogInComponent,
     UrlSafePipe,
-    AddMusiqueComponent
+    AddMusiqueComponent,
+    GestionMusiqueComponent,
+    ModifierMusiqueComponent
   ],
   imports: [
     BrowserModule,

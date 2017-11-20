@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Musique} from '../models/musique';
-import {MusiqueService} from '../service/service-musique.service';
+import {Musique} from '../../models/musique';
+import {MusiqueService} from '../../service/service-musique.service';
 
 @Component({
   selector: 'app-add-musique',
