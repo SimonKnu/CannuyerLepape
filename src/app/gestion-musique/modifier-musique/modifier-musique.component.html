@@ -1,5 +1,14 @@
 <h1>Modifier une musique</h1>
 
+<form #formu="ngForm" (submit)="modifier()">
+  <div class="form-group">
+    <select id="id" class="form-control" [(ngModel)]="id_musique">
+      <option  *ngFor="let musique of listeMusique; index as i;" [value]="musique.id_musique">{{musique.auteur}} - {{musique.titre}}</option>
+    </select>
+    <button type="submit" class="btn btn-primary btn-default">OK</button>
+  </div>
+</form>
+{{id_musique}}
 <form #formulaire="ngForm" (submit)="modifierMusique()">
   <div class="form-group">
     <label for="titre">Titre</label>
@@ -22,5 +31,5 @@
     <input type="number" class="form-control" id="prix" placeholder="Prix" name="prix" [(ngModel)]="prix" required>
   </div>
 
-  <button type="submit" class="btn btn-primary btn-default" [disabled]="!formulaire.form.valid">Ajouter</button>
+  <button type="submit" class="btn btn-primary btn-default" [disabled]="!formulaire.form.valid">Modifier</button>
 </form>

@@ -13,16 +13,22 @@ export class ModifierMusiqueComponent implements OnInit {
   private titre = '';
   private style = '';
   private url = '';
-  private prix = 0;
+  private id_musique: number;
+  private prix: number;
 
   constructor(public musiqueService: MusiqueService) { }
 
   ngOnInit() {
-
+    this.musiqueService.getAllMusique().subscribe(listeMusique => {
+      this.listeMusique = Musique.fromJSONs(listeMusique);
+    });
   }
 
-  modifierMusique(){
+  modifierMusique() {}
 
+  modifier() {
+
+    this.prix = this.id_musique;
   }
 
 }

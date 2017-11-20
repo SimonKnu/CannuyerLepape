@@ -25,6 +25,7 @@ const routes: Routes = [
   {path: 'account', component: AccountComponent},
   {path: 'login', component: LogInComponent},
   {path: 'gestionMusique', component: AddMusiqueComponent},
+  {path: 'modifierMusique', component: ModifierMusiqueComponent},
   {path: '', redirectTo: 'accueil', pathMatch: 'full'},
 ];
 
