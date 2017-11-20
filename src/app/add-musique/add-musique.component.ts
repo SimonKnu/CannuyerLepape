@@ -20,7 +20,8 @@ export class AddMusiqueComponent implements OnInit {
   }
 
   public createMusique() {
-    this.musiqueService.createMusique(new Musique(0, this.auteur, this.titre,  this.style,  this.url,  this.prix));
+    const tmpMusique = new Musique(0, this.auteur, this.titre,  this.style,  this.url,  this.prix);
+    this.musiqueService.createMusique(tmpMusique).subscribe(musique=> tmpMusique.id_musique = Musique.fromJSON(musique).id_musique);
     this.auteur = '';
     this.titre = '';
     this.style = '';
