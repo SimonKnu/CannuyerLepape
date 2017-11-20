@@ -77,11 +77,11 @@ export class Musique {
 
   public getCleanDataForSending(): any {
     return {
-      "Auteur": this.auteur,
-      "Titre": this.titre,
-      "Style": this.style,
-      "Url": this.url,
-      "Pirx": this.prix
+      'Auteur': this.auteur,
+      'Titre': this.titre,
+      'Style': this.style,
+      'Url': this.url,
+      'Pirx': this.prix
     };
   }
 }
