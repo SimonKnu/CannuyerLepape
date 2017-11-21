@@ -18,15 +18,7 @@ export class MusiqueService {
     return this.http.post('http://localhost:61812/api/musique', musique.getCleanDataForSending()).map(response => response.json());
   }
 
-  public deleteMusique(id_musique: number): Observable<any> {
-    return this.http.delete('http://localhost:61812/api/musique', {
-      params: new HttpParams().set('id_musique', id_musique + '').toString()
-    });
-  }
-
   public updateMusique(musique: Musique): Observable<any> {
-    return this.http.put('http://localhost:61812/api/musique', musique.getCleanDataForSending(), {
-      params: new HttpParams().set('id_musique', musique.id_musique + '').toString()
-    });
+    return this.http.put('http://localhost:61812/api/musique', musique.getCleanDataForSendingUpdate());
   }
 }

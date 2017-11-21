@@ -1,0 +1,66 @@
+<ngb-accordion #acc="ngbAccordion">
+  <ngb-panel title="Ajouter" id="config-panel-one">
+    <ng-template ngbPanelContent>
+      <form #formulaire="ngForm" (submit)="createMusique()">
+        <div class="form-group">
+          <label for="titre">Titre</label>
+          <input type="text" class="form-control" id="titre" placeholder="Titre" name="titre" [(ngModel)]="titre" required>
+        </div>
+        <div class="form-group">
+          <label for="auteur">Auteur</label><br>
+          <input type="text" class="form-control" id="auteur" placeholder="Auteur" name="auteur" [(ngModel)]="auteur" required>
+        </div>
+        <div class="form-group">
+          <label for="style">Style</label>
+          <input type="text" class="form-control" id="style" placeholder="Style" name="style" [(ngModel)]="style" required>
+        </div>
+        <div class="form-group">
+          <label for="url">Url</label>
+          <input type="text" class="form-control" id="url" placeholder="Url" name="url" [(ngModel)]="url" required>
+        </div>
+        <div class="form-group">
+          <label for="prix">Prix</label>
+          <input type="number" class="form-control" id="prix" placeholder="Prix" name="prix" [(ngModel)]="prix" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-default" [disabled]="!formulaire.form.valid">Ajouter</button>
+      </form>
+    </ng-template>
+  </ngb-panel>
+  <ngb-panel title="Modifier">
+    <ng-template ngbPanelContent>
+
+
+      <div ngbDropdown class="d-inline-block">
+        <button class="btn btn-primary btn-default" id="dropdownBasic1" ngbDropdownToggle>Choisir une musique...</button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button class="dropdown-item" *ngFor="let musique of listeMusique; index as i;" (click)="modifier(i)">{{musique.auteur}} - {{musique.titre}}</button>
+        </div>
+      </div>
+
+      <form #formulaire="ngForm" (submit)="modifierMusique()">
+        <div class="form-group">
+          <label for="titre">Titre</label>
+          <input type="text" class="form-control" id="titre" placeholder="Titre" name="titre" [(ngModel)]="titre" required>
+        </div>
+        <div class="form-group">
+          <label for="auteur">Auteur</label><br>
+          <input type="text" class="form-control" id="auteur" placeholder="Auteur" name="auteur" [(ngModel)]="auteur" required>
+        </div>
+        <div class="form-group">
+          <label for="style">Style</label>
+          <input type="text" class="form-control" id="style" placeholder="Style" name="style" [(ngModel)]="style" required>
+        </div>
+        <div class="form-group">
+          <label for="url">Url</label>
+          <input type="text" class="form-control" id="url" placeholder="Url" name="url" [(ngModel)]="url" required>
+        </div>
+        <div class="form-group">
+          <label for="prix">Prix</label>
+          <input type="number" class="form-control" id="prix" placeholder="Prix" name="prix" [(ngModel)]="prix" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-default" [disabled]="!formulaire.form.valid">Modifier</button>
+      </form>
+    </ng-template>
+  </ngb-panel>
+</ngb-accordion>

@@ -84,4 +84,15 @@ export class Musique {
       'Pirx': this.prix
     };
   }
+
+  public getCleanDataForSendingUpdate(): any {
+    return {
+      'Id_musique': this.id_musique,
+      'Auteur': this.auteur,
+      'Titre': this.titre,
+      'Style': this.style,
+      'Url': this.url,
+      'Pirx': this.prix
+    };
+  }
 }

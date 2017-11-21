@@ -15,17 +15,15 @@ import {ServiceConnexionService} from './service/service-connexion.service';
 import {MusiqueService} from './service/service-musique.service';
 import {HttpModule} from '@angular/http';
 import { UrlSafePipe } from './pipe/url-safe.pipe';
-import { AddMusiqueComponent } from './gestion-musique/add-musique/add-musique.component';
 import { GestionMusiqueComponent } from './gestion-musique/gestion-musique.component';
-import { ModifierMusiqueComponent } from './gestion-musique/modifier-musique/modifier-musique.component';
+
 
 //Permets de créer notre routings pour naviguer de page en page
 const routes: Routes = [
   {path: 'accueil', component: AccueilComponent},
   {path: 'account', component: AccountComponent},
   {path: 'login', component: LogInComponent},
-  {path: 'gestionMusique', component: AddMusiqueComponent},
-  {path: 'modifierMusique', component: ModifierMusiqueComponent},
+  {path: 'gestionMusique', component: GestionMusiqueComponent},
   {path: '', redirectTo: 'accueil', pathMatch: 'full'},
 ];
 
@@ -40,9 +38,7 @@ const routes: Routes = [
     ModalPasswordComponent,
     LogInComponent,
     UrlSafePipe,
-    AddMusiqueComponent,
-    GestionMusiqueComponent,
-    ModifierMusiqueComponent
+    GestionMusiqueComponent
   ],
   imports: [
     BrowserModule,
