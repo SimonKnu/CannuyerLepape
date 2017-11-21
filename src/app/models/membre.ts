@@ -15,6 +15,7 @@ export class Membre {
   private _argent: number=0;
   private _date_inscription: string;
   private _administrateur: boolean=false;
+  private _token:string=null;
 
   constructor(pseudo: string="", nom: string="", prenom: string="", tel: string = "",mail:string="",naissance:string="",pays:string="",ville:string="",rue:string="",postal:number=0, argent:number=0, admin:boolean=false) {
     this._pseudo_membre = pseudo;
@@ -138,4 +139,30 @@ export class Membre {
     this._administrateur = value;
   }
 
+
+  get token(): string {
+    return this._token;
+  }
+
+  set token(value: string) {
+    this._token = value;
+  }
+
+  public static fromJSON(rawMembre : any) : Membre {
+    const tmpMembre = new Membre(rawMembre["pseudo_membre"]);
+    tmpMembre.nom= rawMembre["nom"];
+    tmpMembre.prenom= rawMembre["prenom"];
+    tmpMembre.mail= rawMembre["mail"];
+    tmpMembre.telephone= rawMembre["telephone"];
+    tmpMembre.date_naissance= rawMembre["date_naissance"];
+    tmpMembre.pays= rawMembre["pays"];
+    tmpMembre.ville= rawMembre["ville"];
+    tmpMembre.rue= rawMembre["rue"];
+    tmpMembre.code_postal= rawMembre["code_postal"];
+    tmpMembre.argent= rawMembre["argent"];
+    tmpMembre.date_inscription= rawMembre["date_inscription"];
+    tmpMembre.administrateur= rawMembre["administrateur"];
+
+    return tmpMembre;
+  }
 }

@@ -20,11 +20,11 @@ import { GestionMusiqueComponent } from './gestion-musique/gestion-musique.compo
 
 //Permets de créer notre routings pour naviguer de page en page
 const routes: Routes = [
-  {path: 'accueil', component: AccueilComponent},
+  {path: '', component: AccueilComponent},
   {path: 'account', component: AccountComponent},
   {path: 'login', component: LogInComponent},
   {path: 'gestionMusique', component: GestionMusiqueComponent},
-  {path: '', redirectTo: 'accueil', pathMatch: 'full'},
+  //{path: '', redirectTo: 'accueil', pathMatch: 'full'},
 ];
 
 
