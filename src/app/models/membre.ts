@@ -28,10 +28,9 @@ export class Membre {
     this._code_postal = postal;
     this._argent = argent;
     let temporaireDate = new Date();
-    this._date_inscription = temporaireDate.getDay()+"/"+temporaireDate.getMonth()+"/"+temporaireDate.getFullYear();
+    this._date_inscription = "00/05/1998";
     this._administrateur = admin;
   }
-
 
   get nom(): string {
     return this._nom;

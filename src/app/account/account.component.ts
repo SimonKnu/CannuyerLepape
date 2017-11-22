@@ -6,29 +6,18 @@ import {Membre} from "../models/membre";
   selector: 'app-account',
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.css'],
-  providers: [MembreConnecterService]
 })
 export class AccountComponent implements OnInit {
-  private tmpMail: string="";
-  private tmpNom: string="";
-  private tmpPrenom: string="";
-  private tmpTelephone: string="";
-  private tmpDate_naissance: string="";
-  private tmpPays: string="";
-  private tmpVille: string="";
-  private tmpRue: string="";
-  private tmpCode_postal: number=0;
-  private tmpArgent: number=0;
-  private tmpDate_inscription: string="";
-  private tmpAdministrateur: boolean=false;
-  private tmpToken:string="";
-
   constructor(private _membreConnecter:MembreConnecterService) {
-
   }
 
   ngOnInit() {
-
   }
 
+  get membreConnecter(): MembreConnecterService {
+    return this._membreConnecter;
+  }
+  set membreConnecter(value: MembreConnecterService) {
+    this._membreConnecter = value;
+  }
 }

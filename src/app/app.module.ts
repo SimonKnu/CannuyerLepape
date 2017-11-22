@@ -16,6 +16,7 @@ import {MusiqueService} from './service/service-musique.service';
 import {HttpModule} from '@angular/http';
 import { UrlSafePipe } from './pipe/url-safe.pipe';
 import { GestionMusiqueComponent } from './gestion-musique/gestion-musique.component';
+import {MembreConnecterService} from "./service/membre-connecter.service";
 
 
 //Permets de créer notre routings pour naviguer de page en page
@@ -48,7 +49,7 @@ const routes: Routes = [
     NgbModule.forRoot(),
     RouterModule.forRoot(routes)
   ],
-  providers: [ServiceConnexionService, MusiqueService],
+  providers: [ServiceConnexionService, MusiqueService,MembreConnecterService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

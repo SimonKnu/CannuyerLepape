@@ -16,6 +16,7 @@ export class MembreConnecterService {
   }
   set membre(value: Membre) {
     this._membre = value;
+    console.log(this._membre);
   }
 
 
