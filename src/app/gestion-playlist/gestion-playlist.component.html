@@ -1,7 +1,0 @@
-<form #formulaire="ngForm" (submit)="createPlaylist()">
-  <label>Ajouter une playlist  </label>
-  <input type="text" id="nom" placeholder="Nom" name="nom" [(ngModel)]="nom" required>
-  <button type="submit" class="btn btn-primary btn-default" [disabled]="!formulaire.form.valid">Créer</button>
-</form>
-
-

@@ -1,8 +1,9 @@
 <ngb-tabset justify="fill" type="pills">
-  <ngb-tab title="Ajouter">
+  <ngb-tab>
+    <ng-template ngbTabTitle><h5><b>Ajouter</b></h5></ng-template>
     <ng-template ngbTabContent>
+      <br>
       <form #formulaire="ngForm" (submit)="createMusique()">
-
         <div class="form-group">
           <label for="titre">Titre</label>
           <input type="text" class="form-control" id="titre" placeholder="Titre" name="titre" [(ngModel)]="titre" required>
@@ -29,9 +30,9 @@
     </ng-template>
   </ngb-tab>
   <ngb-tab>
-    <ng-template ngbTabTitle>Modifier</ng-template>
+    <ng-template ngbTabTitle><h5><b>Modifier</b></h5></ng-template>
     <ng-template ngbTabContent>
-
+      <br>
       <form>
         <div ngbDropdown class="d-inline-block">
           <button class="btn btn-primary btn-default" id="dropdownBasic1" ngbDropdownToggle>Choisir une musique...</button>
@@ -40,7 +41,7 @@
           </div>
         </div>
       </form>
-
+      <br>
       <form #formulaire="ngForm" (submit)="modifierMusique()">
         <div class="form-group">
           <label for="titre">Titre</label>
