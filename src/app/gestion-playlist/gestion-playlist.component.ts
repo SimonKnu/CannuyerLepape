@@ -14,6 +14,8 @@ export class GestionPlaylistComponent implements OnInit {
   private listeMusique: Musique[] = [];
   private nomPlaylist = '';
   private id_playlist = 0;
+  public isCollapsed = true;
+  public nom = '';
 
   constructor(public playlistService: PlaylistService, public musiqueService: MusiqueService) { }
 
@@ -32,6 +34,8 @@ export class GestionPlaylistComponent implements OnInit {
   }
 
   public createPlaylist() {
+    this.isCollapsed = true;
+    this.nom = '';
   }
 
   public delete(id_musique: number, index: number) {
