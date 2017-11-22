@@ -13,6 +13,7 @@ import {AccueilComponent} from './accueil/accueil.component';
 import { LogInComponent } from './log-in/log-in.component';
 import {ServiceConnexionService} from './service/service-connexion.service';
 import {MusiqueService} from './service/service-musique.service';
+import {PlaylistService} from './service/service-playlist.service';
 import {HttpModule} from '@angular/http';
 import { UrlSafePipe } from './pipe/url-safe.pipe';
 import { GestionMusiqueComponent } from './gestion-musique/gestion-musique.component';
@@ -52,7 +53,7 @@ const routes: Routes = [
     NgbModule.forRoot(),
     RouterModule.forRoot(routes)
   ],
-  providers: [ServiceConnexionService, MusiqueService],
+  providers: [ServiceConnexionService, MusiqueService, PlaylistService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
 import {Http} from '@angular/http';
-import {Playlist} from "../models/playlist";
-import {Observable} from "rxjs/Observable";
-import {HttpParams} from "@angular/common/http";
+import {Playlist} from '../models/playlist';
+import {Observable} from 'rxjs/Observable';
+import {HttpParams} from '@angular/common/http';
 
 @Injectable()
-export class ServicePlaylistService {
+export class PlaylistService {
 
   constructor(public http: Http) { }
 
   public getPlaylist(mail: string): Observable<Playlist[]> {
-    return this.http.get("http://localhost:61812/api/playlist").map(response => response.json(), {
-      params:new HttpParams().set("mail",mail+"").toString()
-    });
+    return this.http.get('http://localhost:61812/api/playlist',  {
+      params: new HttpParams().set('mail', mail + '').toString()
+    }).map(response => response.json());
   }
 
   public createPlaylist(playlist: Playlist): Observable<Playlist> {
