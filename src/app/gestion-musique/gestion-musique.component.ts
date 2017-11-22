@@ -41,8 +41,10 @@ export class GestionMusiqueComponent implements OnInit {
   }
 
   public modifierMusique() {
-    this.musiqueService.updateMusique(this.listeMusique[this.index]).subscribe();
-    this.id_musique = 0;
+    const m = new Musique(this.id_musique, this.auteur, this.titre, this.style, this.url, this.prix);
+    this.listeMusique[this.index] = m;
+    this.musiqueService.updateMusique(m).subscribe();
+    this.id_musique =0;
     this.auteur = '';
     this.titre = '';
     this.style = '';
