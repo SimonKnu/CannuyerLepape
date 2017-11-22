@@ -3,7 +3,6 @@ import {Http} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import {Musique} from '../models/musique';
 import 'rxjs/add/operator/map';
-import {HttpParams} from '@angular/common/http';
 @Injectable()
 
 export class MusiqueService {
