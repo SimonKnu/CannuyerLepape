@@ -1,0 +1,7 @@
+<form #formulaire="ngForm" (submit)="createPlaylist()">
+  <div class="form-group">
+    <label for="nom">Titre</label>
+    <input type="text" class="form-control" id="nom" placeholder="Nom" name="nom" [(ngModel)]="nom" required>
+  </div>
+  <button type="submit" class="btn btn-primary btn-default" [disabled]="!formulaire.form.valid">Ajouter</button>
+</form>
