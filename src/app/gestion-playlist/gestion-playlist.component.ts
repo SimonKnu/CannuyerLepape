@@ -21,9 +21,12 @@ export class GestionPlaylistComponent implements OnInit {
     });
   }
 
-  updateList(id_playlist: number) {
+  public updateList(id_playlist: number) {
     this.musiqueService.getMusique(id_playlist).subscribe(listeMusique => {
       this.listeMusique = Musique.fromJSONs(listeMusique);
     });
+  }
+
+  public createPlaylist() {
   }
 }

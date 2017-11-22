@@ -1,5 +1,4 @@
 <div class="col-lg-9">
-  <br>
   <span *ngIf="listeMusique.length != 0">
     <span *ngFor="let musique of listeMusique; index as i;">
       <iframe width="100%" height="166" scrolling="no" frameborder="no"  single_active="true" [src]="musique.url | urlSafe"></iframe>
@@ -13,8 +12,20 @@
   </span>
 </div>
 <div class="col-lg-3">
-  <br>
-  <p *ngFor="let playlist of listePlaylist; index as i;">
-    <button class="btn btn-primary btn-lg btn-block" (click)="updateList(playlist.id_playlist)" >{{playlist.nom}}</button>
+  <p>
+    <button class="btn btn-success btn-lg btn-block" (click)="createPlaylist()" >Nouvelle playlist</button>
+  </p>
+  <p>
+    <span *ngIf="listePlaylist.length != 0">
+      <p *ngFor="let playlist of listePlaylist; index as i;">
+        <button class="btn btn-primary btn-lg btn-block" (click)="updateList(playlist.id_playlist)" >{{playlist.nom}}</button>
+      </p>
+    </span>
+
+    <span *ngIf="listePlaylist.length == 0">
+      <ngb-alert [dismissible]="false">
+        <strong>Pas de playlist disponible...</strong>
+      </ngb-alert>
+    </span>
   </p>
 </div>
