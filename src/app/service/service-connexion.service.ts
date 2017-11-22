@@ -9,17 +9,17 @@ import {Membre} from "../models/membre";
 @Injectable()
 export class ServiceConnexionService {
 
-  constructor(public http:Http, private router:Router) { }
+  constructor(public http:Http) { }
 
-  public getConnexion(pseudo:string, mot_de_passe:string):Observable<string>{
+  public getConnexion(mail:string, mot_de_passe:string):Observable<string>{
     return this.http.get("http://localhost:61812/api/token",{
-      params:new HttpParams().set("pseudo_membre",pseudo).set("mot_de_passe",mot_de_passe).toString()
+      params:new HttpParams().set("mail",mail).set("mot_de_passe",mot_de_passe).toString()
     }).map(res=>res.json());
   }
 
-  public getMembre(pseudo:string):Observable<Membre>{
+  public getMembre(mail:string):Observable<Membre>{
     return this.http.get("http://localhost:61812/api/Membre", {
-      params:new HttpParams().set("pseudo_membre",pseudo).toString()
+      params:new HttpParams().set("mail",mail).toString()
     }).map(res=>res.json());
   }
 }

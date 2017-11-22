@@ -2,7 +2,6 @@ import {DatePipe} from "@angular/common";
 import {SystemJsNgModuleLoader} from "@angular/core";
 
 export class Membre {
-  private _pseudo_membre: string;
   private _nom: string;
   private _prenom: string;
   private _mail: string;
@@ -17,12 +16,11 @@ export class Membre {
   private _administrateur: boolean=false;
   private _token:string=null;
 
-  constructor(pseudo: string="", nom: string="", prenom: string="", tel: string = "",mail:string="",naissance:string="",pays:string="",ville:string="",rue:string="",postal:number=0, argent:number=0, admin:boolean=false) {
-    this._pseudo_membre = pseudo;
+  constructor(mail: string="", nom: string="", prenom: string="", tel: string = "",naissance:string="",pays:string="",ville:string="",rue:string="",postal:number=0, argent:number=0, admin:boolean=false) {
+    this._mail = mail;
     this._nom = nom;
     this._prenom = prenom;
     this._telephone = tel;
-    this._mail = mail;
     this._date_naissance = naissance;
     this._pays = pays;
     this._ville = ville;
@@ -34,14 +32,6 @@ export class Membre {
     this._administrateur = admin;
   }
 
-
-  get pseudo_membre(): string {
-    return this._pseudo_membre;
-  }
-
-  set pseudo_membre(value: string) {
-    this._pseudo_membre = value;
-  }
 
   get nom(): string {
     return this._nom;
@@ -150,10 +140,9 @@ export class Membre {
 
   public static fromJSON(rawMembre : any) : Membre {
     const tmpMembre = new Membre();
-    tmpMembre.pseudo_membre = rawMembre["Pseudo_membre"];
+    tmpMembre.mail= rawMembre["Mail"];
     tmpMembre.nom= rawMembre["Nom"];
     tmpMembre.prenom= rawMembre["Prenom"];
-    tmpMembre.mail= rawMembre["Mail"];
     tmpMembre.telephone= rawMembre["Telephone"];
     tmpMembre.date_naissance= rawMembre["Date_naissance"];
     tmpMembre.pays= rawMembre["Pays"];

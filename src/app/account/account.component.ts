@@ -9,10 +9,9 @@ import {Membre} from "../models/membre";
   providers: [MembreConnecterService]
 })
 export class AccountComponent implements OnInit {
-  private tmpPseudo_membre:string="";
+  private tmpMail: string="";
   private tmpNom: string="";
   private tmpPrenom: string="";
-  private tmpMail: string="";
   private tmpTelephone: string="";
   private tmpDate_naissance: string="";
   private tmpPays: string="";

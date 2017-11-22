@@ -20,14 +20,14 @@ export class MembreConnecterService {
 
 
 
-  creerConnexion(pseudo_membre:string){
-    this.connexionService.getMembre(pseudo_membre).subscribe(membre => {
+  creerConnexion(mail:string){
+    this.connexionService.getMembre(mail).subscribe(membre => {
       this.membre = Membre.fromJSON(membre);
       this.membre.token=localStorage.getItem("tokenStorage");
     });
   }
   supprimerConnexion(){
     this.membre=null;
-    this.membre.token=null;
+    localStorage.removeItem("tokenStorage")
   }
 }
