@@ -1,10 +1,10 @@
 export class Playlist {
-  private _id_playlist: string;
+  private _id_playlist: number;
   private _nom: string;
   private _date_creation: Date = new Date();
   private _mail: string;
 
-  constructor(id_playlist: string, nom: string, date_creation: Date, mail: string){
+  constructor(id_playlist: number, nom: string, date_creation: Date, mail: string){
     this._id_playlist = id_playlist;
     this._nom = nom;
     this._date_creation = date_creation;
@@ -19,11 +19,11 @@ export class Playlist {
     this._mail = value;
   }
 
-  get id_playlist(): string {
+  get id_playlist(): number {
     return this._id_playlist;
   }
 
-  set id_playlist(value: string) {
+  set id_playlist(value: number) {
     this._id_playlist = value;
   }
 
