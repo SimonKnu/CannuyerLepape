@@ -20,15 +20,19 @@ export class LogInComponent implements OnInit {
   }
 
   public connexion() {
-    this.connexionService.getConnexion(this.tmpPseudo, this.tmpMot_de_passe).subscribe(token => {
-      if(token === "error" || token === ""){
+    let pseudo:string = this.tmpPseudo;
+    let mdp:string = this.tmpMot_de_passe;
 
+    this.connexionService.getConnexion(pseudo, mdp).subscribe(token => {
+      if(token === "error" || token === ""){
       }
       else {
-        this.membreConnecter.creerConnexion(token, this.tmpPseudo);
+        localStorage.setItem("tokenStorage",token);
+        this.membreConnecter.creerConnexion(pseudo)
         this.router.navigate(["account"]);
       }
     });
+
     this.tmpPseudo="";
     this.tmpMot_de_passe="";
   }

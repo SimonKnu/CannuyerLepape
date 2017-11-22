@@ -13,12 +13,12 @@ export class ServiceConnexionService {
 
   public getConnexion(pseudo:string, mot_de_passe:string):Observable<string>{
     return this.http.get("http://localhost:61812/api/token",{
-      params:new HttpParams().set("pseudo",pseudo).set("password",mot_de_passe).toString()
+      params:new HttpParams().set("pseudo_membre",pseudo).set("mot_de_passe",mot_de_passe).toString()
     }).map(res=>res.json());
   }
 
   public getMembre(pseudo:string):Observable<Membre>{
-    return this.http.get("http://localhost:61812/api/Membre",{
+    return this.http.get("http://localhost:61812/api/Membre", {
       params:new HttpParams().set("pseudo_membre",pseudo).toString()
     }).map(res=>res.json());
   }

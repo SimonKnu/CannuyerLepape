@@ -145,23 +145,24 @@ export class Membre {
   }
 
   set token(value: string) {
-    this._token = value;
+    this._token = localStorage.getItem("tokenStorage");
   }
 
   public static fromJSON(rawMembre : any) : Membre {
-    const tmpMembre = new Membre(rawMembre["pseudo_membre"]);
-    tmpMembre.nom= rawMembre["nom"];
-    tmpMembre.prenom= rawMembre["prenom"];
-    tmpMembre.mail= rawMembre["mail"];
-    tmpMembre.telephone= rawMembre["telephone"];
-    tmpMembre.date_naissance= rawMembre["date_naissance"];
-    tmpMembre.pays= rawMembre["pays"];
-    tmpMembre.ville= rawMembre["ville"];
-    tmpMembre.rue= rawMembre["rue"];
-    tmpMembre.code_postal= rawMembre["code_postal"];
-    tmpMembre.argent= rawMembre["argent"];
-    tmpMembre.date_inscription= rawMembre["date_inscription"];
-    tmpMembre.administrateur= rawMembre["administrateur"];
+    const tmpMembre = new Membre();
+    tmpMembre.pseudo_membre = rawMembre["Pseudo_membre"];
+    tmpMembre.nom= rawMembre["Nom"];
+    tmpMembre.prenom= rawMembre["Prenom"];
+    tmpMembre.mail= rawMembre["Mail"];
+    tmpMembre.telephone= rawMembre["Telephone"];
+    tmpMembre.date_naissance= rawMembre["Date_naissance"];
+    tmpMembre.pays= rawMembre["Pays"];
+    tmpMembre.ville= rawMembre["Ville"];
+    tmpMembre.rue= rawMembre["Rue"];
+    tmpMembre.code_postal= rawMembre["Code_postal"];
+    tmpMembre.argent= rawMembre["Argent"];
+    tmpMembre.date_inscription= rawMembre["Date_inscription"];
+    tmpMembre.administrateur= rawMembre["Administrateur"];
 
     return tmpMembre;
   }

@@ -4,10 +4,9 @@ import {ServiceConnexionService} from "./service-connexion.service";
 
 @Injectable()
 export class MembreConnecterService {
-  private _membre:Membre=null;
+  private _membre:Membre=new Membre();
 
   constructor(private connexionService:ServiceConnexionService) {
-
   }
 
 
@@ -21,11 +20,11 @@ export class MembreConnecterService {
 
 
 
-  creerConnexion(token:string,pseudo:string){
-    this.connexionService.getMembre(pseudo).subscribe(membre => {
+  creerConnexion(pseudo_membre:string){
+    this.connexionService.getMembre(pseudo_membre).subscribe(membre => {
       this.membre = Membre.fromJSON(membre);
+      this.membre.token=localStorage.getItem("tokenStorage");
     });
-    this.membre.token = token;
   }
   supprimerConnexion(){
     this.membre=null;

@@ -1,9 +1,9 @@
 <h1>Mon compte</h1>
 
-<form>
+<form #formulaire="ngForm" >
     <div class="form-group">
       <label for="pseudo_membre">Pseudo</label>
-      <input type="text" class="form-control" id="pseudo_membre" placeholder="Pseudo" disabled>
+      <input type="text" class="form-control" id="pseudo_membre" placeholder="Pseudo" name="pseudo" disabled [(ngModel)]="tmpPseudo_membre">
     </div>
     <div class="form-group">
       <label for="mot_de_passe">Mot de passe</label><br>
@@ -11,49 +11,48 @@
     </div>
     <div class="form-group">
       <label for="nom">Nom</label>
-      <input type="text" class="form-control" id="nom" placeholder="Nom">
+      <input type="text" class="form-control" id="nom" placeholder="Nom" name="nom" [(ngModel)]="tmpNom">
     </div>
     <div class="form-group">
       <label for="prenom">Prénom</label>
-      <input type="text" class="form-control" id="prenom" placeholder="Prénom">
+      <input type="text" class="form-control" id="prenom" placeholder="Prénom" name="prenom" [(ngModel)]="tmpPrenom">
     </div>
     <div class="form-group">
       <label for="telephone">Téléphone</label>
-      <input type="text" class="form-control" id="telephone" placeholder="0000/00.00.00">
+      <input type="text" class="form-control" id="telephone" placeholder="0000/00.00.00" name="telephone" [(ngModel)]="tmpTelephone">
     </div>
     <div class="form-group">
       <label for="date_naissance">Date de naissance</label>
-      <input type="date" class="form-control" id="date_naissance" placeholder="00/00/0000">
+      <input type="date" class="form-control" id="date_naissance" placeholder="00/00/0000" name="date_naissance" [(ngModel)]="tmpDate_naissance">
     </div>
     <div class="form-group">
       <label for="pays">Pays</label>
-      <input type="text" class="form-control" id="pays" placeholder="Pays">
+      <input type="text" class="form-control" id="pays" placeholder="Pays" name="pays" [(ngModel)]="tmpPays">
     </div>
     <div class="form-group">
       <label for="ville">Ville</label>
-      <input type="text" class="form-control" id="ville" placeholder="Ville">
+      <input type="text" class="form-control" id="ville" placeholder="Ville" name="ville" [(ngModel)]="tmpVille">
     </div>
     <div class="form-group">
       <label for="rue">Rue</label>
-      <input type="text" class="form-control" id="rue" placeholder="Rue">
+      <input type="text" class="form-control" id="rue" placeholder="Rue" name="rue" [(ngModel)]="tmpRue">
     </div>
     <div class="form-group">
       <label for="code_postal">Code postal</label>
-      <input type="text" class="form-control" id="code_postal" placeholder="Code postal">
+      <input type="text" class="form-control" id="code_postal" placeholder="Code postal" name="code_postal" [(ngModel)]="tmpCode_postal">
     </div>
     <div class="form-group">
       <label for="argent">Argent</label>
-      <input type="number" class="form-control" id="argent" placeholder="0 €" disabled>
+      <input type="number" class="form-control" id="argent" placeholder="0 €" name="argent" disabled [(ngModel)]="tmpArgent">
     </div>
     <div class="form-group">
       <label for="date_inscription">Date d'inscription</label>
-      <input type="date" class="form-control" id="date_inscription" placeholder="01/01/2001" disabled>
+      <input type="date" class="form-control" id="date_inscription" placeholder="01/01/2001" name="date_inscription" disabled [(ngModel)]="tmpDate_inscription">
     </div>
     <div class="form-group">
       <label for="administrateur">Administrateur</label>
-      <input type="text" class="form-control" id="administrateur" placeholder="Administrateur" disabled>
+      <input type="text" class="form-control" id="administrateur" placeholder="Administrateur" name="admin"  disabled [(ngModel)]="tmpAdministrateur">
     </div>
-
 
     <button type="submit" class="btn btn-primary btn-lg btn-block" >Mettre à jour</button>
 </form>
