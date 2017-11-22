@@ -7,7 +7,6 @@ import {MembreConnecterService} from "../service/membre-connecter.service";
   selector: 'app-log-in',
   templateUrl: './log-in.component.html',
   styleUrls: ['./log-in.component.css'],
-  providers: [MembreConnecterService],
 })
 export class LogInComponent implements OnInit {
 
@@ -29,7 +28,7 @@ export class LogInComponent implements OnInit {
       else {
         localStorage.setItem("tokenStorage",token);
         this.membreConnecter.creerConnexion(mail);
-        this.router.navigate([""]);
+        this.router.navigate(["account"]);
       }
     });
 
