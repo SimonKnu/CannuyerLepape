@@ -1,7 +1,8 @@
-<ngb-accordion #acc="ngbAccordion">
-  <ngb-panel title="Ajouter" id="config-panel-one">
-    <ng-template ngbPanelContent>
+<ngb-tabset justify="fill" type="pills">
+  <ngb-tab title="Ajouter">
+    <ng-template ngbTabContent>
       <form #formulaire="ngForm" (submit)="createMusique()">
+
         <div class="form-group">
           <label for="titre">Titre</label>
           <input type="text" class="form-control" id="titre" placeholder="Titre" name="titre" [(ngModel)]="titre" required>
@@ -26,15 +27,20 @@
         <button type="submit" class="btn btn-primary btn-default" [disabled]="!formulaire.form.valid">Ajouter</button>
       </form>
     </ng-template>
-  </ngb-panel>
-  <ngb-panel title="Modifier">
-    <ng-template ngbPanelContent>
-      <div ngbDropdown class="d-inline-block">
-        <button class="btn btn-primary btn-default" id="dropdownBasic1" ngbDropdownToggle>Choisir une musique...</button>
-        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-          <button class="dropdown-item" *ngFor="let musique of listeMusique; index as i;" (click)="modifier(i)">{{musique.auteur}} - {{musique.titre}}</button>
+  </ngb-tab>
+  <ngb-tab>
+    <ng-template ngbTabTitle>Modifier</ng-template>
+    <ng-template ngbTabContent>
+
+      <form>
+        <div ngbDropdown class="d-inline-block">
+          <button class="btn btn-primary btn-default" id="dropdownBasic1" ngbDropdownToggle>Choisir une musique...</button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button class="dropdown-item" *ngFor="let musique of listeMusique; index as i;" (click)="modifier(i)">{{musique.auteur}} - {{musique.titre}}</button>
+          </div>
         </div>
-      </div>
+      </form>
+
       <form #formulaire="ngForm" (submit)="modifierMusique()">
         <div class="form-group">
           <label for="titre">Titre</label>
@@ -58,6 +64,7 @@
         </div>
         <button type="submit" class="btn btn-primary btn-default" [disabled]="!formulaire.form.valid">Modifier</button>
       </form>
+
     </ng-template>
-  </ngb-panel>
-</ngb-accordion>
+  </ngb-tab>
+</ngb-tabset>

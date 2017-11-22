@@ -26,6 +26,7 @@ const routes: Routes = [
   {path: 'account', component: AccountComponent},
   {path: 'login', component: LogInComponent},
   {path: 'gestionMusique', component: GestionMusiqueComponent},
+  {path: 'gestionPlaylist', component: GestionPlaylistComponent},
   //{path: '', redirectTo: 'accueil', pathMatch: 'full'},
 ];
 
@@ -40,7 +41,8 @@ const routes: Routes = [
     ModalPasswordComponent,
     LogInComponent,
     UrlSafePipe,
-    GestionMusiqueComponent
+    GestionMusiqueComponent,
+    GestionPlaylistComponent
   ],
   imports: [
     BrowserModule,
