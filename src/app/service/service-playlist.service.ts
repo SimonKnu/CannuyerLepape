@@ -22,4 +22,8 @@ export class PlaylistService {
   public updatePlaylist(playlist: Playlist): Observable<any> {
     return this.http.put('http://localhost:61812/api/playlist', playlist.getCleanDataForSendingUpdate());
   }
+
+  public deleteMusique(id_musqiue: number, id_playlist: number): Observable<any> {
+    return this.http.delete('http://localhost:60950/api/playlistMusique',  );
+  }
 }

@@ -13,6 +13,7 @@ export class GestionPlaylistComponent implements OnInit {
   private listePlaylist: Playlist[] = [];
   private listeMusique: Musique[] = [];
   private nomPlaylist = '';
+  private id_playlist = 0;
 
   constructor(public playlistService: PlaylistService, public musiqueService: MusiqueService) { }
 
@@ -24,6 +25,7 @@ export class GestionPlaylistComponent implements OnInit {
 
   public updateList(playlist: Playlist) {
     this.nomPlaylist = playlist.nom;
+    this.id_playlist = playlist.id_playlist;
     this.musiqueService.getMusique(playlist.id_playlist).subscribe(listeMusique => {
       this.listeMusique = Musique.fromJSONs(listeMusique);
     });
@@ -32,7 +34,10 @@ export class GestionPlaylistComponent implements OnInit {
   public createPlaylist() {
   }
 
-  public delete(i: number) {
+  public delete(id_musique: number, index: number) {
+    const DELETE_TODO = () => this.listeMusique.splice(index, 1);
+    const DISPLAY_ERROR = (error) => console.error(error);
 
+    this.playlistService.deleteMusique(id_musique, this.id_playlist).subscribe(DELETE_TODO, DISPLAY_ERROR);
   }
 }

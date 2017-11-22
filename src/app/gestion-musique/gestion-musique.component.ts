@@ -62,5 +62,4 @@ export class GestionMusiqueComponent implements OnInit {
     this.url = '';
     this.prix = 0;
   }
-
 }

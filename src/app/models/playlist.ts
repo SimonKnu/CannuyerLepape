@@ -68,4 +68,11 @@ export class Playlist {
       'Mail': this.mail
     };
   }
+
+  public getCleanDataForSendingDelete(id_musqiue: number, id_playlist: number): any {
+    return {
+      'id_musqiue': id_musqiue,
+      'id_playlist': id_playlist
+    };
+  }
 }
