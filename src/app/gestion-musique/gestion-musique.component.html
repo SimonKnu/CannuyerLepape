@@ -29,15 +29,12 @@
   </ngb-panel>
   <ngb-panel title="Modifier">
     <ng-template ngbPanelContent>
-
-
       <div ngbDropdown class="d-inline-block">
         <button class="btn btn-primary btn-default" id="dropdownBasic1" ngbDropdownToggle>Choisir une musique...</button>
         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
           <button class="dropdown-item" *ngFor="let musique of listeMusique; index as i;" (click)="modifier(i)">{{musique.auteur}} - {{musique.titre}}</button>
         </div>
       </div>
-
       <form #formulaire="ngForm" (submit)="modifierMusique()">
         <div class="form-group">
           <label for="titre">Titre</label>
