@@ -32,7 +32,6 @@ export class SingletonMembreService {
     this.connexionService.getMembre(mail).subscribe(membre => {
       this.membre = Membre.fromJSON(membre);
     });
-    this.initialiser();
   }
   supprimerConnexion(){
     this.membre=null;

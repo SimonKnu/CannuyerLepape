@@ -37,6 +37,7 @@ export class ModalLogInComponent {
         localStorage.setItem("tokenStorage",token);
         this.singletonMembre.creerConnexion(mail);
         this.modalRef.close();
+        this.singletonMembre.isConnected=true;
       }
     });
 
