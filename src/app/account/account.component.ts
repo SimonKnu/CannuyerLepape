@@ -1,5 +1,5 @@
 import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {MembreConnecterService} from "../service/membre-connecter.service";
+import {SingletonMembreService} from "../service/singleton-membre.service";
 import {Membre} from "../models/membre";
 
 @Component({
@@ -8,16 +8,16 @@ import {Membre} from "../models/membre";
   styleUrls: ['./account.component.css'],
 })
 export class AccountComponent implements OnInit {
-  constructor(private _membreConnecter:MembreConnecterService) {
+  constructor(private _membreConnecter:SingletonMembreService) {
   }
 
   ngOnInit() {
   }
 
-  get membreConnecter(): MembreConnecterService {
+  get membreConnecter(): SingletonMembreService {
     return this._membreConnecter;
   }
-  set membreConnecter(value: MembreConnecterService) {
+  set membreConnecter(value: SingletonMembreService) {
     this._membreConnecter = value;
   }
 }

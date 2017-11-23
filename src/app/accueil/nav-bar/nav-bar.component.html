@@ -12,17 +12,26 @@
     </form>
   </div>
 
-  <div ngbDropdown placement="bottom-right" class="d-inline-block">
-    <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Simon</button>
-    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-      <button class="dropdown-item" routerLink="login">Se connecter</button>
-      <button class="dropdown-item" routerLink="account">Mon compte</button>
-      <button class="dropdown-item" routerLink="gestionMusique">Gestion musique</button>
-      <button class="dropdown-item" routerLink="gestionPlaylist">Playlist</button>
-      <button class="dropdown-item">Mes musiques</button>
-      <button class="dropdown-item">--------------</button>
-      <button class="dropdown-item">Se déconnecter</button>
+
+    <!--Pas connecté-->
+    <div *ngIf="singletonMembre.isConnected; else elseBlock">
+      <div ngbDropdown placement="bottom-right" class="d-inline-block">
+        <app-modal-log-in></app-modal-log-in>
+      </div>
     </div>
-  </div>
+
+    <!--Connecté-->
+    <ng-template #elseBlock>
+      <div ngbDropdown placement="bottom-right" class="d-inline-block">
+        <button class="btn btn-outline-primary" id="dropdownBasicConnected" ngbDropdownToggle>Simon</button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasicConnected">
+          <button class="dropdown-item" routerLink="gestionAccount">Mon compte</button>
+          <button class="dropdown-item" routerLink="gestionMusique">Mes musiques</button>
+          <button class="dropdown-item" routerLink="gestionPlaylist">Mes playlists</button>
+          <button class="dropdown-item">--------------</button>
+          <button class="dropdown-item">Se déconnecter</button>
+        </div>
+      </div>
+    </ng-template>
 
 </nav>

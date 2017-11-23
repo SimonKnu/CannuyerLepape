@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {SingletonMembreService} from "../../service/singleton-membre.service";
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,11 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _singletonMembre:SingletonMembreService) { }
 
 
   ngOnInit() {
   }
 
 
+  get singletonMembre(): SingletonMembreService {
+    return this._singletonMembre;
+  }
 }

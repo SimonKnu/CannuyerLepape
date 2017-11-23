@@ -14,7 +14,6 @@ export class Membre {
   private _argent: number=0;
   private _date_inscription: string;
   private _administrateur: boolean=false;
-  private _token:string=null;
 
   constructor(mail: string="", nom: string="", prenom: string="", tel: string = "",naissance:string="",pays:string="",ville:string="",rue:string="",postal:number=0, argent:number=0, admin:boolean=false) {
     this._mail = mail;
@@ -28,7 +27,7 @@ export class Membre {
     this._code_postal = postal;
     this._argent = argent;
     let temporaireDate = new Date();
-    this._date_inscription = "00/05/1998";
+    this._date_inscription = temporaireDate.getDay()+"/"+temporaireDate.getMonth()+"/"+temporaireDate.getFullYear();
     this._administrateur = admin;
   }
 
@@ -126,15 +125,6 @@ export class Membre {
 
   set administrateur(value: boolean) {
     this._administrateur = value;
-  }
-
-
-  get token(): string {
-    return this._token;
-  }
-
-  set token(value: string) {
-    this._token = localStorage.getItem("tokenStorage");
   }
 
   public static fromJSON(rawMembre : any) : Membre {

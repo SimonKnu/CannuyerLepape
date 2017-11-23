@@ -1,0 +1,30 @@
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Connectez-vous pour accéder à plus de fonctionnalités</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <form #formProduct="ngForm">
+      <div class="form-group">
+        <label for="mail">Email : </label>
+        <input name="mail" type="email" class="form-control" id="mail" placeholder="Mail" [(ngModel)]="tmpMail" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Mot de passe : </label>
+        <input name="password" type="password" class="form-control" id="password" placeholder="Mot de passe" [(ngModel)]="tmpMot_de_passe" required>
+      </div>
+    </form>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Annuler</button>
+    <button type="button" class="btn btn-success" [disabled]="!formProduct.form.valid" (click)="connexion()">Connexion</button>
+  </div>
+</ng-template>
+
+
+
+<button class="btn btn-primary" (click)="open(content)">Se connecter</button>

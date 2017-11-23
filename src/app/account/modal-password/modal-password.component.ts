@@ -5,7 +5,6 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-modal-password',
   templateUrl: './modal-password.component.html',
-  styleUrls: ['./modal-password.component.css']
 })
 export class ModalPasswordComponent {
   closeResult: string;
