@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbAccordionConfig} from '@ng-bootstrap/ng-bootstrap';
-import {Musique} from "../models/musique";
-import {MusiqueService} from "../service/service-musique.service";
+import {Musique} from '../models/musique';
+import {MusiqueService} from '../service/service-musique.service';
 
 @Component({
   selector: 'app-gestion-musique',
@@ -44,7 +44,7 @@ export class GestionMusiqueComponent implements OnInit {
     const m = new Musique(this.id_musique, this.auteur, this.titre, this.style, this.url, this.prix);
     this.listeMusique[this.index] = m;
     this.musiqueService.updateMusique(m).subscribe();
-    this.id_musique =0;
+    this.id_musique = 0;
     this.auteur = '';
     this.titre = '';
     this.style = '';
@@ -55,7 +55,7 @@ export class GestionMusiqueComponent implements OnInit {
   public createMusique() {
     const tmpMusique = new Musique(0, this.auteur, this.titre,  this.style,  this.url,  this.prix);
     this.listeMusique.push(tmpMusique);
-    this.musiqueService.createMusique(tmpMusique).subscribe(musique=> tmpMusique.id_musique = Musique.fromJSON(musique).id_musique);
+    this.musiqueService.createMusique(tmpMusique).subscribe(musique => tmpMusique.id_musique = Musique.fromJSON(musique).id_musique);
     this.auteur = '';
     this.titre = '';
     this.style = '';

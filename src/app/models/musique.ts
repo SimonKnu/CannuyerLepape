@@ -61,7 +61,7 @@ export class Musique {
   }
 
   set prix(value: number) {
-    if (value > 0) {
+    if (value >= 0) {
       this._prix = value;
     }
   }
