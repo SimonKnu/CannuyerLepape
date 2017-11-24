@@ -21,6 +21,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {HttpModule} from '@angular/http';
 import {UrlSafePipe } from './pipe/url-safe.pipe';
 import { ModalLogInComponent } from './accueil/nav-bar/modal-log-in/modal-log-in.component';
+import { ModalSignUpComponent } from './accueil/nav-bar/modal-sign-up/modal-sign-up.component';
 
 
 //Permets de créer notre routings pour naviguer de page en page
@@ -37,16 +38,17 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    AccountComponent,
     AccueilComponent,
     NavBarComponent,
-    ModalPasswordComponent,
+    AccountComponent,
     GestionMusiqueComponent,
     GestionPlaylistComponent,
 
     UrlSafePipe,
 
-    ModalLogInComponent
+    ModalLogInComponent,
+    ModalSignUpComponent,
+    ModalPasswordComponent,
   ],
   imports: [
     BrowserModule,

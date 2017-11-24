@@ -8,7 +8,7 @@ export class SingletonMembreService {
   private _membre:Membre=new Membre();
   private _isConnected:boolean=false;
 
-  constructor(private connexionService:ConnexionService) {
+  constructor(private connexionService:ConnexionService, private router:Router) {
   }
 
   get membre(): Membre {
@@ -16,14 +16,12 @@ export class SingletonMembreService {
   }
   set membre(value: Membre) {
     this._membre = value;
-    console.log(this._membre);
   }
-
   set isConnected(value: boolean) {
     this._isConnected = value;
   }
   get isConnected(): boolean {
-    return this.isConnected;
+    return this._isConnected;
   }
 
 
@@ -32,18 +30,12 @@ export class SingletonMembreService {
     this.connexionService.getMembre(mail).subscribe(membre => {
       this.membre = Membre.fromJSON(membre);
     });
+    this.isConnected=true;
   }
   supprimerConnexion(){
     this.membre=null;
+    this.isConnected=false;
     localStorage.removeItem("tokenStorage");
-  }
-
-
-
-  private initialiser(){
-    if(localStorage.getItem("tokenStorage")===null){
-      this.isConnected = false;
-    }
-    this.isConnected = false;
+    this.router.navigate([""]);
   }
 }

@@ -1,12 +1,11 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ModalDismissReasons, NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
-
 import {ConnexionService} from "../../../service/service-connexion.service";
 import {SingletonMembreService} from "../../../service/singleton-membre.service";
 
 @Component({
-  selector: 'app-modal-log-in',
-  templateUrl: './modal-log-in.component.html',
+  selector: 'app-modal-sign-up',
+  templateUrl: './modal-sign-up.component.html',
   encapsulation:ViewEncapsulation.None,
   styles:[`
     .milieu-ecran .modal-dialog{
@@ -20,32 +19,15 @@ import {SingletonMembreService} from "../../../service/singleton-membre.service"
   `]
 })
 
-export class ModalLogInComponent {
+export class ModalSignUpComponent {
   closeResult: string;
-  private tmpMail:string="";
-  private tmpMot_de_passe:string="";
   private modalRef:NgbModalRef;
 
-  constructor(private modalService: NgbModal, private connexionService:ConnexionService, private singletonMembre:SingletonMembreService) {}
+  constructor(private modalService: NgbModal, private connexionService:ConnexionService) {}
 
-  public connexion() {
-    let mail:string = this.tmpMail;
-    let mdp:string = this.tmpMot_de_passe;
-
-    this.connexionService.getConnexion(mail, mdp).subscribe(token => {
-      if(token === "error" || token === ""){
-      }
-      else {
-        localStorage.setItem("tokenStorage",token);
-        this.singletonMembre.creerConnexion(mail);
-        this.modalRef.close();
-      }
-    });
-
-    this.tmpMail="";
-    this.tmpMot_de_passe="";
+  public inscription() {
+    this.modalRef.close();
   }
-
 
 
   open(content) {
@@ -68,3 +50,4 @@ export class ModalLogInComponent {
     }
   }
 }
+

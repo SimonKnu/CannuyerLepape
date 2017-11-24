@@ -11,26 +11,25 @@
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
-
-    <!--Pas connecté-->
-    <div *ngIf="singletonMembre.isConnected; else elseBlock">
-      <div ngbDropdown placement="bottom-right" class="d-inline-block">
-        <app-modal-log-in></app-modal-log-in>
+  <div *ngIf="singletonMembre.isConnected; then connected else notconnected"></div>
+  <!--Connecté-->
+  <ng-template #connected>
+    <div ngbDropdown placement="bottom-right" class="d-inline-block">
+      <button class="btn btn-outline-primary" id="dropdownBasicConnected" ngbDropdownToggle>{{singletonMembre.membre.prenom}}</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasicConnected">
+        <button class="dropdown-item" routerLink="gestionAccount">Mon compte</button>
+        <button class="dropdown-item" routerLink="gestionMusique">Mes musiques</button>
+        <button class="dropdown-item" routerLink="gestionPlaylist">Mes playlists</button>
+        <button class="dropdown-item">--------------</button>
+        <button class="dropdown-item" (click)="singletonMembre.supprimerConnexion();">Se déconnecter</button>
       </div>
     </div>
+  </ng-template>
 
-    <!--Connecté-->
-    <ng-template #elseBlock>
-      <div ngbDropdown placement="bottom-right" class="d-inline-block">
-        <button class="btn btn-outline-primary" id="dropdownBasicConnected" ngbDropdownToggle>Simon</button>
-        <div ngbDropdownMenu aria-labelledby="dropdownBasicConnected">
-          <button class="dropdown-item" routerLink="gestionAccount">Mon compte</button>
-          <button class="dropdown-item" routerLink="gestionMusique">Mes musiques</button>
-          <button class="dropdown-item" routerLink="gestionPlaylist">Mes playlists</button>
-          <button class="dropdown-item">--------------</button>
-          <button class="dropdown-item">Se déconnecter</button>
-        </div>
-      </div>
-    </ng-template>
-
+  <!--Pas connecté-->
+  <ng-template #notconnected>
+    <app-modal-sign-up></app-modal-sign-up>
+    <span>&nbsp;&nbsp;&nbsp;</span>
+    <app-modal-log-in></app-modal-log-in>
+  </ng-template>
 </nav>
