@@ -3,6 +3,7 @@ import {PlaylistService} from '../service/service-playlist.service';
 import {Playlist} from '../models/playlist';
 import {Musique} from '../models/musique';
 import {MusiqueService} from '../service/service-musique.service';
+import {SingletonMembreService} from "../service/singleton-membre.service";
 
 @Component({
   selector: 'app-gestion-playlist',
@@ -17,7 +18,7 @@ export class GestionPlaylistComponent implements OnInit {
   public isCollapsed = true;
   public nom = '';
 
-  constructor(public playlistService: PlaylistService, public musiqueService: MusiqueService) { }
+  constructor(public playlistService: PlaylistService, public musiqueService: MusiqueService, private _membreConnecter: SingletonMembreService) { }
 
   ngOnInit() {
     this.playlistService.getPlaylist('yo').subscribe(listePlaylist => {
@@ -34,6 +35,9 @@ export class GestionPlaylistComponent implements OnInit {
   }
 
   public createPlaylist() {
+    const tmpPlaylist = new Playlist(0, this.nom, this._membreConnecter.membre.mail);
+    this.listePlaylist.push(tmpPlaylist);
+    this.playlistService.createPlaylist(tmpPlaylist).subscribe(playlist=> tmpPlaylist.id_playlist = Playlist.fromJSON(playlist).id_playlist);
     this.isCollapsed = true;
     this.nom = '';
   }

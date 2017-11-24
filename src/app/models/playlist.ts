@@ -1,13 +1,13 @@
 export class Playlist {
   private _id_playlist: number;
   private _nom: string;
-  private _date_creation: Date = new Date();
+  private _date_creation: Date;
   private _mail: string;
 
-  constructor(id_playlist: number, nom: string, date_creation: Date, mail: string){
+  constructor(id_playlist: number, nom: string, mail: string){
     this._id_playlist = id_playlist;
+    this._date_creation = new Date();
     this._nom = nom;
-    this._date_creation = date_creation;
     this._mail = mail;
   }
 
@@ -44,8 +44,9 @@ export class Playlist {
   }
 
   public static fromJSON(rawMusique: any): Playlist {
-    return new Playlist(rawMusique['Id_playlist'], rawMusique['Nom'],
-      rawMusique['Date_creation'], rawMusique['Mail']);
+    const tmp =  new Playlist(rawMusique['Id_playlist'], rawMusique['Nom'], rawMusique['Mail']);
+    tmp.date_creation = rawMusique['Date_creation'];
+    return tmp;
   }
 
   public static fromJSONs(rawMusique: any[]): Playlist[] {
