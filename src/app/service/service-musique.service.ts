@@ -11,15 +11,15 @@ export class MusiqueService {
   constructor(public http: HttpClient) { }
 
   public getAllMusique(): Observable<Musique[]> {
-    return this.http.get<Musique[]>('http://localhost:61812/api/musique');
+    return this.http.get('http://localhost:61812/api/musique');
   }
 
   public getMusique(id_playlist: number): Observable<Musique[]> {
-    return this.http.get<Musique[]>('http://localhost:61812/api/musique?id_playlist' + id_playlist);
+    return this.http.get('http://localhost:61812/api/musique?id_playlist=' + id_playlist);
   }
 
   public createMusique(musique: Musique): Observable<Musique> {
-    return this.http.post<Musique>('http://localhost:61812/api/musique', musique.getCleanDataForSending());
+    return this.http.post('http://localhost:61812/api/musique', musique.getCleanDataForSending());
   }
 
   public updateMusique(musique: Musique): Observable<any> {

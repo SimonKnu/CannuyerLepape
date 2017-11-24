@@ -29,7 +29,7 @@ export class GestionPlaylistComponent implements OnInit {
   public updateList(playlist: Playlist) {
     this.nomPlaylist = playlist.nom;
     this.id_playlist = playlist.id_playlist;
-    this.musiqueService.getMusique(playlist.id_playlist).subscribe(listeMusique => {
+    this.musiqueService.getMusique(this.id_playlist).subscribe(listeMusique => {
       this.listeMusique = Musique.fromJSONs(listeMusique);
     });
   }

@@ -9,11 +9,11 @@ export class PlaylistService {
   constructor(public http: HttpClient) { }
 
   public getPlaylist(mail: string): Observable<Playlist[]> {
-    return this.http.get<Playlist[]>('http://localhost:61812/api/playlist?mail=' + mail);
+    return this.http.get('http://localhost:61812/api/playlist?mail=' + mail);
   }
 
   public createPlaylist(playlist: Playlist): Observable<Playlist> {
-    return this.http.post<Playlist>('http://localhost:61812/api/playlist', playlist.getCleanDataForSending());
+    return this.http.post('http://localhost:61812/api/playlist', playlist.getCleanDataForSending());
   }
 
   public updatePlaylist(playlist: Playlist): Observable<any> {
