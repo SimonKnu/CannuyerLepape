@@ -1,3 +1,5 @@
+
+
 <div class="col-lg-9">
   <span *ngIf="nomPlaylist.length>0">
     <ngb-alert [dismissible]="false" type="primary">
@@ -5,9 +7,36 @@
     </ngb-alert>
   </span>
   <span *ngIf="listeMusique.length != 0">
+    <div>
+      <p>
+        <button class="btn btn-success btn-lg btn-default" (click)="estCache = !estCache" [attr.aria-expanded]="!estCache" aria-controls="collapse"><span class="glyphicon glyphicon-plus"></span> Ajouter une musique</button>
+      </p>
+      <div id="collapse" [ngbCollapse]="estCache">
+        <span *ngIf="listAdd.length==0">
+          <ngb-alert [dismissible]="false">
+            <strong>Pas de musique disponible</strong>
+          </ngb-alert>
+        </span>
+        <span *ngIf="listAdd.length>0">
+          <form>
+            <div ngbDropdown class="d-inline-block">
+              <button class="btn btn-success  btn-lg btn-default" id="dropdown" ngbDropdownToggle>Choisir une musique...</button>
+              <div ngbDropdownMenu aria-labelledby="dropdown">
+                <button class="dropdown-item" *ngFor="let musique of listAdd; index as i;">{{musique.auteur}} - {{musique.titre}}</button>
+              </div>
+            </div>
+          </form>
+          <br>
+        </span>
+      </div>
+    </div>
     <span *ngFor="let musique of listeMusique; index as i;">
-      <iframe width="100%" height="166" scrolling="no" frameborder="no"  single_active="true" [src]="musique.url | urlSafe"></iframe>
-      <button class="btn btn-block btn-sm btn-default" (click)="delete(musique.id_musique, i)" ><span class="glyphicon glyphicon-trash"></span> Supprimer de la playlist</button>
+      <div class="col-lg-11">
+        <iframe width="100%" height="166" scrolling="no" frameborder="no"  single_active="true" [src]="musique.url | urlSafe"></iframe>
+      </div>
+      <div class="col-lg-1">
+        <button class="btn btn-lg btn-danger" (click)="delete(musique.id_musique, i)" ><span class="glyphicon glyphicon-trash"></span></button>
+      </div>
     </span>
   </span>
 

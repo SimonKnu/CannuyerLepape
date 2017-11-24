@@ -4,6 +4,7 @@ import {Playlist} from '../models/playlist';
 import {Musique} from '../models/musique';
 import {MusiqueService} from '../service/service-musique.service';
 import {SingletonMembreService} from "../service/singleton-membre.service";
+import {PlaylistmusiqueService} from "../service/playlistmusique.service";
 
 @Component({
   selector: 'app-gestion-playlist',
@@ -13,12 +14,15 @@ import {SingletonMembreService} from "../service/singleton-membre.service";
 export class GestionPlaylistComponent implements OnInit {
   private listePlaylist: Playlist[] = [];
   private listeMusique: Musique[] = [];
+  private listAdd: Musique[] = [];
   private nomPlaylist = '';
   private id_playlist = 0;
-  public isCollapsed = true;
-  public nom = '';
+  private isCollapsed = true;
+  private estCache = true;
+  private nom = '';
 
-  constructor(public playlistService: PlaylistService, public musiqueService: MusiqueService, private _membreConnecter: SingletonMembreService) { }
+  constructor(public playlistService: PlaylistService, public musiqueService: MusiqueService,
+              public playlistmusiqueService: PlaylistmusiqueService, private _membreConnecter: SingletonMembreService) { }
 
   ngOnInit() {
     this.playlistService.getPlaylist('yo').subscribe(listePlaylist => {
@@ -46,6 +50,6 @@ export class GestionPlaylistComponent implements OnInit {
     const DELETE_TODO = () => this.listeMusique.splice(index, 1);
     const DISPLAY_ERROR = (error) => console.error(error);
 
-    this.playlistService.deleteMusique(id_musique, this.id_playlist).subscribe(DELETE_TODO, DISPLAY_ERROR);
+    this.playlistmusiqueService.deleteMusique(id_musique, this.id_playlist).subscribe(DELETE_TODO, DISPLAY_ERROR);
   }
 }
