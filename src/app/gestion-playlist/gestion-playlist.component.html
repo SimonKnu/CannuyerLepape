@@ -2,9 +2,9 @@
 
 <div class="col-lg-9">
   <span *ngIf="nomPlaylist.length>0">
-    <ngb-alert [dismissible]="false" type="primary">
-      <strong>{{nomPlaylist}}</strong>
-    </ngb-alert>
+
+    <h1>{{nomPlaylist}}</h1>
+
     <div>
       <p>
         <button class="btn btn-success btn-lg btn-default" (click)="estCache = !estCache" [attr.aria-expanded]="!estCache" aria-controls="collapse"><span class="glyphicon glyphicon-plus"></span> Ajouter une musique</button>
@@ -28,7 +28,6 @@
         </span>
       </div>
     </div>
-    {{id_playlist}}
   </span>
   <span *ngIf="listeMusique.length != 0">
     <span *ngFor="let musique of listeMusique; index as i;">

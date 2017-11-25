@@ -9,6 +9,8 @@ import {ModalPasswordComponent } from './account/modal-password/modal-password.c
 import {AccueilComponent} from './accueil/accueil.component';
 import {GestionMusiqueComponent } from './gestion-musique/gestion-musique.component';
 import {GestionPlaylistComponent } from './gestion-playlist/gestion-playlist.component';
+import { MesmusiquesComponent } from './mesmusiques/mesmusiques.component';
+import { PanierComponent } from './panier/panier.component';
 
 import {ConnexionService} from './service/service-connexion.service';
 import {PlaylistService} from './service/service-playlist.service';
@@ -31,6 +33,8 @@ const routes: Routes = [
   {path: 'gestionAccount', component: AccountComponent},
   {path: 'gestionMusique', component: GestionMusiqueComponent},
   {path: 'gestionPlaylist', component: GestionPlaylistComponent},
+  {path: 'mesmusiques', component: MesmusiquesComponent},
+  {path: 'panier', component: PanierComponent},
   //{path: '', redirectTo: '', pathMatch: 'full'},
 ];
 
@@ -44,6 +48,8 @@ const routes: Routes = [
     AccountComponent,
     GestionMusiqueComponent,
     GestionPlaylistComponent,
+    MesmusiquesComponent,
+    PanierComponent,
 
     UrlSafePipe,
 
