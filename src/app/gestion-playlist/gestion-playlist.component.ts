@@ -3,8 +3,9 @@ import {PlaylistService} from '../service/service-playlist.service';
 import {Playlist} from '../models/playlist';
 import {Musique} from '../models/musique';
 import {MusiqueService} from '../service/service-musique.service';
-import {SingletonMembreService} from "../service/singleton-membre.service";
-import {PlaylistmusiqueService} from "../service/playlistmusique.service";
+import {SingletonMembreService} from '../service/singleton-membre.service';
+import {PlaylistmusiqueService} from '../service/playlistmusique.service';
+import {Playlistmusique} from "../models/playlistmusique";
 
 @Component({
   selector: 'app-gestion-playlist',
@@ -28,6 +29,10 @@ export class GestionPlaylistComponent implements OnInit {
     this.playlistService.getPlaylist('yo').subscribe(listePlaylist => {
       this.listePlaylist = Playlist.fromJSONs(listePlaylist);
     });
+
+    this.musiqueService.getAllMusique().subscribe(listeMusique => {
+      this.listAdd = Musique.fromJSONs(listeMusique);
+    });
   }
 
   public updateList(playlist: Playlist) {
@@ -41,7 +46,8 @@ export class GestionPlaylistComponent implements OnInit {
   public createPlaylist() {
     const tmpPlaylist = new Playlist(0, this.nom, this._membreConnecter.membre.mail);
     this.listePlaylist.push(tmpPlaylist);
-    this.playlistService.createPlaylist(tmpPlaylist).subscribe(playlist=> tmpPlaylist.id_playlist = Playlist.fromJSON(playlist).id_playlist);
+    this.playlistService.createPlaylist(tmpPlaylist)
+      .subscribe(playlist => tmpPlaylist.id_playlist = Playlist.fromJSON(playlist).id_playlist);
     this.isCollapsed = true;
     this.nom = '';
   }
@@ -51,5 +57,13 @@ export class GestionPlaylistComponent implements OnInit {
     const DISPLAY_ERROR = (error) => console.error(error);
 
     this.playlistmusiqueService.deleteMusique(id_musique, this.id_playlist).subscribe(DELETE_TODO, DISPLAY_ERROR);
+  }
+
+  public createPlaylistMusique(musique: Musique) {
+    if (-1 == this.listeMusique.indexOf(musique)) {
+      this.listeMusique.push(musique);
+      this.playlistmusiqueService.createPlaylistMusique(new Playlistmusique(musique.id_musique, this.id_playlist));
+    }
+    this.estCache = true;
   }
 }
