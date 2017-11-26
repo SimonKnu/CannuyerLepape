@@ -17,6 +17,7 @@ import {PlaylistService} from './service/service-playlist.service';
 import {MusiqueService} from './service/service-musique.service';
 import {SingletonMembreService} from './service/singleton-membre.service';
 import {PlaylistmusiqueService} from './service/playlistmusique.service';
+import {AchatService} from "./service/achat.service";
 
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
@@ -65,7 +66,7 @@ const routes: Routes = [
     NgbModule.forRoot(),
     RouterModule.forRoot(routes)
   ],
-  providers: [ConnexionService, PlaylistService, MusiqueService, PlaylistmusiqueService, SingletonMembreService],
+  providers: [ConnexionService, PlaylistService, MusiqueService, PlaylistmusiqueService, SingletonMembreService, AchatService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

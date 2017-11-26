@@ -4,7 +4,13 @@
       <h4><b> {{musique.auteur}} - {{musique.titre }} </b> | <i> Style: {{musique.style}} </i> </h4>
     </div>
     <div class="col-lg-1">
-      <button class="btn btn-lg btn-info" ><span class="glyphicon glyphicon-shopping-cart"></span> <i>{{musique.prix}} €</i></button>
+      <div *ngIf="singletonMembre.isConnected; then connected else notconnected"></div>
+      <ng-template #connected>
+        <button class="btn btn-lg btn-info" (click)="create(musique.id_musique)" ><span class="glyphicon glyphicon-shopping-cart"></span> <i>{{musique.prix}} €</i></button>
+      </ng-template>
+      <ng-template #notconnected>
+        <button class="btn btn-lg btn-info" (click)="create(musique.id_musique)" disabled="true" ><span class="glyphicon glyphicon-shopping-cart"></span> <i>{{musique.prix}} €</i></button>
+      </ng-template>
     </div>
    </div>
 </div>

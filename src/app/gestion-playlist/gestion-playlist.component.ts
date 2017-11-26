@@ -62,7 +62,7 @@ export class GestionPlaylistComponent implements OnInit {
   public createPlaylistMusique(musique: Musique) {
     if (-1 == this.listeMusique.indexOf(musique)) {
       this.listeMusique.push(musique);
-      this.playlistmusiqueService.createPlaylistMusique(new Playlistmusique(musique.id_musique, this.id_playlist));
+      this.playlistmusiqueService.createPlaylistMusique(new Playlistmusique(musique.id_musique, this.id_playlist)).subscribe();
     }
     this.estCache = true;
   }
