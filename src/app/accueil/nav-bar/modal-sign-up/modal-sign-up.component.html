@@ -10,23 +10,29 @@
     <form #formProduct="ngForm">
       <div class="form-group">
         <label for="nom">Nom : </label>
-        <input name="text" type="nom" class="form-control" id="nom" placeholder="Nom"  required>
+        <input id="nom" name="nom" type="text" class="form-control" id="nom" placeholder="Nom" required [(ngModel)]="tmpNom">
       </div>
       <div class="form-group">
         <label for="prenom">Prénom : </label>
-        <input name="text" type="prenom" class="form-control" id="prenom" placeholder="Prénom"  required>
+        <input id="prenom" name="prenom" type="text" class="form-control" id="prenom" placeholder="Prénom" required [(ngModel)]="tmpPrenom">
       </div>
       <div class="form-group">
         <label for="mail">Email : </label>
-        <input name="mail" type="email" class="form-control" id="mail" placeholder="Mail"  required>
+        <input name="mail" type="email" class="form-control" id="mail" placeholder="Mail" required email [(ngModel)]="tmpMail">
       </div>
       <div class="form-group">
-        <label for="password">Mot de passe : </label>
-        <input name="password" type="password" class="form-control" id="password" placeholder="Mot de passe" required>
+        <label for="password">Mot de passe :</label>
+        <input type="password" class="form-control" name="password" id="password" placeholder="Mot de passe" [(ngModel)]="tmpPassword" required minlength="4" maxlength="30" validateEqual="confirmPassword" reverse="true" #password="ngModel">
+        <small [hidden]="password.valid" class="text-danger">
+          Le mot de passe doit comporter au moins 4 caractères et au plus 30 caractères
+        </small>
       </div>
       <div class="form-group">
-        <label for="passwordConfirm">Confirmer le mot de passe : </label>
-        <input name="passwordConfirm" type="password" class="form-control" id="passwordConfirm" placeholder="Confirmer le mot de passe" required>
+        <label for="confirmPassword">Confirmez le mot de passe :</label>
+        <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" placeholder="Confirmez le mot de passe" [(ngModel)]="tmpConfirmPassword" required validateEqual="password" reverse="false" #confirmPassword="ngModel">
+        <small [hidden]="!(confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched))" class="text-danger">
+          Le mot de passe ne correspond pas !
+        </small>
       </div>
     </form>
   </div>
