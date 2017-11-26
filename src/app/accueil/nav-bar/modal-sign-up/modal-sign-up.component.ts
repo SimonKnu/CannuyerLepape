@@ -16,14 +16,21 @@ import {SingletonMembreService} from "../../../service/singleton-membre.service"
       margin-right: auto;
       width: 100%;
     }
-  `]
+  `],
 })
 
 export class ModalSignUpComponent {
   closeResult: string;
   private modalRef:NgbModalRef;
 
-  constructor(private modalService: NgbModal, private connexionService:ConnexionService) {}
+  private tmpPassword:string="";
+  private tmpConfirmPassword:string="";
+  private tmpNom:string="";
+  private tmpPrenom:string="";
+  private tmpMail:string="";
+
+  constructor(private modalService: NgbModal, private connexionService:ConnexionService){
+  }
 
   public inscription() {
     this.modalRef.close();
