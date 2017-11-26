@@ -13,6 +13,7 @@ import {MesmusiquesComponent } from './mesmusiques/mesmusiques.component';
 import {PanierComponent } from './panier/panier.component';
 import {ModalLogInComponent } from './accueil/nav-bar/modal-log-in/modal-log-in.component';
 import {ModalSignUpComponent } from './accueil/nav-bar/modal-sign-up/modal-sign-up.component';
+import { CreditComponent } from './credit/credit.component';
 
 import {ConnexionService} from './service/service-connexion.service';
 import {PlaylistService} from './service/service-playlist.service';
@@ -30,6 +31,7 @@ import {EqualValidator} from "./models/equal-validator";
 
 
 
+
 //Permets de créer notre routings pour naviguer de page en page
 const routes: Routes = [
   {path: '', component: AccueilComponent},
@@ -38,6 +40,7 @@ const routes: Routes = [
   {path: 'gestionPlaylist', component: GestionPlaylistComponent},
   {path: 'mesmusiques', component: MesmusiquesComponent},
   {path: 'panier', component: PanierComponent},
+  {path: 'credit', component: CreditComponent},
   //{path: '', redirectTo: '', pathMatch: 'full'},
 ];
 
@@ -53,6 +56,7 @@ const routes: Routes = [
     GestionPlaylistComponent,
     MesmusiquesComponent,
     PanierComponent,
+    CreditComponent,
 
     UrlSafePipe,
 
@@ -60,7 +64,7 @@ const routes: Routes = [
     ModalSignUpComponent,
     ModalPasswordComponent,
 
-    EqualValidator
+    EqualValidator,
   ],
   imports: [
     BrowserModule,
