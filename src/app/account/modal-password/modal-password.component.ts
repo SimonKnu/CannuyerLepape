@@ -21,6 +21,11 @@ export class ModalPasswordComponent {
   closeResult: string;
   private modalRef:NgbModalRef;
 
+  private tmpPassword:string="";
+  private tmpOldPassword:string="";
+  private tmpConfirmPassword:string="";
+
+
   constructor(private modalService: NgbModal) {}
 
   open(content) {
