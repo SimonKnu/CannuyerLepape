@@ -1,12 +1,12 @@
 export class Playlist {
   private _id_playlist: number;
   private _nom: string;
-  private _date_creation: Date;
+  private _date_creation: string;
   private _mail: string;
 
   constructor(id_playlist: number, nom: string, mail: string){
     this._id_playlist = id_playlist;
-    this._date_creation = new Date();
+    this._date_creation = new Date().toDateString();
     this._nom = nom;
     this._mail = mail;
   }
@@ -35,11 +35,11 @@ export class Playlist {
     this._nom = value;
   }
 
-  get date_creation(): Date {
+  get date_creation(): string {
     return this._date_creation;
   }
 
-  set date_creation(value: Date) {
+  set date_creation(value: string) {
     this._date_creation = value;
   }
 
@@ -56,7 +56,7 @@ export class Playlist {
   public getCleanDataForSending(): any {
     return {
       'Nom': this.nom,
-      'Date_creation': this.date_creation.toDateString(),
+      'Date_creation': this.date_creation,
       'Mail': this.mail
     };
   }
@@ -65,7 +65,7 @@ export class Playlist {
     return {
       'Id_playlist': this.id_playlist,
       'Nom': this.nom,
-      'Date_creation': this.date_creation.toDateString(),
+      'Date_creation': this.date_creation,
       'Mail': this.mail
     };
   }
