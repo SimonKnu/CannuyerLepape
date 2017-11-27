@@ -3,7 +3,7 @@
 <form #formulaire="ngForm" >
     <div class="form-group">
       <label for="mail">Email</label>
-      <input type="email" class="form-control" id="mail" placeholder="Mail" name="mail" disabled [(ngModel)]="membreConnecter.membre.mail">
+      <input type="email" class="form-control" id="mail" placeholder="Mail" name="mail" disabled value="{{membreConnecter.membre.mail}}">
     </div>
     <div class="form-group">
       <label for="mot_de_passe">Mot de passe</label><br>
@@ -11,48 +11,52 @@
     </div>
     <div class="form-group">
       <label for="nom">Nom</label>
-      <input type="text" class="form-control" id="nom" placeholder="Nom" name="nom" [(ngModel)]="membreConnecter.membre.nom">
+      <input type="text" class="form-control" id="nom" placeholder="Nom" name="nom" [(ngModel)]="nom">
     </div>
     <div class="form-group">
       <label for="prenom">Prénom</label>
-      <input type="text" class="form-control" id="prenom" placeholder="Prénom" name="prenom" [(ngModel)]="membreConnecter.membre.prenom">
+      <input type="text" class="form-control" id="prenom" placeholder="Prénom" name="prenom" [(ngModel)]="prenom">
     </div>
     <div class="form-group">
       <label for="telephone">Téléphone</label>
-      <input type="text" class="form-control" id="telephone" placeholder="0000/00.00.00" name="telephone" [(ngModel)]="membreConnecter.membre.telephone">
+      <input type="text" class="form-control" id="telephone" placeholder="0000/00.00.00" name="telephone" [(ngModel)]="telephone">
     </div>
     <div class="form-group">
       <label for="date_naissance">Date de naissance</label>
-      <input type="text" class="form-control" id="date_naissance" placeholder="2010/10/20" name="date_naissance" [(ngModel)]="membreConnecter.membre.date_naissance">
+      <input type="text" class="form-control" id="date_naissance" placeholder="2010/10/20" name="date_naissance" [(ngModel)]="date_naissance">
     </div>
     <div class="form-group">
       <label for="pays">Pays</label>
-      <input type="text" class="form-control" id="pays" placeholder="Pays" name="pays" [(ngModel)]="membreConnecter.membre.pays">
+      <input type="text" class="form-control" id="pays" placeholder="Pays" name="pays" [(ngModel)]="pays">
     </div>
     <div class="form-group">
       <label for="ville">Ville</label>
-      <input type="text" class="form-control" id="ville" placeholder="Ville" name="ville" [(ngModel)]="membreConnecter.membre.ville">
+      <input type="text" class="form-control" id="ville" placeholder="Ville" name="ville" [(ngModel)]="ville">
     </div>
     <div class="form-group">
       <label for="rue">Rue</label>
-      <input type="text" class="form-control" id="rue" placeholder="Rue" name="rue" [(ngModel)]="membreConnecter.membre.rue">
+      <input type="text" class="form-control" id="rue" placeholder="Rue" name="rue" [(ngModel)]="rue">
     </div>
     <div class="form-group">
       <label for="code_postal">Code postal</label>
-      <input type="text" class="form-control" id="code_postal" placeholder="Code postal" name="code_postal" [(ngModel)]="membreConnecter.membre.code_postal">
+      <input type="text" class="form-control" id="code_postal" placeholder="Code postal" name="code_postal" [(ngModel)]="code_postal">
     </div>
     <div class="form-group">
       <label for="argent">Argent</label>
-      <input type="text" class="form-control" id="argent" placeholder="0 €" name="argent" disabled [(ngModel)]="membreConnecter.membre.argent">
+      <input type="text" class="form-control" id="argent" placeholder="0 €" name="argent" disabled value="{{membreConnecter.membre.argent}}">
     </div>
     <div class="form-group">
       <label for="date_inscription">Date d'inscription</label>
-      <input type="text" class="form-control" id="date_inscription" placeholder="2010/10/20" name="date_inscription" disabled [(ngModel)]="membreConnecter.membre.date_inscription">
+      <input type="text" class="form-control" id="date_inscription" placeholder="2010/10/20" name="date_inscription" disabled value="{{membreConnecter.membre.date_inscription}}">
     </div>
     <div class="form-group">
       <label for="administrateur">Administrateur</label>
-      <input type="text" class="form-control" id="administrateur" placeholder="Administrateur" name="admin"  disabled [(ngModel)]="membreConnecter.membre.administrateur">
+      <input type="text" class="form-control" id="administrateur" placeholder="Administrateur" name="admin"  disabled value="{{membreConnecter.membre.administrateur}}">
     </div>
 
-    <button type="submit" class="btn btn-primary btn-lg btn-block" >Mettre à jour</button>
+  <button type="button" class="btn btn-primary btn-lg btn-block" (click)="mettreAJour();">Mettre à jour</button>
+  <small *ngIf="modifOk" class="text-success">
+    Vos modifications ont été enregistrées
+  </small>
+
 </form>

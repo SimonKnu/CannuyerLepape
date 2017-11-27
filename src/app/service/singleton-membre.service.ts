@@ -33,7 +33,7 @@ export class SingletonMembreService {
     this.isConnected=true;
   }
   supprimerConnexion(){
-    this.membre=null;
+    this.membre=new Membre();
     this.isConnected=false;
     localStorage.removeItem("tokenStorage");
     this.router.navigate([""]);

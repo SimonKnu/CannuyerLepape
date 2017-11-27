@@ -2,6 +2,7 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ModalDismissReasons, NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
 import {ConnexionService} from "../../../service/service-connexion.service";
 import {SingletonMembreService} from "../../../service/singleton-membre.service";
+import {Membre} from "../../../models/membre";
 
 @Component({
   selector: 'app-modal-sign-up',
@@ -33,6 +34,14 @@ export class ModalSignUpComponent {
   }
 
   public inscription() {
+    let m:Membre = new Membre();
+    m.mail=this.tmpMail;
+    m.mot_de_passe=this.tmpPassword;
+    m.prenom=this.tmpPrenom;
+    m.nom=this.tmpNom;
+
+    this.connexionService.createMembre(m).subscribe();
+    this.reset();
     this.modalRef.close();
   }
 
@@ -55,6 +64,14 @@ export class ModalSignUpComponent {
     else {
       return  `with: ${reason}`;
     }
+  }
+
+  private reset(){
+    this.tmpNom="";
+    this.tmpPrenom="";
+    this.tmpPassword="";
+    this.tmpConfirmPassword="";
+    this.tmpMail="";
   }
 }
 

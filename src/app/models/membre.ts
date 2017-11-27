@@ -14,9 +14,11 @@ export class Membre {
   private _argent: number=0;
   private _date_inscription: string;
   private _administrateur: boolean=false;
+  private _mot_de_passe:string="";
 
-  constructor(mail: string="", nom: string="", prenom: string="", tel: string = "",naissance:string="",pays:string="",ville:string="",rue:string="",postal:number=0, argent:number=0, admin:boolean=false) {
+  constructor(mail: string="", mot_de_passe:string="", nom: string="", prenom: string="", tel: string = "",naissance:string="",pays:string="",ville:string="",rue:string="",postal:number=0, argent:number=0, admin:boolean=false) {
     this._mail = mail;
+    this._mot_de_passe = mot_de_passe;
     this._nom = nom;
     this._prenom = prenom;
     this._telephone = tel;
@@ -27,7 +29,7 @@ export class Membre {
     this._code_postal = postal;
     this._argent = argent;
     let temporaireDate = new Date();
-    this._date_inscription = temporaireDate.getDay()+"/"+temporaireDate.getMonth()+"/"+temporaireDate.getFullYear();
+    this._date_inscription = temporaireDate.getDate()+"/"+(temporaireDate.getMonth()+1)+"/"+temporaireDate.getFullYear();
     this._administrateur = admin;
   }
 
@@ -127,9 +129,18 @@ export class Membre {
     this._administrateur = value;
   }
 
+  get mot_de_passe(): string {
+    return this._mot_de_passe;
+  }
+
+  set mot_de_passe(value: string) {
+    this._mot_de_passe = value;
+  }
+
   public static fromJSON(rawMembre : any) : Membre {
     const tmpMembre = new Membre();
     tmpMembre.mail= rawMembre["Mail"];
+    tmpMembre.mot_de_passe= rawMembre["Mot_de_passe"];
     tmpMembre.nom= rawMembre["Nom"];
     tmpMembre.prenom= rawMembre["Prenom"];
     tmpMembre.telephone= rawMembre["Telephone"];
@@ -143,5 +154,48 @@ export class Membre {
     tmpMembre.administrateur= rawMembre["Administrateur"];
 
     return tmpMembre;
+  }
+
+  public getCleanDataForSendingUpdate(): any {
+    return {
+      'Mail': this.mail,
+      'Nom': this.nom,
+      'Prenom': this.prenom,
+      'Telephone': this.telephone,
+      'Date_naissance': this.date_naissance,
+      'Pays': this.pays,
+      'Ville': this.ville,
+      'Rue': this.rue,
+      'Code_postal': this.code_postal
+    };
+  }
+
+  public getCleanDataForSending(): any {
+    return {
+      'Mail': this.mail,
+      'Mot_de_passe': this.mot_de_passe,
+      'Nom': this.nom,
+      'Prenom': this.prenom,
+      'Telephone': this.telephone,
+      'Date_naissance': this.date_naissance,
+      'Pays': this.pays,
+      'Ville': this.ville,
+      'Rue': this.rue,
+      'Code_postal': this.code_postal,
+      'Argent': this.argent,
+      'Date_inscription': this.date_inscription,
+      'Administrateur': this.administrateur
+    };
+  }
+
+  public equals(m:Membre):boolean{
+    return m.nom === this.nom
+      && m.prenom === this.prenom
+      && m.telephone === this.telephone
+      && m.date_naissance === this.date_naissance
+      && m.pays === this.pays
+      && m.ville === this.ville
+      && m.rue === this.rue
+      && m.code_postal === this.code_postal;
   }
 }

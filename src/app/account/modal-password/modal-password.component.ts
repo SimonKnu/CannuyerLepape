@@ -1,6 +1,8 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 
 import {NgbModal, ModalDismissReasons, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import {SingletonMembreService} from "../../service/singleton-membre.service";
+import {ConnexionService} from "../../service/service-connexion.service";
 
 @Component({
   selector: 'app-modal-password',
@@ -23,10 +25,47 @@ export class ModalPasswordComponent {
 
   private tmpPassword:string="";
   private tmpOldPassword:string="";
-  private tmpConfirmPassword:string="";
 
+  private _pasCorrect:boolean=false;
 
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal, private _membreConnecter:SingletonMembreService, private connexion:ConnexionService) {}
+
+  get membreConnecter(): SingletonMembreService {
+    return this._membreConnecter;
+  }
+
+  get pasCorrect(): boolean {
+    return this._pasCorrect;
+  }
+  set pasCorrect(value: boolean) {
+    this._pasCorrect = value;
+  }
+
+  public changerPassword(){
+    if(this.membreConnecter.membre.mot_de_passe===this.tmpOldPassword) {
+      this.membreConnecter.membre.mot_de_passe = this.tmpPassword;
+      this.pasCorrect = false;
+      this.connexion.updatePassword(this.membreConnecter.membre.mail + "", this.membreConnecter.membre.mot_de_passe + "").subscribe(test => {
+        if (test === "OK") {
+          this.connexion.getConnexion(this.membreConnecter.membre.mail + "", this.membreConnecter.membre.mot_de_passe + "").subscribe(token => {
+            if (token === "error" || token === "") {
+            }
+            else {
+              localStorage.setItem("tokenStorage", token);
+              this.pasCorrect= false;
+              this.modalRef.close();
+            }
+          })
+        }
+        else {
+          this.pasCorrect  = true;
+        }
+      })
+    }
+    else {
+      this.pasCorrect  = true;
+    }
+  }
 
   open(content) {
     this.modalRef = this.modalService.open(content,  {windowClass:'milieu-ecran'});
