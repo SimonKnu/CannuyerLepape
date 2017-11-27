@@ -23,11 +23,13 @@ import {PlaylistmusiqueService} from './service/playlistmusique.service';
 import {AchatService} from "./service/achat.service";
 
 import {FormsModule, NgControl, NgForm} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {RouterModule, Routes} from '@angular/router';
 import {HttpModule} from '@angular/http';
 import {UrlSafePipe } from './pipe/url-safe.pipe';
 import {EqualValidator} from "./models/equal-validator";
+import {TokenInterceptor} from "./models/token-interceptor";
+import {AuthService} from "./service/auth.service";
 
 
 
@@ -74,7 +76,11 @@ const routes: Routes = [
     NgbModule.forRoot(),
     RouterModule.forRoot(routes),
   ],
-  providers: [ConnexionService, PlaylistService, MusiqueService, PlaylistmusiqueService, SingletonMembreService, AchatService],
+  providers: [ConnexionService, PlaylistService, MusiqueService, PlaylistmusiqueService, SingletonMembreService, AchatService, AuthService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

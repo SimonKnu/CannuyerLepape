@@ -14,25 +14,23 @@ export class ConnexionService {
     return this.http.get<string>("http://localhost:61812/api/token?mail="+mail+"&mot_de_passe="+mot_de_passe);
   }
   public getMembre(mail:string):Observable<Membre>{
-    let headers = new HttpHeaders().set('Authorization','Bearer ' + localStorage.getItem("tokenStorage"));
-    return this.http.get("http://localhost:61812/api/Membre?mail="+mail,{headers:headers});
+    return this.http.get("http://localhost:61812/api/Membre?mail="+mail);
   }
 
 
 
   public updateMembre(m:Membre):Observable<any>{
-    let headers = new HttpHeaders().set('Authorization','Bearer ' + localStorage.getItem("tokenStorage"));
-    return this.http.put('http://localhost:61812/api/membre', m.getCleanDataForSendingUpdate(), {headers:headers});
+    return this.http.put('http://localhost:61812/api/membre', m.getCleanDataForSendingUpdate());
   }
   public updatePassword(mail:string, mot_de_passe:string):Observable<any>{
-    let headers = new HttpHeaders().set('Authorization','Bearer ' + localStorage.getItem("tokenStorage"));
-    return this.http.put('http://localhost:61812/api/membre?mail='+mail+"&mot_de_passe="+mot_de_passe,"",{headers:headers});
+    return this.http.put('http://localhost:61812/api/membre?mail='+mail+"&mot_de_passe="+mot_de_passe,"");
   }
   public updateArgent(mail:string, argent:number):Observable<any>{
-    let headers = new HttpHeaders().set('Authorization','Bearer ' + localStorage.getItem("tokenStorage"));
-    return this.http.put('http://localhost:61812/api/membre?mail='+mail+"&argent="+argent,"", {headers:headers});
+    return this.http.put('http://localhost:61812/api/membre?mail='+mail+"&argent="+argent,"");
   }
 
+
+  
   public createMembre(membre:Membre){
     return this.http.post('http://localhost:61812/api/membre', membre.getCleanDataForSending());
   }
