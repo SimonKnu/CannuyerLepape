@@ -6,7 +6,8 @@ export class Playlist {
 
   constructor(id_playlist: number, nom: string, mail: string){
     this._id_playlist = id_playlist;
-    this._date_creation = new Date().toDateString();
+    let temporaireDate = new Date();
+    this._date_creation = temporaireDate.getDate()+"/"+(temporaireDate.getMonth()+1)+"/"+temporaireDate.getFullYear();
     this._nom = nom;
     this._mail = mail;
   }

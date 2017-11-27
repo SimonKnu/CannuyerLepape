@@ -24,7 +24,7 @@
           <label for="prix">Prix</label>
           <input type="number" class="form-control" id="prix" placeholder="Prix" name="prix" [(ngModel)]="prix" required>
         </div>
-
+{{prix}}
         <button type="submit" class="btn btn-primary btn-default" [disabled]="!formulaire.form.valid">Ajouter</button>
       </form>
     </ng-template>
