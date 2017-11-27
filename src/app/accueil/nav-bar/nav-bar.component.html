@@ -23,7 +23,9 @@
         <button class="dropdown-item" routerLink="gestionAccount">Mon compte</button>
         <button class="dropdown-item" routerLink="gestionPlaylist">Mes playlists</button>
         <button class="dropdown-item" routerLink="mesmusiques">Mes musiques</button>
-        <button class="dropdown-item" routerLink="gestionMusique">Gérer les musiques</button>
+        <div *ngIf="singletonMembre.membre.administrateur">
+          <button class="dropdown-item" routerLink="gestionMusique">Gérer les musiques</button>
+        </div>
         <button class="dropdown-item">--------------</button>
         <button class="dropdown-item" (click)="singletonMembre.supprimerConnexion();">Se déconnecter</button>
       </div>

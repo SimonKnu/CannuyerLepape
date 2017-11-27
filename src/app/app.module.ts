@@ -13,23 +13,23 @@ import {MesmusiquesComponent } from './mesmusiques/mesmusiques.component';
 import {PanierComponent } from './panier/panier.component';
 import {ModalLogInComponent } from './accueil/nav-bar/modal-log-in/modal-log-in.component';
 import {ModalSignUpComponent } from './accueil/nav-bar/modal-sign-up/modal-sign-up.component';
-import { CreditComponent } from './credit/credit.component';
+import {CreditComponent} from './credit/credit.component';
 
 import {ConnexionService} from './service/service-connexion.service';
 import {PlaylistService} from './service/service-playlist.service';
 import {MusiqueService} from './service/service-musique.service';
 import {SingletonMembreService} from './service/singleton-membre.service';
 import {PlaylistmusiqueService} from './service/playlistmusique.service';
-import {AchatService} from "./service/achat.service";
+import {AchatService} from './service/achat.service';
 
 import {FormsModule, NgControl, NgForm} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {RouterModule, Routes} from '@angular/router';
 import {HttpModule} from '@angular/http';
 import {UrlSafePipe } from './pipe/url-safe.pipe';
-import {EqualValidator} from "./models/equal-validator";
-import {TokenInterceptor} from "./models/token-interceptor";
-import {AuthService} from "./service/auth.service";
+import {EqualValidator} from './models/equal-validator';
+import {TokenInterceptor} from './models/token-interceptor';
+import {AuthService} from './service/auth.service';
 
 
 
@@ -76,7 +76,8 @@ const routes: Routes = [
     NgbModule.forRoot(),
     RouterModule.forRoot(routes),
   ],
-  providers: [ConnexionService, PlaylistService, MusiqueService, PlaylistmusiqueService, SingletonMembreService, AchatService, AuthService, {
+  providers: [ConnexionService, PlaylistService, MusiqueService, PlaylistmusiqueService,
+    SingletonMembreService, AchatService, AuthService, {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true
