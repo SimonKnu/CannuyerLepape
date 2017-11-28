@@ -46,10 +46,8 @@ export class GestionPlaylistComponent implements OnInit {
   }
 
   public createPlaylist() {
-    const tmpPlaylist = new Playlist(0, this.nom, this._membreConnecter.membre.mail);
-    this.listePlaylist.push(tmpPlaylist);
-    this.playlistService.createPlaylist(tmpPlaylist)
-      .subscribe(playlist => tmpPlaylist.id_playlist = Playlist.fromJSON(playlist).id_playlist);
+    this.playlistService.createPlaylist(new Playlist(0, this.nom, this._membreConnecter.membre.mail))
+      .subscribe(playlist => this.listePlaylist.push(Playlist.fromJSON(playlist)));
     this.isCollapsed = true;
     this.nom = '';
   }

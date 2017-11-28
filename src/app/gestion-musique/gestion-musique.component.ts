@@ -53,9 +53,8 @@ export class GestionMusiqueComponent implements OnInit {
   }
 
   public createMusique() {
-    const tmpMusique = new Musique(0, this.auteur, this.titre,  this.style,  this.url,  this.prix);
-    this.listeMusique.push(tmpMusique);
-    this.musiqueService.createMusique(tmpMusique).subscribe();
+    this.musiqueService.createMusique(new Musique(0, this.auteur, this.titre,  this.style,  this.url,  this.prix))
+      .subscribe(musique =>  this.listeMusique.push(Musique.fromJSON(musique)));
     this.auteur = '';
     this.titre = '';
     this.style = '';
