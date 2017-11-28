@@ -19,4 +19,8 @@ export class PlaylistService {
   public updatePlaylist(playlist: Playlist): Observable<any> {
     return this.http.put('http://localhost:61812/api/playlist', playlist.getCleanDataForSendingUpdate());
   }
+
+  public deletePlaylist(id_playlist: number, mail: string): Observable<any> {
+    return this.http.delete<string>('http://localhost:61812/api/playlist?id_playlist=' + id_playlist + '&mail=' + mail);
+  }
 }

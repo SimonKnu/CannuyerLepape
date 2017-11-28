@@ -7,6 +7,11 @@
        <h3>{{nomPlaylist}}</h3>
     </div>
   </div>
+  <div *ngIf="nomPlaylist.length<1">
+    <div class="well well-sm">
+      <h3>Pas de playlist selectionnée</h3>
+    </div>
+  </div>
 
   <div *ngIf="listeMusique.length != 0">
     <div *ngFor="let musique of listeMusique; index as i;">
@@ -20,6 +25,7 @@
   <div *ngIf="nomPlaylist.length>0">
     <div ngbDropdown class="d-inline-block btn-block">
       <button class="btn btn-success btn-lg btn-block" id="dropdown" ngbDropdownToggle><span class="glyphicon glyphicon-plus"></span> Ajouter une musique</button>
+      <button class="btn btn-danger btn-lg btn-block" (click)="deleteMusique()">Supprimer la playlist</button>
       <div ngbDropdownMenu aria-labelledby="dropdown">
         <button class="dropdown-item" *ngFor="let musique of listAdd; index as i;" (click)="createPlaylistMusique(musique)">{{musique.auteur}} - {{musique.titre}}</button>
       </div>
@@ -44,7 +50,7 @@
   <p>
     <span *ngIf="listePlaylist.length != 0">
       <p *ngFor="let playlist of listePlaylist; index as i;">
-        <button class="btn btn-primary btn-lg btn-block" (click)="updateList(playlist)" >{{playlist.nom}}</button>
+        <button class="btn btn-primary btn-lg btn-block" (click)="updateList(playlist, i)" >{{playlist.nom}}</button>
       </p>
     </span>
 
@@ -55,6 +61,8 @@
     </span>
   </p>
 </div>
+
+
 
 
 

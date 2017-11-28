@@ -21,6 +21,7 @@ export class GestionPlaylistComponent implements OnInit {
   private isCollapsed = true;
   private estCache = true;
   private nom = '';
+  private index= 0;
 
   constructor(public playlistService: PlaylistService, public musiqueService: MusiqueService,
               public playlistmusiqueService: PlaylistmusiqueService, private _membreConnecter: SingletonMembreService) { }
@@ -35,7 +36,8 @@ export class GestionPlaylistComponent implements OnInit {
     });
   }
 
-  public updateList(playlist: Playlist) {
+  public updateList(playlist: Playlist, index: number) {
+    this.index = index;
     this.nomPlaylist = playlist.nom;
     this.id_playlist = playlist.id_playlist;
     this.musiqueService.getMusique(this.id_playlist).subscribe(listeMusique => {
@@ -53,10 +55,10 @@ export class GestionPlaylistComponent implements OnInit {
   }
 
   public delete(id_musique: number, index: number) {
-    const DELETE_TODO = () => this.listeMusique.splice(index, 1);
+    const DELETE = () => this.listeMusique.splice(index, 1);
     const DISPLAY_ERROR = (error) => console.error(error);
 
-    this.playlistmusiqueService.deleteMusique(id_musique, this.id_playlist).subscribe(DELETE_TODO, DISPLAY_ERROR);
+    this.playlistmusiqueService.deleteMusique(id_musique, this.id_playlist).subscribe(DELETE, DISPLAY_ERROR);
   }
 
   public createPlaylistMusique(musique: Musique) {
@@ -65,5 +67,16 @@ export class GestionPlaylistComponent implements OnInit {
       this.playlistmusiqueService.createPlaylistMusique(new Playlistmusique(musique.id_musique, this.id_playlist)).subscribe();
     }
     this.estCache = true;
+  }
+
+  public deleteMusique() {
+    this.playlistmusiqueService.deleteAllMusique(this.id_playlist).subscribe();
+    this.listeMusique = [];
+
+    const DELETE = () => this.listePlaylist.splice(this.index, 1);
+    const DISPLAY_ERROR = (error) => console.error(error);
+
+    this.playlistService.deletePlaylist(this.id_playlist, this._membreConnecter.membre.mail).subscribe(DELETE, DISPLAY_ERROR);
+    this.nomPlaylist = '';
   }
 }
