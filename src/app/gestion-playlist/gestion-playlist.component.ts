@@ -26,7 +26,7 @@ export class GestionPlaylistComponent implements OnInit {
               public playlistmusiqueService: PlaylistmusiqueService, private _membreConnecter: SingletonMembreService) { }
 
   ngOnInit() {
-    this.playlistService.getPlaylist("yo@yo.com").subscribe(listePlaylist => {
+    this.playlistService.getPlaylist(this._membreConnecter.membre.mail).subscribe(listePlaylist => {
       this.listePlaylist = Playlist.fromJSONs(listePlaylist);
     });
 

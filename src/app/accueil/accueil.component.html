@@ -9,7 +9,7 @@
     <div class="col-lg-1">
       <div *ngIf="singletonMembre.isConnected; then connected else notconnected"></div>
       <ng-template #connected>
-        <button class="btn btn-lg btn-info" (click)="create(musique.id_musique)" ><span class="glyphicon glyphicon-shopping-cart"></span> <i>{{musique.prix}} €</i></button>
+        <button class="btn btn-lg btn-info" (click)="create(musique.id_musique)"><span class="glyphicon glyphicon-shopping-cart"></span> <i>{{musique.prix}} €</i></button>
       </ng-template>
       <ng-template #notconnected>
         <button class="btn btn-lg btn-info" (click)="create(musique.id_musique)" disabled="true" ><span class="glyphicon glyphicon-shopping-cart"></span> <i>{{musique.prix}} €</i></button>
