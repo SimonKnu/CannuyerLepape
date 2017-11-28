@@ -81,7 +81,7 @@ export class Musique {
       'Titre': this.titre,
       'Style': this.style,
       'Url': this.url,
-      'Pirx': this.prix
+      'Prix': this.prix
     };
   }
 
@@ -92,7 +92,7 @@ export class Musique {
       'Titre': this.titre,
       'Style': this.style,
       'Url': this.url,
-      'Pirx': this.prix
+      'Prix': this.prix
     };
   }
 }
