@@ -1,3 +1,4 @@
+<!--
 <div class="card">
   <div class="card-body">
     <div class="col-lg-3">
@@ -19,8 +20,14 @@
     <div class="col-lg-3">
       <h4>{{musique.auteur}}  </h4>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-2">
       <h4>{{musique.titre }}  </h4>
+    </div>
+    <div class="col-lg-4">
+      <audio controls controlsList="nodownload" src="test.mp3">
+
+        Votre navigateur n'est pas compatible
+      </audio>
     </div>
     <div class="col-lg-2">
       <h4><i>{{musique.style}} </i></h4>
@@ -34,7 +41,32 @@
         <button class="btn btn-lg btn-info" (click)="create(musique.id_musique)" disabled="true" ><span class="glyphicon glyphicon-shopping-cart"></span> <i>{{musique.prix}} €</i></button>
       </ng-template>
     </div>
-   </div>
+  </div>
+</div>
+-->
+
+<div *ngFor="let musique of listeMusique; index as i;">
+  <div class="col-md-4">
+    <div class="thumbnail">
+      <img [src]="musique.image" alt="Lights" width="100%" height="100%">
+      <audio controls controlsList="nodownload" src="test.mp3" >Votre navigateur n'est pas compatible</audio>
+      <table>
+        <tr>
+          <td>
+            <h3>{{musique.auteur}} </h3>
+          </td>
+          <td width="15%">
+            <button class="btn btn-lg btn-info" (click)="create(musique.id_musique)"><span class="glyphicon glyphicon-shopping-cart"></span> <i>{{musique.prix}} €</i></button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h5>{{musique.titre }} </h5>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
 </div>
 
 

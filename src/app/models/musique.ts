@@ -4,16 +4,44 @@ export class Musique {
   private _auteur: string;
   private _titre: string;
   private _style: string;
-  private _url: string;
+  private _preview: string;
+  private _musiquecomplet: string;
+  private _image: string;
   private _prix: number;
 
-  constructor(id_musique: number, auteur: string, titre: string, style: string, url: string, prix: number){
+  constructor(id_musique: number, auteur: string, titre: string, style: string, preview: string, musiquecomplet: string, image: string, prix: number) {
     this._id_musique = id_musique;
     this._auteur = auteur;
     this._titre = titre;
     this._style = style;
-    this._url = url;
+    this._preview = preview;
+    this._musiquecomplet = musiquecomplet;
+    this._image = image;
     this._prix = prix;
+  }
+
+  get preview(): string {
+    return this._preview;
+  }
+
+  set preview(value: string) {
+    this._preview = value;
+  }
+
+  get musiquecomplet(): string {
+    return this._musiquecomplet;
+  }
+
+  set musiquecomplet(value: string) {
+    this._musiquecomplet = value;
+  }
+
+  get image(): string {
+    return this._image;
+  }
+
+  set image(value: string) {
+    this._image = value;
   }
 
   get id_musique(): number {
@@ -48,14 +76,6 @@ export class Musique {
     this._style = value;
   }
 
-  get url(): string {
-    return this._url;
-  }
-
-  set url(value: string) {
-    this._url = value;
-  }
-
   get prix(): number {
     return this._prix;
   }
@@ -68,7 +88,7 @@ export class Musique {
 
   public static fromJSON(rawMusique: any): Musique {
     return new Musique(rawMusique['Id_musique'], rawMusique['Auteur'],
-      rawMusique['Titre'], rawMusique['Style'], rawMusique['Url'], rawMusique['Prix']);
+      rawMusique['Titre'], rawMusique['Style'], rawMusique['Preview'], rawMusique['Musiquecomplet'], rawMusique['Image'], rawMusique['Prix']);
   }
 
   public static fromJSONs(rawMusique: any[]): Musique[] {
@@ -80,7 +100,9 @@ export class Musique {
       'Auteur': this.auteur,
       'Titre': this.titre,
       'Style': this.style,
-      'Url': this.url,
+      'Preview': this.preview,
+      'Musiquecomplet': this.musiquecomplet,
+      'Image': this.image,
       'Prix': this.prix
     };
   }
@@ -91,7 +113,9 @@ export class Musique {
       'Auteur': this.auteur,
       'Titre': this.titre,
       'Style': this.style,
-      'Url': this.url,
+      'Preview': this.preview,
+      'Musiquecomplet': this.musiquecomplet,
+      'Image': this.image,
       'Prix': this.prix
     };
   }
