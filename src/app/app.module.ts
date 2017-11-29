@@ -30,6 +30,7 @@ import {EqualValidator} from './models/equal-validator';
 import {TokenInterceptor} from './models/token-interceptor';
 import {AuthService} from './service/auth.service';
 import {JwtInterceptor} from "./models/jwt-interceptor";
+import { ImagePipe } from './pipe/image.pipe';
 
 
 
@@ -62,6 +63,7 @@ const routes: Routes = [
     CreditComponent,
 
     UrlSafePipe,
+    ImagePipe,
 
     ModalLogInComponent,
     ModalSignUpComponent,
