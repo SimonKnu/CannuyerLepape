@@ -42,11 +42,7 @@ export class SingletonMembreService {
     this.router.navigate([""]);
   }
   reconnexion(){
-    this.membre=new Membre();
-    this.isConnected=false;
-    localStorage.removeItem("token");
-    localStorage.removeItem("mail");
-    this.router.navigate([""]);
+    this.supprimerConnexion();
     //Ouvrir le popUp à partir d'ici
   }
 }
