@@ -31,18 +31,32 @@ export class SingletonMembreService {
   creerConnexion(mail:string){
     this.connexionService.getMembre(mail).subscribe(membre => {
       this.membre = Membre.fromJSON(membre);
+      this.isConnected=true;
+      this.storerInfo();
     });
-    this.isConnected=true;
   }
   supprimerConnexion(){
     this.membre=new Membre();
     this.isConnected=false;
-    localStorage.removeItem("token");
-    localStorage.removeItem("mail");
+    localStorage.clear();
     this.router.navigate([""]);
   }
   reconnexion(){
     this.supprimerConnexion();
     //Ouvrir le popUp à partir d'ici
+  }
+
+  private storerInfo(){
+    localStorage.setItem("nom",this.membre.nom);
+    localStorage.setItem("prenom",this.membre.prenom);
+    localStorage.setItem("telephone",this.membre.telephone);
+    localStorage.setItem("date_naissance",this.membre.date_naissance);
+    localStorage.setItem("pays",this.membre.pays);
+    localStorage.setItem("ville",this.membre.ville);
+    localStorage.setItem("rue",this.membre.rue);
+    localStorage.setItem("code_postal",this.membre.code_postal+"");
+    localStorage.setItem("argent",this.membre.argent+"");
+    localStorage.setItem("date_inscription",this.membre.date_inscription);
+    localStorage.setItem("administrateur",this.membre.administrateur+"");
   }
 }
