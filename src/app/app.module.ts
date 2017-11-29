@@ -22,14 +22,14 @@ import {SingletonMembreService} from './service/singleton-membre.service';
 import {PlaylistmusiqueService} from './service/playlistmusique.service';
 import {AchatService} from './service/achat.service';
 
-import {FormsModule, NgControl, NgForm} from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {RouterModule, Routes} from '@angular/router';
-import {HttpModule} from '@angular/http';
+import {Router, RouterModule, Routes} from '@angular/router';
 import {UrlSafePipe } from './pipe/url-safe.pipe';
 import {EqualValidator} from './models/equal-validator';
 import {TokenInterceptor} from './models/token-interceptor';
 import {AuthService} from './service/auth.service';
+import {JwtInterceptor} from "./models/jwt-interceptor";
 
 
 
@@ -43,6 +43,7 @@ const routes: Routes = [
   {path: 'mesmusiques', component: MesmusiquesComponent},
   {path: 'panier', component: PanierComponent},
   {path: 'credit', component: CreditComponent},
+  {path: 'logIn', component: ModalLogInComponent},
   //{path: '', redirectTo: '', pathMatch: 'full'},
 ];
 
@@ -72,16 +73,19 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    HttpModule,
     NgbModule.forRoot(),
     RouterModule.forRoot(routes),
   ],
   providers: [ConnexionService, PlaylistService, MusiqueService, PlaylistmusiqueService,
     SingletonMembreService, AchatService, AuthService, {
-    provide: HTTP_INTERCEPTORS,
-    useClass: TokenInterceptor,
-    multi: true
-  }],
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },{
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

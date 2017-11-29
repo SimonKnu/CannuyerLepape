@@ -1,4 +1,4 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import {Component, ViewChild, ViewEncapsulation} from '@angular/core';
 import {ModalDismissReasons, NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
 
 import {ConnexionService} from "../../../service/service-connexion.service";
@@ -25,6 +25,7 @@ export class ModalLogInComponent {
   private tmpMail:string="";
   private tmpMot_de_passe:string="";
   private modalRef:NgbModalRef;
+  @ViewChild("conten") popUpLogIn;
 
   constructor(private modalService: NgbModal, private connexionService:ConnexionService, private singletonMembre:SingletonMembreService) {}
 
@@ -36,7 +37,8 @@ export class ModalLogInComponent {
       if(token === "error" || token === ""){
       }
       else {
-        localStorage.setItem("tokenStorage",token);
+        localStorage.setItem("token",token);
+        localStorage.setItem("mail",mail);
         this.singletonMembre.creerConnexion(mail);
         this.modalRef.close();
       }
@@ -46,7 +48,9 @@ export class ModalLogInComponent {
     this.tmpMot_de_passe="";
   }
 
-
+  ouvrirLogin(){
+    this.popUpLogIn.open();
+  }
 
   open(content) {
     this.modalRef = this.modalService.open(content,{ windowClass: 'milieu-ecran' });

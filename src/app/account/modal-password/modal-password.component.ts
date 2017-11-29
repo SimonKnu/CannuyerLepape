@@ -51,7 +51,7 @@ export class ModalPasswordComponent {
             if (token === "error" || token === "") {
             }
             else {
-              localStorage.setItem("tokenStorage", token);
+              localStorage.setItem("token", token);
               this.pasCorrect= false;
               this.modalRef.close();
             }

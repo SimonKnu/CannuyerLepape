@@ -2,6 +2,8 @@ import {Injectable } from '@angular/core';
 import {Membre} from "../models/membre";
 import {ConnexionService} from "./service-connexion.service";
 import {Router} from "@angular/router";
+import {ModalLogInComponent} from "../accueil/nav-bar/modal-log-in/modal-log-in.component";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Injectable()
 export class SingletonMembreService {
@@ -35,7 +37,16 @@ export class SingletonMembreService {
   supprimerConnexion(){
     this.membre=new Membre();
     this.isConnected=false;
-    localStorage.removeItem("tokenStorage");
+    localStorage.removeItem("token");
+    localStorage.removeItem("mail");
     this.router.navigate([""]);
+  }
+  reconnexion(){
+    this.membre=new Membre();
+    this.isConnected=false;
+    localStorage.removeItem("token");
+    localStorage.removeItem("mail");
+    this.router.navigate([""]);
+    //Ouvrir le popUp à partir d'ici
   }
 }
