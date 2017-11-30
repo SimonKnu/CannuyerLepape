@@ -31,6 +31,8 @@ import {TokenInterceptor} from './models/token-interceptor';
 import {AuthService} from './service/auth.service';
 import {JwtInterceptor} from "./models/jwt-interceptor";
 import { ImagePipe } from './pipe/image.pipe';
+import { PreviewPipe } from './pipe/preview.pipe';
+import { MusiquefullPipe } from './pipe/musiquefull.pipe';
 
 
 
@@ -70,6 +72,9 @@ const routes: Routes = [
     ModalPasswordComponent,
 
     EqualValidator,
+
+    PreviewPipe,
+    MusiquefullPipe,
   ],
   imports: [
     BrowserModule,

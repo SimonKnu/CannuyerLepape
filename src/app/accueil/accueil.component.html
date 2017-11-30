@@ -46,22 +46,28 @@
 -->
 
 <div *ngFor="let musique of listeMusique; index as i;">
-  <div class="col-md-4">
+  <div class="col-md-3">
     <div class="thumbnail">
       <img [src]="musique.image | image"  width="100%" height="100%">
-      <audio controls controlsList="nodownload" src="test.mp3" >Votre navigateur n'est pas compatible</audio>
+      <audio controls controlsList="nodownload" [src]="musique.preview | preview" style="width:100%;">Votre navigateur n'est pas compatible</audio>
       <table>
         <tr>
           <td>
-            <h3>{{musique.auteur}} </h3>
+            <h3>{{musique.titre }} </h3>
           </td>
           <td width="15%">
-            <button class="btn btn-lg btn-info" (click)="create(musique.id_musique)"><span class="glyphicon glyphicon-shopping-cart"></span> <i>{{musique.prix}} €</i></button>
+            <div *ngIf="singletonMembre.isConnected; then connected else notconnected"></div>
+            <ng-template #connected>
+              <button class="btn btn-lg btn-info" (click)="create(musique.id_musique)"><span class="glyphicon glyphicon-shopping-cart"></span> <i>{{musique.prix}} €</i></button>
+            </ng-template>
+            <ng-template #notconnected>
+              <button class="btn btn-lg btn-info" (click)="create(musique.id_musique)" disabled="true" ><span class="glyphicon glyphicon-shopping-cart"></span> <i>{{musique.prix}} €</i></button>
+            </ng-template>
           </td>
         </tr>
         <tr>
           <td>
-            <h5>{{musique.titre }} </h5>
+            <h5>{{musique.auteur}} </h5>
           </td>
         </tr>
       </table>
