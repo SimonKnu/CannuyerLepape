@@ -24,7 +24,7 @@ export class AccueilComponent implements OnInit {
   }
 
   public create(id_musique: number) {
-    this.achatService.createAchat(new Achat(this.singletonMembre.membre.mail,  id_musique, 1)).subscribe();
+    this.achatService.createAchat(new Achat(this.singletonMembre.membre.mail,  id_musique, 0)).subscribe();
   }
 
   get singletonMembre(): SingletonMembreService {
