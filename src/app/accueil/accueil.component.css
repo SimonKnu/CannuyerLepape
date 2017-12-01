@@ -1,4 +1,5 @@
-[class*="thumbnail"]{
-  background-color: #fafafa;
+[class*="col"]{
+  padding-bottom: 10px;
 }
+
 

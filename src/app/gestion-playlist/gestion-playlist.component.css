@@ -1,3 +1,7 @@
 [class*="name"]{
   text-align: center;
 }
+
+[class*="col"]{
+  padding-bottom: 10px;
+}

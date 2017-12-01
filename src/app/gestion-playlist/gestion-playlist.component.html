@@ -41,18 +41,14 @@
   <hr>
 </div>
 
-
 <div class="col-lg-9">
 
   <div class="name" *ngIf="nomPlaylist.length>0">
-    <div class="well well-sm">
-      <h3>{{nomPlaylist}}</h3>
-    </div>
+    <hr><h3>{{nomPlaylist}}</h3><hr>
   </div>
+
   <div class="name" *ngIf="nomPlaylist.length<1">
-    <div class="well well-sm">
-      <h3>Pas de playlist selectionnée</h3>
-    </div>
+    <hr><h3>Pas de playlist selectionnée</h3><hr>
   </div>
 
   <div *ngIf="listeMusique.length != 0">
