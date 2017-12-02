@@ -14,8 +14,7 @@ export class GestionMusiqueComponent implements OnInit {
   private auteur = '';
   private titre = '';
   private style = '';
-  private preview = '';
-  private musiquecomplet = '';
+  private url = '';
   private image = '';
   private id_musique: number;
   private prix: number;
@@ -38,35 +37,32 @@ export class GestionMusiqueComponent implements OnInit {
     this.auteur = this.listeMusique[i].auteur;
     this.titre = this.listeMusique[i].titre;
     this.style = this.listeMusique[i].style;
-    this.preview = this.listeMusique[i].preview;
+    this.url = this.listeMusique[i].url;
     this.image = this.listeMusique[i].image;
-    this.musiquecomplet = this.listeMusique[i].musiquecomplet;
     this.prix = this.listeMusique[i].prix;
   }
 
   public modifierMusique() {
-    const m = new Musique(this.id_musique, this.auteur, this.titre, this.style, this.preview, this.musiquecomplet, this.image, this.prix);
+    const m = new Musique(this.id_musique, this.auteur, this.titre, this.style, this.url, this.image, this.prix);
     this.listeMusique[this.index] = m;
     this.musiqueService.updateMusique(m).subscribe();
     this.id_musique = 0;
     this.auteur = '';
     this.titre = '';
     this.style = '';
-    this.preview = '';
     this.image = '';
-    this.musiquecomplet = '';
+    this.url = '';
     this.prix = 0;
   }
 
   public createMusique() {
-    this.musiqueService.createMusique(new Musique(0, this.auteur, this.titre,  this.style,  this.preview, this.musiquecomplet, this.image,  this.prix))
+    this.musiqueService.createMusique(new Musique(0, this.auteur, this.titre,  this.style, this.url, this.image,  this.prix))
       .subscribe(musique =>  this.listeMusique.push(Musique.fromJSON(musique)));
     this.auteur = '';
     this.titre = '';
     this.style = '';
-    this.preview = '';
+    this.url = '';
     this.image = '';
-    this.musiquecomplet = '';
     this.prix = 0;
   }
 }

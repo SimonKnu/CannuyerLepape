@@ -5,14 +5,14 @@
   <div  class="col-xs-6 col-md-4 col-lg-3" *ngFor="let musique of listeMusiqueAchete; index as i;">
       <div class="thumbnail">
         <img [src]="musique.image | image"  width="100%" height="100%">
-        <audio controls controlsList="nodownload" [src]="musique.musiquecomplet | musiquefull" style="width:100%;">Votre navigateur n'est pas compatible</audio>
+        <audio controls controlsList="nodownload" [src]="musique.url | musiquefull" style="width:100%;">Votre navigateur n'est pas compatible</audio>
         <table width="100%">
           <tr>
             <td>
               <h5><b>{{musique.titre }}</b></h5>
             </td>
             <td width="10%">
-               <a class="btn btn-lg" [href]="musique.musiquecomplet | musiquefull"  [download]="musique.musiquecomplet | musiquefull"><span class="glyphicon glyphicon-download-alt"></span></a>
+               <a class="btn btn-lg" [href]="musique.url | musiquefull"  [download]="musique.musiquecomplet | musiquefull"><span class="glyphicon glyphicon-download-alt"></span></a>
             </td>
           </tr>
           <tr>
