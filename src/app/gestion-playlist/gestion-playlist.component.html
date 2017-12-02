@@ -43,11 +43,11 @@
 
 <div class="col-lg-9">
 
-  <div class="name" *ngIf="nomPlaylist.length>0">
+  <div class="center" *ngIf="nomPlaylist.length>0">
     <hr><h3>{{nomPlaylist}}</h3><hr>
   </div>
 
-  <div class="name" *ngIf="nomPlaylist.length<1">
+  <div class="center" *ngIf="nomPlaylist.length<1">
     <hr><h3>Pas de playlist selectionnée</h3><hr>
   </div>
 
@@ -75,6 +75,9 @@
         </div>
       </div>
     </div>
+  </div>
+  <div *ngIf="listeMusique.length == 0">
+    <img src="image/notfound.png">
   </div>
 </div>
 
