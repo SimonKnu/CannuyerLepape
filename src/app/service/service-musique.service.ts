@@ -13,6 +13,9 @@ export class MusiqueService {
   public getAllMusique(): Observable<Musique[]> {
     return this.http.get('http://localhost:61812/api/musique');
   }
+  public getMusiqueAchat(mail:string, statut:number): Observable<Musique[]> {
+    return this.http.get('http://localhost:61812/api/musique?mail='+mail+"&statut="+statut);
+  }
 
   public getMusique(id_playlist: number): Observable<Musique[]> {
     return this.http.get('http://localhost:61812/api/musique?id_playlist=' + id_playlist);

@@ -25,7 +25,6 @@ export class ModalLogInComponent {
   private tmpMail:string="";
   private tmpMot_de_passe:string="";
   private modalRef:NgbModalRef;
-  @ViewChild("conten") popUpLogIn;
 
   constructor(private modalService: NgbModal, private connexionService:ConnexionService, private singletonMembre:SingletonMembreService) {}
 
@@ -46,10 +45,6 @@ export class ModalLogInComponent {
 
     this.tmpMail="";
     this.tmpMot_de_passe="";
-  }
-
-  ouvrirLogin(){
-    this.popUpLogIn.open();
   }
 
   open(content) {

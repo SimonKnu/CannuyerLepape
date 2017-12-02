@@ -10,7 +10,7 @@ import {AccueilComponent} from './accueil/accueil.component';
 import {GestionMusiqueComponent } from './gestion-musique/gestion-musique.component';
 import {GestionPlaylistComponent } from './gestion-playlist/gestion-playlist.component';
 import {MesmusiquesComponent } from './mesmusiques/mesmusiques.component';
-import {PanierComponent } from './panier/panier.component';
+import {PanierComponent } from './gestion-achat/panier/panier.component';
 import {ModalLogInComponent } from './accueil/nav-bar/modal-log-in/modal-log-in.component';
 import {ModalSignUpComponent } from './accueil/nav-bar/modal-sign-up/modal-sign-up.component';
 import {CreditComponent} from './credit/credit.component';
@@ -24,8 +24,7 @@ import {AchatService} from './service/achat.service';
 
 import {FormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {Router, RouterModule, Routes} from '@angular/router';
-import {UrlSafePipe } from './pipe/url-safe.pipe';
+import {RouterModule, Routes} from '@angular/router';
 import {EqualValidator} from './models/equal-validator';
 import {TokenInterceptor} from './models/token-interceptor';
 import {AuthService} from './service/auth.service';
@@ -33,6 +32,8 @@ import {JwtInterceptor} from "./models/jwt-interceptor";
 import { ImagePipe } from './pipe/image.pipe';
 import { PreviewPipe } from './pipe/preview.pipe';
 import { MusiquefullPipe } from './pipe/musiquefull.pipe';
+import { ConfirmationComponent } from './gestion-achat/confirmation/confirmation.component';
+import { ModalAccepteComponent } from './gestion-achat/confirmation/modal-accepte/modal-accepte.component';
 
 
 
@@ -45,6 +46,7 @@ const routes: Routes = [
   {path: 'gestionPlaylist', component: GestionPlaylistComponent},
   {path: 'mesmusiques', component: MesmusiquesComponent},
   {path: 'panier', component: PanierComponent},
+  {path: 'confirmation', component: ConfirmationComponent},
   {path: 'credit', component: CreditComponent},
   {path: 'logIn', component: ModalLogInComponent},
   //{path: '', redirectTo: '', pathMatch: 'full'},
@@ -63,18 +65,18 @@ const routes: Routes = [
     MesmusiquesComponent,
     PanierComponent,
     CreditComponent,
+    ConfirmationComponent,
 
-    UrlSafePipe,
     ImagePipe,
+    PreviewPipe,
+    MusiquefullPipe,
 
     ModalLogInComponent,
     ModalSignUpComponent,
     ModalPasswordComponent,
+    ModalAccepteComponent,
 
     EqualValidator,
-
-    PreviewPipe,
-    MusiquefullPipe,
   ],
   imports: [
     BrowserModule,

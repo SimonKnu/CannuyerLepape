@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MusiqueService} from '../service/service-musique.service';
 import {Musique} from '../models/musique';
+import {SingletonMembreService} from "../service/singleton-membre.service";
 
 @Component({
   selector: 'app-mesmusiques',
@@ -8,13 +9,13 @@ import {Musique} from '../models/musique';
   styleUrls: ['./mesmusiques.component.css']
 })
 export class MesmusiquesComponent implements OnInit {
-  private listeMusique: Musique[] = [];
+  private listeMusiqueAchete: Musique[] = [];
 
-  constructor(public musiqueService: MusiqueService) { }
+  constructor(public musiqueService: MusiqueService, private singletonMembre:SingletonMembreService) { }
 
   ngOnInit() {
-    this.musiqueService.getAllMusique().subscribe(listeMusique => {
-      this.listeMusique = Musique.fromJSONs(listeMusique);
+    this.musiqueService.getMusiqueAchat(this.singletonMembre.membre.mail,4).subscribe(listeMusique => {
+      this.listeMusiqueAchete = Musique.fromJSONs(listeMusique);
     });
   }
 
