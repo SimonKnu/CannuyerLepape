@@ -25,7 +25,6 @@ import {AchatService} from './service/achat.service';
 import {FormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {RouterModule, Routes} from '@angular/router';
-import {EqualValidator} from './models/equal-validator';
 import {TokenInterceptor} from './models/token-interceptor';
 import {AuthService} from './service/auth.service';
 import {JwtInterceptor} from "./models/jwt-interceptor";
@@ -34,6 +33,7 @@ import { PreviewPipe } from './pipe/preview.pipe';
 import { MusiquefullPipe } from './pipe/musiquefull.pipe';
 import { ConfirmationComponent } from './gestion-achat/confirmation/confirmation.component';
 import { ModalAccepteComponent } from './gestion-achat/confirmation/modal-accepte/modal-accepte.component';
+import { EqualValidator } from './directive/equal-validator.directive';
 
 
 
