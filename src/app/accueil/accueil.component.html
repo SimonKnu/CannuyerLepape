@@ -5,22 +5,22 @@
       <audio controls controlsList="nodownload" [src]="musique.preview | preview" style="width:100%;">Votre navigateur n'est pas compatible</audio>
       <table>
         <tr>
-          <td>
-            <h3>{{musique.titre }} </h3>
+          <td colspan="2">
+            <h5><b>{{musique.titre }}</b> </h5>
+          </td>
+        </tr>
+        <tr>
+          <td >
+            <h5>{{musique.auteur}} </h5>
           </td>
           <td width="15%">
             <div *ngIf="singletonMembre.isConnected; then connected else notconnected"></div>
             <ng-template #connected>
-              <button class="btn btn-lg btn-info" (click)="create(i)"><span class="glyphicon glyphicon-shopping-cart"></span> <i>{{musique.prix}} €</i></button>
+              <button class="btn" (click)="create(i)"><span class="glyphicon glyphicon-shopping-cart"></span> <i>{{musique.prix}} €</i></button>
             </ng-template>
             <ng-template #notconnected>
-              <button class="btn btn-lg btn-info" disabled="true"><span class="glyphicon glyphicon-shopping-cart"></span> <i>{{musique.prix}} €</i></button>
+              <button class="btn" disabled="true"><span class="glyphicon glyphicon-shopping-cart"></span> <i>{{musique.prix}} €</i></button>
             </ng-template>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2">
-            <h5>{{musique.auteur}} </h5>
           </td>
         </tr>
       </table>
