@@ -14,7 +14,7 @@ export class MesmusiquesComponent implements OnInit {
   constructor(public musiqueService: MusiqueService, private singletonMembre:SingletonMembreService) { }
 
   ngOnInit() {
-    this.musiqueService.getAllMusique().subscribe(listeMusique => {
+    this.musiqueService.getMusiqueAchat(this.singletonMembre.membre.mail,4).subscribe(listeMusique => {
       this.listeMusiqueAchete = Musique.fromJSONs(listeMusique);
     });
   }
