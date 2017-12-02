@@ -54,7 +54,7 @@
     <div *ngFor="let musique of listeMusique; index as i;">
       <div class="col-xs-6 col-md-4 col-lg-4">
         <div class="thumbnail">
-          <img [src]="musique.image | image"  width="100%" height="100%" maxlength="100%">
+          <img [src]="musique.image | image"  width="100%" height="100%">
           <audio controls controlsList="nodownload" [src]="musique.musiquecomplet | musiquefull" style="width:100%;">Votre navigateur n'est pas compatible</audio>
           <table width="100%">
             <tr>
