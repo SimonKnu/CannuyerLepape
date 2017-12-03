@@ -3,8 +3,10 @@ import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from
 import {Observable} from "rxjs/Observable";
 import {HttpErrorResponse} from "@angular/common/http";
 import {Injectable, Injector} from "@angular/core";
-import {Router} from "@angular/router";
 import {SingletonMembreService} from "../service/singleton-membre.service";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {ModalLogInComponent} from "../accueil/nav-bar/modal-log-in/modal-log-in.component";
+import {ModalService} from "../service/modal-service.service";
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
@@ -21,7 +23,12 @@ export class JwtInterceptor implements HttpInterceptor {
       if (err instanceof HttpErrorResponse){
         if (err.status === 401) {
           const redirect = this.injector.get(SingletonMembreService);
-          redirect.reconnexion();
+          redirect.supprimerConnexion();
+
+
+          const login = this.injector.get(NgbModal);
+          const refModal = this.injector.get(ModalService);
+          refModal.modalLogin = login.open(ModalLogInComponent, {windowClass: 'milieu-ecran'});
         }
       }
     });

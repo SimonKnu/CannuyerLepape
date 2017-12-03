@@ -5,7 +5,7 @@
 <form #formulaire="ngForm">
   <div class="row">
     <div class="form-group col-md-6">
-        <h3 class="text-danger">Veuillez compléter tous les champs pour continuer</h3><br/>
+        <h3>Adresse de facturation</h3><br/>
         <div class="form-group">
           <label for="nom">Nom</label>
           <input type="text" class="form-control" id="nom" placeholder="Nom" name="nom" [(ngModel)]="nom" required>
@@ -40,28 +40,55 @@
             <input type="text" class="form-control" id="code_postal" placeholder="Code postal" name="code_postal" [(ngModel)]="code_postal" required minlength="1">
           </div>
         </div>
+        <h5 class="text-danger">Veuillez compléter tous les champs pour continuer</h5>
     </div>
 
-    <div class="form-group col-md-6">
-        <h3>Récapitulatif de votre commande</h3><br/>
-        Total à payer : {{totalAPayer}}
+    <div class="col-md-6">
+        <h3>Récapitulatif de votre commande</h3><br/><br/>
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <td colspan="2"><img src="image/logo2.png" height="150"></td>
+            </tr>
+            <tr align="center">
+              <th colspan="2">Musiques</th>
+            </tr>
+            <tr>
+              <td>
+                <div *ngFor="let musiquePanier of listeMusiquePanier; index as i;">{{musiquePanier.titre}}</div>
+              </td>
+              <td align="center">
+                <div *ngFor="let musiquePanier of listeMusiquePanier; index as i;">{{musiquePanier.prix}} €</div>
+              </td>
+            </tr>
+            <tr align="center">
+              <th>Total à payer</th>
+              <th class="table-success">{{getTotal()}} €</th>
+            </tr>
+            <tr>
+              <td colspan="2" align="center" class="was-validated">
+                <label class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" (change)="changeChecked($event)" required>
+                  <span class="custom-control-indicator"></span>
+                  <span class="custom-control-description">J'ai lu et j'accepte les conditions générales de TrackCity</span>
+                </label>
+              </td>
+            </tr>
+            <tr align="center">
+              <td colspan="2">  <div class="col-3"><span class="float-right"><button type="button" class="btn btn-success btn-lg" [disabled]="!formulaire.form.valid || !checked" (click)="payer()">Confirmer</button></span></div></td>
+            </tr>
+          </tbody>
 
-
-
-
-        <div class="checkbox">
-          <label><input type="checkbox" value="" required>J'ai lu et j'accepte les conditions générales de TrackCity</label>
-        </div>
+        </table>
     </div>
+
   </div>
 </form>
 
 
 <br/>
 
-<app-modal-payement></app-modal-payement>
 
 <div class="row">
   <div class="col-6"><button type="button" class="btn btn-outline-secondary btn-lg" routerLink="../panier">Retour au panier</button></div>
-  <div class="col-3"><span class="float-right"><button type="button" class="btn btn-success btn-lg" [disabled]="!formulaire.form.valid">Confirmer</button></span></div>
 </div>

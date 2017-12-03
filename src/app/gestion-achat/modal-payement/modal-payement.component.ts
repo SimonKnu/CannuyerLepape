@@ -1,5 +1,5 @@
-import {Component, ViewEncapsulation} from '@angular/core';
-import {ModalDismissReasons, NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
+import {Component, OnInit, ViewEncapsulation,} from '@angular/core';
+import {ModalService} from "../../service/modal-service.service";
 
 @Component({
   selector: 'app-modal-payement',
@@ -17,27 +17,10 @@ import {ModalDismissReasons, NgbModal, NgbModalRef} from "@ng-bootstrap/ng-boots
   `]
 })
 export class ModalPayementComponent {
-  closeResult: string;
-  private modalRef:NgbModalRef;
+  constructor(private refModal: ModalService) {}
 
-  constructor(private modalService: NgbModal) {}
-
-  open(content) {
-    this.modalRef = this.modalService.open(content,  {windowClass:'milieu-ecran'});
-    this.modalRef.result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
+  public fermer(){
+    this.refModal.modalPayement.close();
   }
 
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return  `with: ${reason}`;
-    }
-  }
 }

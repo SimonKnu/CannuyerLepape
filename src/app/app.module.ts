@@ -33,7 +33,8 @@ import {MusiquefullPipe } from './pipe/musiquefull.pipe';
 import {ConfirmationComponent } from './gestion-achat/confirmation/confirmation.component';
 import {EqualValidator } from './directive/equal-validator.directive';
 import {ModalCreditComponent } from './accueil/nav-bar/modal-credit/modal-credit.component';
-import { ModalPayementComponent } from './gestion-achat/modal-payement/modal-payement.component';
+import {ModalPayementComponent } from './gestion-achat/modal-payement/modal-payement.component';
+import {ModalService} from "./service/modal-service.service";
 
 
 
@@ -87,7 +88,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
   ],
   providers: [ConnexionService, PlaylistService, MusiqueService, PlaylistmusiqueService,
-    SingletonMembreService, AchatService, AuthService, {
+    SingletonMembreService, AchatService, AuthService, ModalService, {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true
@@ -96,6 +97,7 @@ const routes: Routes = [
       useClass: JwtInterceptor,
       multi: true
     }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents : [ModalPayementComponent, ModalLogInComponent],
 })
 export class AppModule {}

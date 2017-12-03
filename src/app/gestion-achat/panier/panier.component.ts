@@ -33,10 +33,4 @@ export class PanierComponent implements OnInit {
     this.serviceAchat.deleteAchat(this.listeMusiquePanier[i].id_musique,this.singletonMembre.membre.mail).subscribe();
     this.listeMusiquePanier.splice(i,1);
   }
-
-  public goToConfirmation(){
-    this.serviceAchat.totalPanier = this.getTotal();
-    this.router.navigate(["confirmation"]);
-  }
-
 }

@@ -3,6 +3,10 @@ import {SingletonMembreService} from "../../service/singleton-membre.service";
 import {AuthService} from "../../service/auth.service";
 import {AchatService} from "../../service/achat.service";
 import {MusiqueService} from "../../service/service-musique.service";
+import {ModalPayementComponent} from "../../gestion-achat/modal-payement/modal-payement.component";
+import {ModalLogInComponent} from "./modal-log-in/modal-log-in.component";
+import {ModalService} from "../../service/modal-service.service";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-nav-bar',
@@ -11,7 +15,8 @@ import {MusiqueService} from "../../service/service-musique.service";
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(private _singletonMembre:SingletonMembreService, private auth:AuthService, private _serviceAchat:AchatService, private serviceMusique:MusiqueService) { }
+  constructor(private _singletonMembre:SingletonMembreService, private auth:AuthService, private _serviceAchat:AchatService,
+              private refModal:ModalService, private modalService:NgbModal, private serviceMusique:MusiqueService) { }
 
 
   ngOnInit() {
@@ -38,19 +43,26 @@ export class NavBarComponent implements OnInit {
       this._singletonMembre.isConnected=true;
     }
 
-    this.serviceMusique.getMusiqueAchat(this.singletonMembre.membre.mail,0).subscribe(listeMusique => {
-      localStorage.setItem("nbPanier",listeMusique.length+"");
-    });
+    if(this._singletonMembre.isConnected) {
+      this.serviceMusique.getMusiqueAchat(this.singletonMembre.membre.mail, 0).subscribe(listeMusique => {
+        localStorage.setItem("nbPanier", listeMusique.length + "");
+      });
+    }
   }
-
 
   get singletonMembre(): SingletonMembreService {
     return this._singletonMembre;
   }
-
-
   get serviceAchat(): AchatService {
     return this._serviceAchat;
   }
+
+
+
+
+  public ouvrir(){
+    this.refModal.modalLogin = this.modalService.open(ModalLogInComponent,{windowClass:'milieu-ecran'});
+  }
+
 
 }

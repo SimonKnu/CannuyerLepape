@@ -6,13 +6,14 @@ import {ModalLogInComponent} from "../accueil/nav-bar/modal-log-in/modal-log-in.
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {AchatService} from "./achat.service";
 import {MusiqueService} from "./service-musique.service";
+import {ModalService} from "./modal-service.service";
 
 @Injectable()
 export class SingletonMembreService {
   private _membre:Membre=new Membre();
   private _isConnected:boolean=false;
 
-  constructor(private connexionService:ConnexionService, private router:Router, private serviceMusique:MusiqueService) {
+  constructor(private connexionService:ConnexionService,private refModal:ModalService, private modalService:NgbModal, private router:Router, private serviceMusique:MusiqueService) {
   }
 
   get membre(): Membre {
@@ -46,10 +47,6 @@ export class SingletonMembreService {
     this.isConnected=false;
     localStorage.clear();
     this.router.navigate([""]);
-  }
-  reconnexion(){
-    this.supprimerConnexion();
-    //Ouvrir le popUp à partir d'ici
   }
 
   private storerInfo(){

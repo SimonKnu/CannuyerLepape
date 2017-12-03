@@ -25,14 +25,6 @@ export class AchatService {
   }
 
 
-  get totalPanier(): number {
-    return this._totalPanier;
-  }
-  set totalPanier(value: number) {
-    this._totalPanier = value;
-  }
-
-
   get nbPanier(): number {
     let val:number = parseInt(localStorage.getItem("nbPanier"));
     if(isNaN(val)){

@@ -1,8 +1,9 @@
-import {Component, ViewChild, ViewEncapsulation} from '@angular/core';
-import {ModalDismissReasons, NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
+import {Component, ViewEncapsulation} from '@angular/core';
+import {NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
 
 import {ConnexionService} from "../../../service/service-connexion.service";
 import {SingletonMembreService} from "../../../service/singleton-membre.service";
+import {ModalService} from "../../../service/modal-service.service";
 
 @Component({
   selector: 'app-modal-log-in',
@@ -21,12 +22,10 @@ import {SingletonMembreService} from "../../../service/singleton-membre.service"
 })
 
 export class ModalLogInComponent {
-  closeResult: string;
   private tmpMail:string="";
   private tmpMot_de_passe:string="";
-  private modalRef:NgbModalRef;
 
-  constructor(private modalService: NgbModal, private connexionService:ConnexionService, private singletonMembre:SingletonMembreService) {}
+  constructor(private modalService:ModalService, private connexionService:ConnexionService, private singletonMembre:SingletonMembreService) {}
 
   public connexion() {
     let mail:string = this.tmpMail;
@@ -39,7 +38,7 @@ export class ModalLogInComponent {
         localStorage.setItem("token",token);
         localStorage.setItem("mail",mail);
         this.singletonMembre.creerConnexion(mail);
-        this.modalRef.close();
+        this.fermer();
       }
     });
 
@@ -47,23 +46,7 @@ export class ModalLogInComponent {
     this.tmpMot_de_passe="";
   }
 
-  open(content) {
-    this.modalRef = this.modalService.open(content,{ windowClass: 'milieu-ecran' });
-    this.modalRef.result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-  }
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    }
-    else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    }
-    else {
-      return  `with: ${reason}`;
-    }
+  fermer() {
+    this.modalService.modalLogin.close();
   }
 }
