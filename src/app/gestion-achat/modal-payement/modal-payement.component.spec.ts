@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ModalAccepteComponent } from './modal-accepte.component';
+import { ModalPayementComponent } from './modal-payement.component';
 
-describe('ModalAccepteComponent', () => {
-  let component: ModalAccepteComponent;
-  let fixture: ComponentFixture<ModalAccepteComponent>;
+describe('ModalPayementComponent', () => {
+  let component: ModalPayementComponent;
+  let fixture: ComponentFixture<ModalPayementComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ModalAccepteComponent ]
+      declarations: [ ModalPayementComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ModalAccepteComponent);
+    fixture = TestBed.createComponent(ModalPayementComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreditComponent } from './credit.component';
+import { ModalCreditComponent } from './modal-credit.component';
 
-describe('CreditComponent', () => {
-  let component: CreditComponent;
-  let fixture: ComponentFixture<CreditComponent>;
+describe('ModalCreditComponent', () => {
+  let component: ModalCreditComponent;
+  let fixture: ComponentFixture<ModalCreditComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CreditComponent ]
+      declarations: [ ModalCreditComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CreditComponent);
+    fixture = TestBed.createComponent(ModalCreditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

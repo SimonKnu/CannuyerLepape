@@ -1,4 +1,4 @@
-import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {SingletonMembreService} from "../service/singleton-membre.service";
 import {Membre} from "../models/membre";
 import {ConnexionService} from "../service/service-connexion.service";
@@ -8,7 +8,7 @@ import {ConnexionService} from "../service/service-connexion.service";
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.css'],
 })
-export class AccountComponent implements OnInit {
+export class AccountComponent implements OnInit{
   private _modifOk:boolean=false;
   private nom:string="";
   private prenom:string="";
@@ -20,8 +20,8 @@ export class AccountComponent implements OnInit {
   private code_postal:number=0;
 
 
-  constructor(private _membreConnecter:SingletonMembreService, private serviceConnexion:ConnexionService) {
-  }
+  constructor(private _membreConnecter:SingletonMembreService, private serviceConnexion:ConnexionService) {}
+
   ngOnInit() {
     this.nom = this.membreConnecter.membre.nom;
     this.prenom = this.membreConnecter.membre.prenom;

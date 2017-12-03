@@ -4,13 +4,15 @@ import {ConnexionService} from "./service-connexion.service";
 import {Router} from "@angular/router";
 import {ModalLogInComponent} from "../accueil/nav-bar/modal-log-in/modal-log-in.component";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {AchatService} from "./achat.service";
+import {MusiqueService} from "./service-musique.service";
 
 @Injectable()
 export class SingletonMembreService {
   private _membre:Membre=new Membre();
   private _isConnected:boolean=false;
 
-  constructor(private connexionService:ConnexionService, private router:Router) {
+  constructor(private connexionService:ConnexionService, private router:Router, private serviceMusique:MusiqueService) {
   }
 
   get membre(): Membre {
@@ -33,6 +35,10 @@ export class SingletonMembreService {
       this.membre = Membre.fromJSON(membre);
       this.isConnected=true;
       this.storerInfo();
+
+      this.serviceMusique.getMusiqueAchat(this.membre.mail,0).subscribe(listeMusique => {
+        localStorage.setItem("nbPanier",listeMusique.length+"");
+      });
     });
   }
   supprimerConnexion(){

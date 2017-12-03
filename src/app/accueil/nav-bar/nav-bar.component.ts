@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {SingletonMembreService} from "../../service/singleton-membre.service";
 import {AuthService} from "../../service/auth.service";
+import {AchatService} from "../../service/achat.service";
+import {MusiqueService} from "../../service/service-musique.service";
 
 @Component({
   selector: 'app-nav-bar',
@@ -9,7 +11,7 @@ import {AuthService} from "../../service/auth.service";
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(private _singletonMembre:SingletonMembreService, private auth:AuthService) { }
+  constructor(private _singletonMembre:SingletonMembreService, private auth:AuthService, private _serviceAchat:AchatService, private serviceMusique:MusiqueService) { }
 
 
   ngOnInit() {
@@ -35,10 +37,20 @@ export class NavBarComponent implements OnInit {
 
       this._singletonMembre.isConnected=true;
     }
+
+    this.serviceMusique.getMusiqueAchat(this.singletonMembre.membre.mail,0).subscribe(listeMusique => {
+      localStorage.setItem("nbPanier",listeMusique.length+"");
+    });
   }
 
 
   get singletonMembre(): SingletonMembreService {
     return this._singletonMembre;
   }
+
+
+  get serviceAchat(): AchatService {
+    return this._serviceAchat;
+  }
+
 }

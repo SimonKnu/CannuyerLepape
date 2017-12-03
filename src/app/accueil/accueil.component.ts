@@ -15,7 +15,7 @@ export class AccueilComponent implements OnInit {
 
   private listeMusique: Musique[] = [];
 
-  constructor(public musiqueService: MusiqueService, public achatService: AchatService, public singletonMembreService: SingletonMembreService, private router:Router) { }
+  constructor(public musiqueService: MusiqueService, public achatService: AchatService, public singletonMembreService: SingletonMembreService) { }
 
   ngOnInit() {
     this.musiqueService.getAllMusique().subscribe(listeMusique => {
@@ -24,6 +24,7 @@ export class AccueilComponent implements OnInit {
   }
 
   public create(ind:number) {
+    alert("Musique ajoutée au panier");
     let id_musique : number = this.listeMusique[ind].id_musique;
 
     this.achatService.createAchat(new Achat(this.singletonMembre.membre.mail, id_musique, 0)).subscribe();

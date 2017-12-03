@@ -1,3 +1,67 @@
-<p>
-  Total à payer : {{totalAPayer}}
-</p>
+<hr>
+  <h1>Confirmation de votre commande</h1>
+<hr>
+
+<form #formulaire="ngForm">
+  <div class="row">
+    <div class="form-group col-md-6">
+        <h3 class="text-danger">Veuillez compléter tous les champs pour continuer</h3><br/>
+        <div class="form-group">
+          <label for="nom">Nom</label>
+          <input type="text" class="form-control" id="nom" placeholder="Nom" name="nom" [(ngModel)]="nom" required>
+        </div>
+        <div class="form-group">
+          <label for="prenom">Prénom</label>
+          <input type="text" class="form-control" id="prenom" placeholder="Prénom" name="prenom" [(ngModel)]="prenom" required>
+        </div>
+        <div class="form-group">
+          <label for="date_naissance">Date de naissance</label>
+          <input type="text" class="form-control" id="date_naissance" placeholder="2010/10/20" name="date_naissance" [(ngModel)]="date_naissance" required>
+        </div>
+        <div class="form-group">
+          <label for="telephone">Téléphone</label>
+          <input type="text" class="form-control" id="telephone" placeholder="0000/00.00.00" name="telephone" [(ngModel)]="telephone" required>
+        </div>
+        <div class="form-group">
+          <label for="rue">Adresse</label>
+          <input type="text" class="form-control" id="rue" placeholder="Rue" name="rue" [(ngModel)]="rue" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="ville">Ville</label>
+            <input type="text" class="form-control" id="ville" placeholder="Ville" name="ville" [(ngModel)]="ville" required>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="pays">Pays</label>
+            <input type="text" class="form-control" id="pays" placeholder="Pays" name="pays" [(ngModel)]="pays" required>
+          </div>
+          <div class="form-group col-md-2">
+            <label for="code_postal">Code postal</label>
+            <input type="text" class="form-control" id="code_postal" placeholder="Code postal" name="code_postal" [(ngModel)]="code_postal" required minlength="1">
+          </div>
+        </div>
+    </div>
+
+    <div class="form-group col-md-6">
+        <h3>Récapitulatif de votre commande</h3><br/>
+        Total à payer : {{totalAPayer}}
+
+
+
+
+        <div class="checkbox">
+          <label><input type="checkbox" value="" required>J'ai lu et j'accepte les conditions générales de TrackCity</label>
+        </div>
+    </div>
+  </div>
+</form>
+
+
+<br/>
+
+<app-modal-payement></app-modal-payement>
+
+<div class="row">
+  <div class="col-6"><button type="button" class="btn btn-outline-secondary btn-lg" routerLink="../panier">Retour au panier</button></div>
+  <div class="col-3"><span class="float-right"><button type="button" class="btn btn-success btn-lg" [disabled]="!formulaire.form.valid">Confirmer</button></span></div>
+</div>

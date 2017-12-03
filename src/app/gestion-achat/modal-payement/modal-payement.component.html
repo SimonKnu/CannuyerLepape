@@ -1,0 +1,26 @@
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Payement</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="aPayer">Montant total pour les musiques :</label>
+        <input  name="text" id="aPayer" class="form-control" disabled type="aPayer" placeholder="0 €" value="{{66}}">
+      </div>
+      <div class="form-group">
+        <label for="argent">Montant sur votre compte :</label>
+        <input type="text" class="form-control" name="argent" disabled id="argent" placeholder="0 €" value="{{55}}">
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Annuler</button>
+    <button type="submit" class="btn btn-success" >Confirmer</button>
+  </div>
+</ng-template>
+
+<button class="btn btn-primary" (click)="open(content)">Confirmer</button>

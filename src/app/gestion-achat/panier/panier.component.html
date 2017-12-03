@@ -1,5 +1,8 @@
+<hr>
+  <h1>Mon panier </h1>
+<hr>
+
 <span *ngIf="listeMusiquePanier.length != 0">
-  <h1>Articles présents dans votre panier :</h1>
 
   <table class="table table-sm">
     <thead>
@@ -9,6 +12,7 @@
         <th scope="col">Auteur</th>
         <th scope="col">Titre</th>
         <th scope="col">Prix</th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
@@ -30,15 +34,13 @@
       </tr>
     </tbody>
   </table>
-
+  <br/>
   <div class="row">
-    <div class="col-6"><button type="button" class="btn btn-outline-secondary" routerLink="">Continuer mes achats</button></div>
-    <div class="col-6"><span class="float-right"><button type="button" class="btn btn-outline-success" (click)="goToConfirmation()">Passer ma commande</button></span></div>
+    <div class="col-6"><button type="button" class="btn btn-outline-secondary btn-lg" routerLink="">Continuer mes achats</button></div>
+    <div class="col-3"><span class="float-right"><button type="button" class="btn btn-success btn-lg" (click)="goToConfirmation()">Passer ma commande</button></span></div>
   </div>
 </span>
 
 <span *ngIf="listeMusiquePanier.length == 0">
-  <ngb-alert [dismissible]="false">
-    <strong>Le panier est vide</strong>
-  </ngb-alert>
+  <img src="image/notfoundpanier.png">
 </span>
