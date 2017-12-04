@@ -13,7 +13,7 @@ export class SingletonMembreService {
   private _membre:Membre=new Membre();
   private _isConnected:boolean=false;
 
-  constructor(private connexionService:ConnexionService, private router:Router, private serviceMusique:MusiqueService) {
+  constructor(private connexionService:ConnexionService, private modalService:ModalService,private router:Router, private serviceMusique:MusiqueService) {
   }
 
   get membre(): Membre {

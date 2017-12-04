@@ -39,7 +39,9 @@ export class ModalLogInComponent {
         localStorage.setItem("token",token);
         localStorage.setItem("mail",mail);
         this.singletonMembre.creerConnexion(mail);
-        this.fermer();
+
+        this.modalService.modalLogin.close();
+        this.router.navigate(["wait"]);
       }
     });
 
