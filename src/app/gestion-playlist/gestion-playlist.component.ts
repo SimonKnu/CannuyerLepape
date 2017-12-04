@@ -5,7 +5,7 @@ import {Musique} from '../models/musique';
 import {MusiqueService} from '../service/service-musique.service';
 import {SingletonMembreService} from '../service/singleton-membre.service';
 import {PlaylistmusiqueService} from '../service/playlistmusique.service';
-import {Playlistmusique} from "../models/playlistmusique";
+import {Playlistmusique} from '../models/playlistmusique';
 
 @Component({
   selector: 'app-gestion-playlist',
@@ -31,7 +31,7 @@ export class GestionPlaylistComponent implements OnInit {
       this.listePlaylist = Playlist.fromJSONs(listePlaylist);
     });
 
-    this.musiqueService.getMusiqueAchat(this._membreConnecter.membre.mail,1).subscribe(listeMusique => {
+    this.musiqueService.getMusiqueAchat(this._membreConnecter.membre.mail, 1).subscribe(listeMusique => {
       this.listAdd = Musique.fromJSONs(listeMusique);
     });
   }
@@ -68,13 +68,11 @@ export class GestionPlaylistComponent implements OnInit {
   }
 
   public deleteMusique() {
-    this.playlistmusiqueService.deleteAllMusique(this.id_playlist).subscribe();
-    this.listeMusique = [];
-
     const DELETE = () => this.listePlaylist.splice(this.index, 1);
     const DISPLAY_ERROR = (error) => console.error(error);
 
     this.playlistService.deletePlaylist(this.id_playlist, this._membreConnecter.membre.mail).subscribe(DELETE, DISPLAY_ERROR);
     this.nomPlaylist = '';
+    this.listeMusique = [];
   }
 }
