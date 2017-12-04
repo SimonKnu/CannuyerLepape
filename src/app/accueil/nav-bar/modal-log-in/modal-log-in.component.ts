@@ -38,7 +38,10 @@ export class ModalLogInComponent {
       else {
         localStorage.setItem("token",token);
         localStorage.setItem("mail",mail);
+
         this.singletonMembre.creerConnexion(mail);
+        this.modalService.modalLogin.close();
+        this.router.navigate(["wait"]);
       }
     });
 
@@ -47,7 +50,7 @@ export class ModalLogInComponent {
   }
 
   fermer() {
-    this.modalService.modalLogin.close();
     this.router.navigate(["wait"]);
+    this.modalService.modalLogin.close();
   }
 }

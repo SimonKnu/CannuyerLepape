@@ -3,7 +3,7 @@ import {Membre} from "../models/membre";
 import {ConnexionService} from "./service-connexion.service";
 import {Router} from "@angular/router";
 import {ModalLogInComponent} from "../accueil/nav-bar/modal-log-in/modal-log-in.component";
-import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
 import {AchatService} from "./achat.service";
 import {MusiqueService} from "./service-musique.service";
 import {ModalService} from "./modal-service.service";
@@ -13,7 +13,7 @@ export class SingletonMembreService {
   private _membre:Membre=new Membre();
   private _isConnected:boolean=false;
 
-  constructor(private connexionService:ConnexionService, private modalService:ModalService,private router:Router, private serviceMusique:MusiqueService) {
+  constructor(private modalRef:ModalService,private connexionService:ConnexionService,private router:Router, private serviceMusique:MusiqueService) {
   }
 
   get membre(): Membre {
@@ -40,9 +40,6 @@ export class SingletonMembreService {
       this.serviceMusique.getMusiqueAchat(this.membre.mail,0).subscribe(listeMusique => {
         localStorage.setItem("nbPanier",listeMusique.length+"");
       });
-
-      this.modalService.modalLogin.close();
-      this.router.navigate(["wait"]);
     });
   }
   supprimerConnexion(){
@@ -51,6 +48,14 @@ export class SingletonMembreService {
     localStorage.clear();
 
     this.router.navigate(["wait"]);
+  }
+
+  retryConnexion(){
+    this.membre=new Membre();
+    this.isConnected=false;
+    localStorage.clear();
+
+    this.router.navigate([""]);
   }
 
   private storerInfo(){

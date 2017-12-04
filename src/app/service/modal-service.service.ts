@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import {NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
+import {NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
+import {ModalLogInComponent} from "../accueil/nav-bar/modal-log-in/modal-log-in.component";
 
 @Injectable()
 export class ModalService {
@@ -22,6 +23,11 @@ export class ModalService {
     return this._modalLogin;
   }
   set modalLogin(value: NgbModalRef) {
+    console.log("SALUT c");
+    if(this._modalLogin){
+      this._modalLogin.close();
+      console.log("SALUT DELTEE");
+    }
     this._modalLogin = value;
   }
 }

@@ -23,8 +23,7 @@ export class JwtInterceptor implements HttpInterceptor {
       if (err instanceof HttpErrorResponse){
         if (err.status === 401) {
           const redirect = this.injector.get(SingletonMembreService);
-          redirect.supprimerConnexion();
-
+          redirect.retryConnexion();
 
           const login = this.injector.get(NgbModal);
           const refModal = this.injector.get(ModalService);
