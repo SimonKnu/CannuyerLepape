@@ -16,13 +16,6 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 })
 export class NavBarComponent implements OnInit {
 
-  private search = '';
-  @Output() rechercher: EventEmitter<string> = new EventEmitter();
-
-  public emitChange() {
-    this.rechercher.emit(this.search);
-  }
-
   constructor(private _singletonMembre: SingletonMembreService, private auth: AuthService, private _serviceAchat: AchatService,
               private refModal: ModalService, private modalService: NgbModal, private serviceMusique: MusiqueService) { }
 

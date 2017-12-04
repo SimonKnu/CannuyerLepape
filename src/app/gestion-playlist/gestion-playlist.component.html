@@ -1,43 +1,39 @@
 
 <div class="col-xs-12 col-md-3 col-lg-3">
-  <div *ngIf="nomPlaylist.length>0">
-    <div ngbDropdown class="d-inline-block btn-block">
-      <button class="btn btn-success btn-lg btn-block" id="dropdown" ngbDropdownToggle><span class="glyphicon glyphicon-plus"></span> Ajouter une musique</button>
-      <button class="btn btn-danger btn-lg btn-block" (click)="deleteMusique()">Supprimer la playlist</button>
-      <div ngbDropdownMenu aria-labelledby="dropdown">
-        <button class="dropdown-item" *ngFor="let musique of listeTmp; index as i;" (click)="createPlaylistMusique(musique, i)">{{musique.auteur}} - {{musique.titre}}</button>
-      </div>
-    </div>
-    <hr>
-  </div>
-  <p>
-    <button class="btn btn-success btn-lg btn-block" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample"><span class="glyphicon glyphicon-plus"></span> Nouvelle playlist</button>
-  </p>
-
-  <div id="collapseExample" [ngbCollapse]="isCollapsed">
-    <form #formulaire="ngForm" (submit)="createPlaylist()">
-      <div class="form-group">
-        <label for="nom">Nom</label>
-        <input type="text" class="form-control" id="nom" placeholder="Nom" name="nom" [(ngModel)]="nom" required>
-      </div>
-      <button type="submit" class="btn btn-primary btn-default" [disabled]="!formulaire.form.valid">Ajouter</button>
-    </form>
-    <br>
-  </div>
-
-  <p>
-    <span *ngIf="listePlaylist.length != 0">
-      <p *ngFor="let playlist of listePlaylist; index as i;">
-        <button class="btn btn-primary btn-lg btn-block" (click)="updateList(playlist, i)" >{{playlist.nom}}</button>
+  <table>
+    <tr>
+      <td>
+      <p>
+        <button class="btn btn-success btn-lg btn-block" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample"><span class="glyphicon glyphicon-plus"></span> Nouvelle playlist</button>
       </p>
-    </span>
 
-    <span *ngIf="listePlaylist.length == 0">
-      <ngb-alert [dismissible]="false">
-        <strong>Pas de playlist disponible...</strong>
-      </ngb-alert>
-    </span>
-  </p>
+      <div id="collapseExample" [ngbCollapse]="isCollapsed">
+        <form #formulaire="ngForm" (submit)="createPlaylist()">
+          <div class="form-group">
+            <label for="nom">Nom</label>
+            <input type="text" class="form-control" id="nom" placeholder="Nom" name="nom" [(ngModel)]="nom" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-default" [disabled]="!formulaire.form.valid">Ajouter</button>
+        </form>
+        <br>
+      </div>
+
+      <p>
+        <span *ngIf="listePlaylist.length != 0">
+          <p *ngFor="let playlist of listePlaylist; index as i;">
+            <button class="btn btn-primary btn-lg btn-block" (click)="updateList(playlist, i)" >{{playlist.nom}}</button>
+          </p>
+        </span>
+
+        <span *ngIf="listePlaylist.length == 0">
+          <ngb-alert [dismissible]="false">
+            <strong>Pas de playlist disponible...</strong>
+          </ngb-alert>
+        </span>
+      </p>
+      </td>
+    </tr>
+  </table>
 </div>
 
 <div class="col-xs-12 col-md-9 col-lg-9">
@@ -50,7 +46,22 @@
     <hr><h3>Pas de playlist selectionnée</h3><hr>
   </div>
 
+  <div *ngIf="nomPlaylist.length>0">
+    <div class="col-lg-6">
+      <div ngbDropdown class="d-inline-block btn-block">
+        <button class="btn btn-success btn-lg btn-block" id="dropdown" ngbDropdownToggle><span class="glyphicon glyphicon-plus"></span> Ajouter une musique</button>
+        <div ngbDropdownMenu aria-labelledby="dropdown">
+          <button class="dropdown-item" *ngFor="let musique of listeTmp; index as i;" (click)="createPlaylistMusique(musique, i)">{{musique.auteur}} - {{musique.titre}}</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <button class="btn btn-danger btn-lg btn-block" (click)="deleteMusique()">Supprimer la playlist</button>
+    </div>
+  </div>
+
   <div *ngIf="listeMusique.length != 0">
+    <br> <br> <br>
     <div *ngFor="let musique of listeMusique; index as i;">
       <div class="col-xs-6 col-md-4 col-lg-4">
         <div class="thumbnail">

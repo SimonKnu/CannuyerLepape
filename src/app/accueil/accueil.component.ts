@@ -14,7 +14,7 @@ export class AccueilComponent implements OnInit {
 
   private listeMusique: Musique[] = [];
   private listeMusiquePossede: Musique[] = [];
-  @Input() searchFilter = '';
+  private searchFilter = '';
 
   constructor(public musiqueService: MusiqueService, public achatService: AchatService, public singletonMembreService: SingletonMembreService) { }
 

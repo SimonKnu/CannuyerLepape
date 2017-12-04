@@ -6,9 +6,6 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <input class="form-control mr-sm-2" type="search" placeholder="Rechercher par titre..." aria-label="Search" [(ngModel)]="search" (ngModelChange)="emitChange()">
-  </div>
   <div *ngIf="singletonMembre.isConnected; then connected else notconnected"></div>
   <!--Connecté-->
   <ng-template #connected>
