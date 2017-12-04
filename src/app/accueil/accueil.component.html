@@ -15,11 +15,13 @@
             <ng-template #musiquePasConnected>
               <audio controls controlsList="nodownload" [src]="musique.url | preview" style="width:100%;">Votre navigateur n'est pas compatible</audio>
             </ng-template>
+
         </ng-template>
 
         <ng-template #notachetedMusique>
           <audio controls controlsList="nodownload" [src]="musique.url | preview" style="width:100%;">Votre navigateur n'est pas compatible</audio>
         </ng-template>
+
       <table>
         <tr>
           <td colspan="2">
