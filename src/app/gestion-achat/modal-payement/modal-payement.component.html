@@ -9,16 +9,16 @@
     <form>
       <div class="form-group">
         <label for="aPayer">Montant total pour les musiques :</label>
-        <input  name="text" id="aPayer" class="form-control" disabled type="aPayer" placeholder="0 €" value="{{66}}">
+        <input  name="text" id="aPayer" class="form-control" disabled type="aPayer" placeholder="0 €" value="{{achatService.prixPanier}} €">
       </div>
       <div class="form-group">
         <label for="argent">Montant sur votre compte :</label>
-        <input type="text" class="form-control" name="argent" disabled id="argent" placeholder="0 €" value="{{55}}">
+        <input type="text" class="form-control" name="argent" disabled id="argent" placeholder="0 €" value="{{singletonMembre.membre.argent}} €">
       </div>
     </form>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-dark" (click)="fermer()">Annuler</button>
-    <button type="submit" class="btn btn-success" >Confirmer</button>
+    <button type="submit" class="btn btn-success" (click)="validerPayement()">Confirmer</button>
   </div>
 </div>

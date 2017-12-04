@@ -31,7 +31,7 @@ export class GestionPlaylistComponent implements OnInit {
       this.listePlaylist = Playlist.fromJSONs(listePlaylist);
     });
 
-    this.musiqueService.getAllMusique().subscribe(listeMusique => {
+    this.musiqueService.getMusiqueAchat(this._membreConnecter.membre.mail,1).subscribe(listeMusique => {
       this.listAdd = Musique.fromJSONs(listeMusique);
     });
   }

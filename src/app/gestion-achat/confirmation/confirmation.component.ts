@@ -55,6 +55,8 @@ export class ConfirmationComponent implements OnInit{
 
   public payer(){
     this.mettreAJour();
+    this.serviceAchat.prixPanier = this.getTotal();
+    this.serviceAchat.listeMusiqueAchete = this.listeMusiquePanier;
     this.ouvrir();
   }
 

@@ -7,6 +7,7 @@ export class Musique {
   private _url: string;
   private _image: string;
   private _prix: number;
+  private _achete:boolean=false;
 
   constructor(id_musique: number, auteur: string, titre: string, style: string, url: string, image: string, prix: number) {
     this._id_musique = id_musique;
@@ -76,6 +77,15 @@ export class Musique {
       this._prix = value;
     }
   }
+
+
+  get achete(): boolean {
+    return this._achete;
+  }
+  set achete(value: boolean) {
+    this._achete = value;
+  }
+
 
   public static fromJSON(rawMusique: any): Musique {
     return new Musique(rawMusique['Id_musique'], rawMusique['Auteur'],

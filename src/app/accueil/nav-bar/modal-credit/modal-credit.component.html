@@ -26,9 +26,6 @@
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Annuler</button>
     <button type="submit" class="btn btn-primary btn-default" [disabled]="!formulaire.form.valid" (click)="ajouterSolde()">Ajouter</button>
-    <small *ngIf="modifOk" class="text-success">
-      Votre montant a bien été ajouté à votre portefeuille
-    </small>
   </div>
 </ng-template>
 

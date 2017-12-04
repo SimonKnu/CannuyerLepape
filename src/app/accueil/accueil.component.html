@@ -14,13 +14,23 @@
             <h5>{{musique.auteur}} </h5>
           </td>
           <td width="15%">
+
             <div *ngIf="singletonMembre.isConnected; then connected else notconnected"></div>
-            <ng-template #connected>
-              <button class="btn" (click)="create(i)"><span class="glyphicon glyphicon-shopping-cart"></span> <i>{{musique.prix}} €</i></button>
-            </ng-template>
-            <ng-template #notconnected>
-              <button class="btn" disabled="true"><span class="glyphicon glyphicon-shopping-cart"></span> <i>{{musique.prix}} €</i></button>
-            </ng-template>
+
+              <ng-template #connected>
+                <div *ngIf="musique.achete; then acheted else notacheted"></div>
+                <ng-template #acheted>
+                  <button class="btn"><span class="glyphicon glyphicon-shopping-cart"></span> <i>{{musique.prix}} €</i></button>
+                </ng-template>
+                <ng-template #notacheted>
+                  <button class="btn" (click)="create(i)" style="background-color:#32a929;"><span class="glyphicon glyphicon-shopping-cart"></span> <i>{{musique.prix}} €</i></button>
+                </ng-template>
+              </ng-template>
+
+              <ng-template #notconnected>
+                <button class="btn" disabled="true"><span class="glyphicon glyphicon-shopping-cart"></span> <i>{{musique.prix}} €</i></button>
+              </ng-template>
+
           </td>
         </tr>
       </table>

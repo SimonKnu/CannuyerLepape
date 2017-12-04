@@ -25,7 +25,6 @@ export class ModalCreditComponent {
   private soldeactuel:number = this.membreConnecter.membre.argent;
   private _solde:number= 0;
   private newsolde:number = this.soldeactuel + this._solde;
-  private _modifOk:boolean=false;
 
   constructor(private modalService: NgbModal,private _membreConnecter: SingletonMembreService, private connexion:ConnexionService) {}
 
@@ -37,12 +36,6 @@ export class ModalCreditComponent {
     this.newsolde = this.membreConnecter.membre.argent + this._solde;
   }
 
-  get modifOk(): boolean {
-    return this._modifOk;
-  }
-  set modifOk(value: boolean) {
-    this._modifOk = value;
-  }
 
 
   get membreConnecter(): SingletonMembreService {
@@ -55,11 +48,13 @@ export class ModalCreditComponent {
     this._solde = 0;
     this.connexion.updateArgent(this.membreConnecter.membre.mail, this.membreConnecter.membre.argent).subscribe(val =>{
       if(val==="OK"){
-        this.modifOk=true;
+        localStorage.setItem("argent",this.membreConnecter.membre.argent+"");
+        alert("Votre argent a bien été ajouté à votre portefeuille");
       }
       else {
-        this.modifOk=false;
+        alert("Une erreur est survenue ! Veuillez réessayer");
       }
+      this.modalRef.close();
     });
   }
 

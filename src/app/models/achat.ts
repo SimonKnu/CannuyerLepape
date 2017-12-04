@@ -45,4 +45,5 @@ export class Achat {
     return new Achat(rawAchat['Mail'], rawAchat['Id_musique'],
       rawAchat['Statut']);
   }
+
 }
