@@ -23,10 +23,8 @@ export class ModalService {
     return this._modalLogin;
   }
   set modalLogin(value: NgbModalRef) {
-    console.log("SALUT c");
     if(this._modalLogin){
       this._modalLogin.close();
-      console.log("SALUT DELTEE");
     }
     this._modalLogin = value;
   }
