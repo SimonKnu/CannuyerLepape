@@ -40,6 +40,9 @@ export class SingletonMembreService {
       this.serviceMusique.getMusiqueAchat(this.membre.mail,0).subscribe(listeMusique => {
         localStorage.setItem("nbPanier",listeMusique.length+"");
       });
+
+      this.modalService.modalLogin.close();
+      this.router.navigate(["wait"]);
     });
   }
   supprimerConnexion(){
