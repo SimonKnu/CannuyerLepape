@@ -37,9 +37,12 @@
             <div *ngIf="singletonMembre.isConnected; then connected else notconnected"></div>
 
               <ng-template #connected>
-                <div *ngIf="musique.achete ; then notacheted"></div>
-                <ng-template #notacheted>
+                <div *ngIf="musique.achete ; then notacheted else acheted"></div>
+                <ng-template #acheted>
                   <button class="btn" (click)="create(i)" style="background-color:#32a929;"><span class="glyphicon glyphicon-shopping-cart"></span> <i>{{musique.prix}} €</i></button>
+                </ng-template>
+                <ng-template #notacheted>
+                  <button class="btn" disabled><span class="glyphicon glyphicon-shopping-cart"></span> <i>{{musique.prix}} €</i></button>
                 </ng-template>
               </ng-template>
 
