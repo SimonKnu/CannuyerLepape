@@ -35,6 +35,7 @@ import {EqualValidator } from './directive/equal-validator.directive';
 import {ModalCreditComponent } from './accueil/nav-bar/modal-credit/modal-credit.component';
 import {ModalPayementComponent } from './gestion-achat/modal-payement/modal-payement.component';
 import {ModalService} from "./service/modal-service.service";
+import { WaitComponent } from './accueil/wait/wait.component';
 
 
 
@@ -49,6 +50,7 @@ const routes: Routes = [
   {path: 'panier', component: PanierComponent},
   {path: 'confirmation', component: ConfirmationComponent},
   {path: 'logIn', component: ModalLogInComponent},
+  {path: 'wait', component: WaitComponent},
   //{path: '', redirectTo: '', pathMatch: 'full'},
 ];
 
@@ -78,6 +80,8 @@ const routes: Routes = [
     EqualValidator,
 
     ModalPayementComponent,
+
+    WaitComponent,
 
   ],
   imports: [

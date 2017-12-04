@@ -4,6 +4,7 @@ import {NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
 import {ConnexionService} from "../../../service/service-connexion.service";
 import {SingletonMembreService} from "../../../service/singleton-membre.service";
 import {ModalService} from "../../../service/modal-service.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-modal-log-in',
@@ -25,7 +26,7 @@ export class ModalLogInComponent {
   private tmpMail:string="";
   private tmpMot_de_passe:string="";
 
-  constructor(private modalService:ModalService, private connexionService:ConnexionService, private singletonMembre:SingletonMembreService) {}
+  constructor(private modalService:ModalService, private connexionService:ConnexionService, private singletonMembre:SingletonMembreService, private router:Router) {}
 
   public connexion() {
     let mail:string = this.tmpMail;
@@ -48,5 +49,6 @@ export class ModalLogInComponent {
 
   fermer() {
     this.modalService.modalLogin.close();
+    this.router.navigate(["wait"]);
   }
 }

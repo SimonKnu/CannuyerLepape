@@ -46,7 +46,8 @@ export class SingletonMembreService {
     this.membre=new Membre();
     this.isConnected=false;
     localStorage.clear();
-    this.router.navigate([""]);
+
+    this.router.navigate(["wait"]);
   }
 
   private storerInfo(){
