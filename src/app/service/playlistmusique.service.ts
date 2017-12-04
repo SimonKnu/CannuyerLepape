@@ -15,8 +15,4 @@ export class PlaylistmusiqueService {
   public createPlaylistMusique(playlistmusique: Playlistmusique): Observable<Playlistmusique> {
     return this.http.post('http://localhost:61812/api/playlistmusique', playlistmusique.getCleanDataForSending());
   }
-
-  public deleteAllMusique(id_playlist: number): Observable<any> {
-    return this.http.delete<string>('http://localhost:61812/api/playlistmusique?id_playlist=' + id_playlist);
-  }
 }
