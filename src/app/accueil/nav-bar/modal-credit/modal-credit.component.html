@@ -14,7 +14,7 @@
       </div>
       <div class="form-group">
         <label for="ajout">Montant</label>
-        <input type="number" class="form-control" id="ajout" name="ajout" [(ngModel)]="solde" required min="0">
+        <input type="text" class="form-control" id="ajout" name="ajout" [(ngModel)]="solde" required pattern="\d+">
       </div>
       <div class="form-group">
         <label for="newsolde">Nouveau solde</label>
