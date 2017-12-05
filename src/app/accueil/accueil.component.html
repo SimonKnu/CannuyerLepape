@@ -1,10 +1,10 @@
 <div class="head">
   <div class="center">
     <h1>TrackCity</h1>
-    <input te="text" class="form-control" placeholder="Rechercher par son titre..." name="titre" [(ngModel)]="searchFilter">
+    <input type="text"  align="center" class="form-control" placeholder="Rechercher une musique par son titre..." name="titre" [(ngModel)]="searchFilter">
   </div>
 </div>
-<hr>
+<hr><br/>
 
 <div *ngFor="let musique of listeMusique | rechercher:searchFilter; index as i;">
   <div class="col-xs-6 col-md-4 col-lg-3">

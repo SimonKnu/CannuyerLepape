@@ -2,43 +2,45 @@
 
   <img src="image/logo.png" width="30" height="30" alt="">
   <a class="navbar-brand" routerLink=""><h4>TrackCity</h4></a>
-  <button class="navbar-toggler" type="button" onclick="verification()" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button"  data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div *ngIf="singletonMembre.isConnected; then connected else notconnected"></div>
-  <!--Connecté-->
-  <ng-template #connected>
+  <div class="nav navbar-nav ml-auto">
+    <div *ngIf="singletonMembre.isConnected; then connected else notconnected"></div>
+      <!--Connecté-->
+      <ng-template #connected>
 
-    <div ngbDropdown placement="bottom-right" class="d-inline-block">
-      <button class="btn btn-outline-primary" routerLink="panier">
-        <div *ngIf="serviceAchat.nbPanier!=0">
-          <span class="glyphicon glyphicon-shopping-cart"></span> Panier [{{serviceAchat.nbPanier}}]
-        </div>
-        <div *ngIf="serviceAchat.nbPanier==0">
-          <span class="glyphicon glyphicon-shopping-cart"></span> Panier
-        </div>
+        <div ngbDropdown placement="bottom-right" class="d-inline-block">
+          <button class="btn btn-outline-primary" routerLink="panier">
+            <div *ngIf="serviceAchat.nbPanier!=0">
+              <span class="glyphicon glyphicon-shopping-cart"></span> Panier [{{serviceAchat.nbPanier}}]
+            </div>
+            <div *ngIf="serviceAchat.nbPanier==0">
+              <span class="glyphicon glyphicon-shopping-cart"></span> Panier
+            </div>
 
-      </button>
-      <app-modal-credit></app-modal-credit>
-      <button class="btn btn-outline-primary" id="dropdownBasicConnected" ngbDropdownToggle>{{singletonMembre.membre.prenom}}</button>
-      <div ngbDropdownMenu aria-labelledby="dropdownBasicConnected">
-        <button class="dropdown-item" routerLink="gestionAccount">Mon compte</button>
-        <button class="dropdown-item" routerLink="gestionPlaylist">Mes playlists</button>
-        <button class="dropdown-item" routerLink="mesmusiques">Mes musiques</button>
-        <div *ngIf="singletonMembre.membre.administrateur">
-          <button class="dropdown-item" routerLink="gestionMusique">Gérer les musiques</button>
+          </button>
+          <app-modal-credit></app-modal-credit>
+          <button class="btn btn-outline-primary" id="dropdownBasicConnected" ngbDropdownToggle>{{singletonMembre.membre.prenom}}</button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasicConnected">
+            <button class="dropdown-item" routerLink="gestionAccount">Mon compte</button>
+            <button class="dropdown-item" routerLink="gestionPlaylist">Mes playlists</button>
+            <button class="dropdown-item" routerLink="mesmusiques">Mes musiques</button>
+            <div *ngIf="singletonMembre.membre.administrateur">
+              <button class="dropdown-item" routerLink="gestionMusique">Gérer les musiques</button>
+            </div>
+            <button class="dropdown-item">--------------</button>
+            <button class="dropdown-item" (click)="singletonMembre.supprimerConnexion();">Se déconnecter</button>
+          </div>
         </div>
-        <button class="dropdown-item">--------------</button>
-        <button class="dropdown-item" (click)="singletonMembre.supprimerConnexion();">Se déconnecter</button>
-      </div>
-    </div>
-  </ng-template>
+      </ng-template>
 
-  <!--Pas connecté-->
-  <ng-template #notconnected>
-    <app-modal-sign-up></app-modal-sign-up>
-    <span>&nbsp;&nbsp;&nbsp;</span>
-    <button class="btn btn-primary" (click)="ouvrir()">Se connecter</button>
-  </ng-template>
+      <!--Pas connecté-->
+      <ng-template #notconnected>
+        <app-modal-sign-up></app-modal-sign-up>
+        <span>&nbsp;&nbsp;&nbsp;</span>
+        <button class="btn btn-primary" (click)="ouvrir()">Se connecter</button>
+      </ng-template>
+  </div>
 </nav>

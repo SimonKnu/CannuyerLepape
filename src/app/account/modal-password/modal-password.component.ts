@@ -25,10 +25,11 @@ export class ModalPasswordComponent {
 
   private tmpPassword:string="";
   private tmpOldPassword:string="";
+  private tmpConfirmPassword:string="";
 
   private _pasCorrect:boolean=false;
 
-  constructor(private modalService: NgbModal, private _membreConnecter:SingletonMembreService, private connexion:ConnexionService) {}
+  constructor(private modalService: NgbModal, private _membreConnecter:SingletonMembreService, private connexion:ConnexionService)  {}
 
   get membreConnecter(): SingletonMembreService {
     return this._membreConnecter;
@@ -56,7 +57,10 @@ export class ModalPasswordComponent {
               localStorage.setItem("token", token);
               this.pasCorrect= false;
               this.tmpOldPassword="";
+              this.tmpConfirmPassword="";
+              this.tmpPassword="";
               this.modalRef.close();
+              alert("Votre mot de passe a bien été modifié !")
             }
           })
         }

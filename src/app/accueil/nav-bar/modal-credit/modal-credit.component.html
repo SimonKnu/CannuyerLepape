@@ -14,7 +14,7 @@
       </div>
       <div class="form-group">
         <label for="ajout">Montant</label>
-        <input type="text" class="form-control" id="ajout" name="ajout" [(ngModel)]="solde" required pattern="\d+">
+        <input type="number" class="form-control" id="ajout" name="ajout" [(ngModel)]="solde" required pattern="\d+">
       </div>
       <div class="form-group">
         <label for="newsolde">Nouveau solde</label>
@@ -25,7 +25,7 @@
 
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Annuler</button>
-    <button type="submit" class="btn btn-primary btn-default" [disabled]="!formulaire.form.valid" (click)="ajouterSolde()">Ajouter</button>
+    <button type="submit" class="btn btn-primary btn-default" [disabled]="!formulaire.form.valid || tropArgent" (click)="ajouterSolde()">Ajouter</button>
   </div>
 </ng-template>
 

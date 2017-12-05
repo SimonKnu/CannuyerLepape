@@ -25,6 +25,7 @@ export class ModalCreditComponent {
   private soldeactuel:number = this.membreConnecter.membre.argent;
   private _solde:number= 0;
   private newsolde:number = this.soldeactuel + this._solde;
+  private tropArgent:boolean= false;
 
   constructor(private modalService: NgbModal,private _membreConnecter: SingletonMembreService, private connexion:ConnexionService) {}
 
@@ -34,6 +35,12 @@ export class ModalCreditComponent {
   set solde(value: number) {
     this._solde = value;
     this.newsolde = this.membreConnecter.membre.argent + this._solde;
+    if(this.newsolde>10000){
+      this.tropArgent=true;
+    }
+    else {
+      this.tropArgent=false;
+    }
   }
 
 
