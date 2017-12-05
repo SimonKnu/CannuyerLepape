@@ -43,14 +43,19 @@ export class ModalPasswordComponent {
 
   public changerPassword(){
       this.pasCorrect = false;
-      this.connexion.updatePassword(this.membreConnecter.membre.mail + "", this.tmpPassword + "", this.tmpOldPassword+"").subscribe(test => {
+      let mdp:string = this.tmpPassword;
+
+      this.connexion.updatePassword(this.membreConnecter.membre.mail + "", mdp + "", this.tmpOldPassword+"").subscribe(test => {
+        console.log(test);
         if (test === "OK") {
-          this.connexion.getConnexion(this.membreConnecter.membre.mail + "", this.membreConnecter.membre.mot_de_passe + "").subscribe(token => {
+          this.membreConnecter.membre.mot_de_passe = this.tmpPassword;
+          this.connexion.getConnexion(this.membreConnecter.membre.mail + "", mdp + "").subscribe(token => {
             if (token === "error" || token === "") {
             }
             else {
               localStorage.setItem("token", token);
               this.pasCorrect= false;
+              this.tmpOldPassword="";
               this.modalRef.close();
             }
           })
