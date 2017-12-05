@@ -36,7 +36,6 @@ import {ModalCreditComponent } from './accueil/nav-bar/modal-credit/modal-credit
 import {ModalPayementComponent } from './gestion-achat/modal-payement/modal-payement.component';
 import {ModalService} from "./service/modal-service.service";
 import { WaitComponent } from './accueil/wait/wait.component';
-import { RechercherPipe } from './pipe/rechercher.pipe';
 
 
 
@@ -72,7 +71,6 @@ const routes: Routes = [
     ImagePipe,
     PreviewPipe,
     MusiquefullPipe,
-    RechercherPipe,
 
     ModalLogInComponent,
     ModalSignUpComponent,
@@ -84,9 +82,6 @@ const routes: Routes = [
     ModalPayementComponent,
 
     WaitComponent,
-
-    RechercherPipe,
-
   ],
   imports: [
     BrowserModule,
