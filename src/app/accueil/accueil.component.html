@@ -1,5 +1,5 @@
-<p>
-  <input type="text" class="form-control" placeholder="Rechercher par titre..." name="titre" [(ngModel)]="searchFilter">
+<p class="center">
+  <input type="text" class="form-control" placeholder="Rechercher par son titre..." name="titre" [(ngModel)]="searchFilter">
 </p>
 
 <div *ngFor="let musique of listeMusique | rechercher:searchFilter; index as i;">
