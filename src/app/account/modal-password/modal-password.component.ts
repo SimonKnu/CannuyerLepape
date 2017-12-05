@@ -42,10 +42,8 @@ export class ModalPasswordComponent {
   }
 
   public changerPassword(){
-    if(this.membreConnecter.membre.mot_de_passe===this.tmpOldPassword) {
-      this.membreConnecter.membre.mot_de_passe = this.tmpPassword;
       this.pasCorrect = false;
-      this.connexion.updatePassword(this.membreConnecter.membre.mail + "", this.membreConnecter.membre.mot_de_passe + "").subscribe(test => {
+      this.connexion.updatePassword(this.membreConnecter.membre.mail + "", this.tmpPassword + "", this.tmpOldPassword+"").subscribe(test => {
         if (test === "OK") {
           this.connexion.getConnexion(this.membreConnecter.membre.mail + "", this.membreConnecter.membre.mot_de_passe + "").subscribe(token => {
             if (token === "error" || token === "") {
@@ -62,10 +60,6 @@ export class ModalPasswordComponent {
         }
       })
     }
-    else {
-      this.pasCorrect  = true;
-    }
-  }
 
   open(content) {
     this.modalRef = this.modalService.open(content,  {windowClass:'milieu-ecran'});

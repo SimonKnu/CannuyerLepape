@@ -22,8 +22,8 @@ export class ConnexionService {
   public updateMembre(m: Membre): Observable<any>{
     return this.http.put('http://localhost:61812/api/membre', m.getCleanDataForSendingUpdate());
   }
-  public updatePassword(mail: string, mot_de_passe: string): Observable<any>{
-    return this.http.put('http://localhost:61812/api/membre?mail=' + mail + '&mot_de_passe=' + mot_de_passe, '');
+  public updatePassword(mail: string, mot_de_passe: string, old_password:string): Observable<any>{
+    return this.http.put('http://localhost:61812/api/membre?mail=' + mail + '&mot_de_passe=' + mot_de_passe +'&old_password='+old_password, '');
   }
   public updateArgent(mail: string, argent: number): Observable<any>{
     return this.http.put('http://localhost:61812/api/membre?mail=' + mail + '&argent=' + argent, '');
