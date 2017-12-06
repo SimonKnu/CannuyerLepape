@@ -18,7 +18,7 @@
     <tbody>
       <tr *ngFor="let musiquePanier of listeMusiquePanier; index as i;">
         <th scope="row">{{i+1}}</th>
-        <td><img [src]="musiquePanier.image | image" height="50px"/></td>
+        <td><div class="d-none d-sm-block"><img [src]="musiquePanier.image | image" height="50px"/></div></td>
         <td>{{musiquePanier.auteur}}</td>
         <td>{{musiquePanier.titre}}</td>
         <td>{{musiquePanier.prix}} €</td>
@@ -35,10 +35,14 @@
     </tbody>
   </table>
   <br/>
-  <div class="row">
-    <div class="col-6"><button type="button" class="btn btn-outline-secondary btn-lg" routerLink="">Continuer mes achats</button></div>
-    <div class="col-3"><span class="float-right"><button type="button" class="btn btn-success btn-lg" routerLink="../confirmation" >Passer ma commande</button></span></div>
-  </div>
+  <table  width="100%">
+    <tbody>
+      <tr>
+        <td width="70%"><button type="button" class="btn btn-outline-secondary btn-lg" routerLink="">Continuer mes achats</button></td>
+        <td><button type="button" class="btn btn-success btn-lg" routerLink="../confirmation" >Passer ma commande</button></td>
+      </tr>
+    </tbody>
+  </table>
 </span>
 
 <span *ngIf="listeMusiquePanier.length == 0">
