@@ -5,6 +5,7 @@ import {ConnexionService} from "../../../service/service-connexion.service";
 import {SingletonMembreService} from "../../../service/singleton-membre.service";
 import {ModalService} from "../../../service/modal-service.service";
 import {Router} from "@angular/router";
+import {ModalMailComponent} from "./modal-mail/modal-mail.component";
 
 @Component({
   selector: 'app-modal-log-in',
@@ -25,8 +26,9 @@ import {Router} from "@angular/router";
 export class ModalLogInComponent {
   private tmpMail:string="";
   private tmpMot_de_passe:string="";
+  private testCo:boolean=true;
 
-  constructor(private modalService:ModalService, private connexionService:ConnexionService, private singletonMembre:SingletonMembreService, private router:Router) {}
+  constructor(private ngbModal:NgbModal,private modalService:ModalService, private connexionService:ConnexionService, private singletonMembre:SingletonMembreService, private router:Router) {}
 
   public connexion() {
     let mail:string = this.tmpMail;
@@ -34,8 +36,10 @@ export class ModalLogInComponent {
 
     this.connexionService.getConnexion(mail, mdp).subscribe(token => {
       if(token === "error" || token === ""){
+        this.testCo=false;
       }
       else {
+        this.testCo=true;
         localStorage.setItem("token",token);
         localStorage.setItem("mail",mail);
 
@@ -52,5 +56,10 @@ export class ModalLogInComponent {
   fermer() {
     this.router.navigate(["wait"]);
     this.modalService.modalLogin.close();
+  }
+
+  public mdpOublie(){
+    this.modalService.modalLogin.close();
+    this.modalService.modalMail = this.ngbModal.open(ModalMailComponent, {windowClass: 'milieu-ecran'});
   }
 }

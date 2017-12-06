@@ -23,6 +23,7 @@ import {Membre} from "../../../models/membre";
 export class ModalSignUpComponent {
   closeResult: string;
   private modalRef:NgbModalRef;
+  private mailTest:boolean=true;
 
   private tmpPassword:string="";
   private tmpConfirmPassword:string="";
@@ -40,9 +41,17 @@ export class ModalSignUpComponent {
     m.prenom=this.tmpPrenom;
     m.nom=this.tmpNom;
 
-    this.connexionService.createMembre(m).subscribe();
-    this.reset();
-    this.modalRef.close();
+    this.connexionService.getMail(m.mail,true).subscribe(val =>{
+      if(val == "OK"){
+        this.mailTest=false;
+      }
+      else {
+        this.mailTest=true;
+        this.connexionService.createMembre(m).subscribe();
+        this.reset();
+        this.modalRef.close();
+      }
+    });
   }
 
 

@@ -16,7 +16,9 @@ export class ConnexionService {
   public getMembre(mail: string): Observable<Membre>{
     return this.http.get('http://localhost:61812/api/Membre?mail=' + mail);
   }
-
+  public getMail(mail: string, test:boolean): Observable<string>{
+    return this.http.get('http://localhost:61812/api/Membre?mail=' + mail+"&test="+test);
+  }
 
 
   public updateMembre(m: Membre): Observable<any>{
@@ -29,7 +31,9 @@ export class ConnexionService {
   public updateArgent(mail: string, argent: number): Observable<any>{
     return this.http.put('http://localhost:61812/api/membre?mail=' + mail + '&argent=' + argent, '');
   }
-
+  public updateForgetPassword(mail: string, nom: string,prenom:string,mot_de_passe:string): Observable<any>{
+    return this.http.put('http://localhost:61812/api/membre?mail=' + mail + '&nom=' + nom+"&prenom="+prenom+"&mot_de_passe="+mot_de_passe,'');
+  }
 
 
   public createMembre(membre: Membre){

@@ -9,6 +9,7 @@ export class ModalService {
 
   private _modalPayement:NgbModalRef;
   private _modalLogin:NgbModalRef;
+  private _modalMail:NgbModalRef;
 
 
   get modalPayement(): NgbModalRef {
@@ -27,5 +28,13 @@ export class ModalService {
       this._modalLogin.close();
     }
     this._modalLogin = value;
+  }
+
+
+  get modalMail(): NgbModalRef {
+    return this._modalMail;
+  }
+  set modalMail(value: NgbModalRef) {
+    this._modalMail = value;
   }
 }

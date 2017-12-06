@@ -37,6 +37,7 @@ import {ModalPayementComponent } from './gestion-achat/modal-payement/modal-paye
 import {ModalService} from "./service/modal-service.service";
 import { WaitComponent } from './accueil/wait/wait.component';
 import { RechercherPipe } from './pipe/rechercher.pipe';
+import { ModalMailComponent } from './accueil/nav-bar/modal-log-in/modal-mail/modal-mail.component';
 
 
 
@@ -78,10 +79,10 @@ const routes: Routes = [
     ModalSignUpComponent,
     ModalPasswordComponent,
     ModalCreditComponent,
+    ModalMailComponent,
+    ModalPayementComponent,
 
     EqualValidator,
-
-    ModalPayementComponent,
 
     WaitComponent,
   ],
@@ -103,6 +104,6 @@ const routes: Routes = [
       multi: true
     }],
   bootstrap: [AppComponent],
-  entryComponents : [ModalPayementComponent, ModalLogInComponent],
+  entryComponents : [ModalPayementComponent, ModalLogInComponent, ModalMailComponent],
 })
 export class AppModule {}
