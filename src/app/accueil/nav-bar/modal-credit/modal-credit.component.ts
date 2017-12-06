@@ -50,7 +50,7 @@ export class ModalCreditComponent {
   }
 
   public ajouterSolde() {
-    this._membreConnecter.membre.argent = this.newsolde;
+    this._membreConnecter.membre.argent = Math.round(this.newsolde*100)/100;
     this.soldeactuel = this.newsolde;
     this._solde = 0;
     this.connexion.updateArgent(this.membreConnecter.membre.mail, this.membreConnecter.membre.argent).subscribe(val =>{
