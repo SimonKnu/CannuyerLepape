@@ -39,6 +39,7 @@ export class GestionPlaylistComponent implements OnInit {
 
   public updateList(playlist: Playlist, index: number) {
 
+    this.playlistService.setPlaylist(playlist);
     this.index = index;
     this.nomPlaylist = playlist.nom;
     this.id_playlist = playlist.id_playlist;
