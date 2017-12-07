@@ -6,23 +6,23 @@
       <form #formulaire="ngForm" (submit)="createMusique()">
         <div class="form-group">
           <label for="titre">Titre</label>
-          <input type="text" class="form-control" id="titre" placeholder="Titre" name="titre" [(ngModel)]="titre" required maxlength="100">
+          <input type="text" class="form-control" id="titre" placeholder="Titre" name="titre" [(ngModel)]="titre" required maxlength="50">
         </div>
         <div class="form-group">
           <label for="auteur">Auteur</label><br>
-          <input type="text" class="form-control" id="auteur" placeholder="Auteur" name="auteur" [(ngModel)]="auteur" required maxlength="100">
+          <input type="text" class="form-control" id="auteur" placeholder="Auteur" name="auteur" [(ngModel)]="auteur" required maxlength="50">
         </div>
         <div class="form-group">
           <label for="style">Style</label>
-          <input type="text" class="form-control" id="style" placeholder="Style" name="style" [(ngModel)]="style" required maxlength="100">
+          <input type="text" class="form-control" id="style" placeholder="Style" name="style" [(ngModel)]="style" required maxlength="30">
         </div>
         <div class="form-group">
-          <label for="url">Url</label>
-          <input type="text" class="form-control" id="url" placeholder="Url" name="url" [(ngModel)]="url" required maxlength="100">
+          <label for="url">Fichier audio</label>
+          <input type="text" class="form-control" id="url" placeholder="Fichier audio - ex: light.mp3" name="url" [(ngModel)]="url" required maxlength="50">
         </div>
         <div class="form-group">
-          <label for="image">Image</label>
-          <input type="text" class="form-control" id="image" placeholder="Image" name="image" [(ngModel)]="image" required maxlength="100">
+          <label for="image">Fichier image</label>
+          <input type="text" class="form-control" id="image" placeholder="Fichier image - ex: light.png" name="image" [(ngModel)]="image" required maxlength="50">
         </div>
         <div class="form-group">
           <label for="prix">Prix</label>
@@ -48,23 +48,23 @@
       <form #formulaire="ngForm" (submit)="modifierMusique()">
         <div class="form-group">
           <label for="titre">Titre</label>
-          <input type="text" class="form-control" id="titre" placeholder="Titre" name="titre" [(ngModel)]="titre" required maxlength="100">
+          <input type="text" class="form-control" id="titre" placeholder="Titre" name="titre" [(ngModel)]="titre" required maxlength="50">
         </div>
         <div class="form-group">
           <label for="auteur">Auteur</label><br>
-          <input type="text" class="form-control" id="auteur" placeholder="Auteur" name="auteur" [(ngModel)]="auteur" required maxlength="100">
+          <input type="text" class="form-control" id="auteur" placeholder="Auteur" name="auteur" [(ngModel)]="auteur" required maxlength="50">
         </div>
         <div class="form-group">
           <label for="style">Style</label>
-          <input type="text" class="form-control" id="style" placeholder="Style" name="style" [(ngModel)]="style" required maxlength="100">
+          <input type="text" class="form-control" id="style" placeholder="Style" name="style" [(ngModel)]="style" required maxlength="30">
         </div>
         <div class="form-group">
-          <label for="url">Url</label>
-          <input type="text" class="form-control" id="url" placeholder="Url" name="url" [(ngModel)]="url" required maxlength="100">
+          <label for="url">Fichier audio</label>
+          <input type="text" class="form-control" id="url" placeholder="Fichier audio - ex: light.mp3" name="url" [(ngModel)]="url" required maxlength="50" >
         </div>
         <div class="form-group">
-          <label for="image">Image</label>
-          <input type="text" class="form-control" id="image" placeholder="Image" name="image" [(ngModel)]="image" required maxlength="100">
+          <label for="image">Fichier image</label>
+          <input type="text" class="form-control" id="image" placeholder="Fichier image - ex: light.png" name="image" [(ngModel)]="image" required maxlength="50">
         </div>
         <div class="form-group">
           <label for="prix">Prix</label>

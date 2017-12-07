@@ -38,6 +38,7 @@ import {ModalService} from "./service/modal-service.service";
 import { WaitComponent } from './accueil/wait/wait.component';
 import { RechercherPipe } from './pipe/rechercher.pipe';
 import { ModalMailComponent } from './accueil/nav-bar/modal-log-in/modal-mail/modal-mail.component';
+import { ModalModifierComponent } from './gestion-playlist/modal-modifier/modal-modifier.component';
 
 
 
@@ -69,6 +70,7 @@ const routes: Routes = [
     MesmusiquesComponent,
     PanierComponent,
     ConfirmationComponent,
+    ModalModifierComponent,
 
     ImagePipe,
     PreviewPipe,
@@ -85,6 +87,7 @@ const routes: Routes = [
     EqualValidator,
 
     WaitComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -104,6 +107,6 @@ const routes: Routes = [
       multi: true
     }],
   bootstrap: [AppComponent],
-  entryComponents : [ModalPayementComponent, ModalLogInComponent, ModalMailComponent],
+  entryComponents : [ModalPayementComponent, ModalLogInComponent, ModalMailComponent, ModalModifierComponent],
 })
 export class AppModule {}

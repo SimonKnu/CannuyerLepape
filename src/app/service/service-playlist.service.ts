@@ -5,6 +5,15 @@ import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class PlaylistService {
+  private playlist: Playlist;
+
+  public get() {
+    return this.playlist;
+  }
+
+  public  setPlaylist(value: Playlist) {
+    this.playlist = value;
+  }
 
   constructor(public http: HttpClient) { }
 

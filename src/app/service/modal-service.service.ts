@@ -10,6 +10,7 @@ export class ModalService {
   private _modalPayement:NgbModalRef;
   private _modalLogin:NgbModalRef;
   private _modalMail:NgbModalRef;
+  private _modalPlaylist:NgbModalRef;
 
 
   get modalPayement(): NgbModalRef {
@@ -36,5 +37,13 @@ export class ModalService {
   }
   set modalMail(value: NgbModalRef) {
     this._modalMail = value;
+  }
+
+  get modalPlaylist(): NgbModalRef {
+    return this._modalPlaylist;
+  }
+
+  set modalPlaylist(value: NgbModalRef) {
+    this._modalPlaylist = value;
   }
 }
