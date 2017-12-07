@@ -6,6 +6,9 @@ import {MusiqueService} from '../service/service-musique.service';
 import {SingletonMembreService} from '../service/singleton-membre.service';
 import {PlaylistmusiqueService} from '../service/playlistmusique.service';
 import {Playlistmusique} from '../models/playlistmusique';
+import {ModalService} from '../service/modal-service.service';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {ModalModifierComponent} from "./modal-modifier/modal-modifier.component";
 
 @Component({
   selector: 'app-gestion-playlist',
@@ -24,7 +27,8 @@ export class GestionPlaylistComponent implements OnInit {
   private nom = '';
   private index= 0;
 
-  constructor(public playlistService: PlaylistService, public musiqueService: MusiqueService,
+  constructor(private refModal: ModalService, private modalService: NgbModal,
+              public playlistService: PlaylistService, public musiqueService: MusiqueService,
               public playlistmusiqueService: PlaylistmusiqueService, private _membreConnecter: SingletonMembreService) { }
 
   ngOnInit() {
@@ -93,5 +97,9 @@ export class GestionPlaylistComponent implements OnInit {
     this.playlistService.deletePlaylist(this.id_playlist, this._membreConnecter.membre.mail).subscribe(DELETE, DISPLAY_ERROR);
     this.nomPlaylist = '';
     this.listeMusique = [];
+  }
+
+  public ouvrir() {
+    this.refModal.modalPlaylist = this.modalService.open(ModalModifierComponent, {windowClass: 'milieu-ecran'});
   }
 }
